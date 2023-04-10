@@ -6,7 +6,7 @@
   <link href="https://supermarpig.github.io/atom.xml" rel="self"/>
   
   <link href="https://supermarpig.github.io/"/>
-  <updated>2023-04-10T07:31:57.753Z</updated>
+  <updated>2023-04-10T08:27:45.770Z</updated>
   <id>https://supermarpig.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://supermarpig.github.io/2023/04/10/%E6%B8%AC%E8%A9%A6%E6%96%87%E7%AB%A0/"/>
     <id>https://supermarpig.github.io/2023/04/10/%E6%B8%AC%E8%A9%A6%E6%96%87%E7%AB%A0/</id>
     <published>2023-04-10T07:30:28.000Z</published>
-    <updated>2023-04-10T07:31:57.753Z</updated>
+    <updated>2023-04-10T08:27:45.770Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>測試測試</p><hr>]]></content>
     
@@ -35,6 +35,14 @@
     
     
     
+    <category term="web前端" scheme="https://supermarpig.github.io/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="jQuery" scheme="https://supermarpig.github.io/tags/jQuery/"/>
+    
+    <category term="表格" scheme="https://supermarpig.github.io/tags/%E8%A1%A8%E6%A0%BC/"/>
+    
+    <category term="表單驗證" scheme="https://supermarpig.github.io/tags/%E8%A1%A8%E5%96%AE%E9%A9%97%E8%AD%89/"/>
     
   </entry>
   
