@@ -22,20 +22,23 @@
     var CONFIG = {"hostname":"supermarpig.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="前言照著教學創網站 GOGO">
+  <meta name="description" content="前言 日常開發遇到不會 就筆記">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我的第一篇部落格文章">
-<meta property="og:url" content="https://supermarpig.github.io/2023/04/10/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E9%83%A8%E8%90%BD%E6%A0%BC%E6%96%87%E7%AB%A0/index.html">
+<meta property="og:title" content="CSS 動畫 ：transition">
+<meta property="og:url" content="https://supermarpig.github.io/2023/04/13/CSS%20%E5%8B%95%E7%95%AB%20%EF%BC%9Atransition/index.html">
 <meta property="og:site_name" content="Cody Di Da Di">
-<meta property="og:description" content="前言照著教學創網站 GOGO">
+<meta property="og:description" content="前言 日常開發遇到不會 就筆記">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2023-04-10T05:45:37.000Z">
-<meta property="article:modified_time" content="2023-04-11T03:10:12.776Z">
+<meta property="og:image" content="https://media.tenor.com/Is7pMDGXQrkAAAAd/ogvhs-nope.gif">
+<meta property="article:published_time" content="2023-04-13T02:51:44.000Z">
+<meta property="article:modified_time" content="2023-04-13T07:11:10.828Z">
 <meta property="article:author" content="Cody">
-<meta property="article:tag" content="前端,後端,全端,網頁,技術,網頁開發,前端開發,後端開發,JavaScript,HTML,CSS,SCSS">
+<meta property="article:tag" content="日常問題紀錄">
+<meta property="article:tag" content="CSS">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://media.tenor.com/Is7pMDGXQrkAAAAd/ogvhs-nope.gif">
 
-<link rel="canonical" href="https://supermarpig.github.io/2023/04/10/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E9%83%A8%E8%90%BD%E6%A0%BC%E6%96%87%E7%AB%A0/">
+<link rel="canonical" href="https://supermarpig.github.io/2023/04/13/CSS%20%E5%8B%95%E7%95%AB%20%EF%BC%9Atransition/">
 
 
 <script id="page-configurations">
@@ -48,7 +51,7 @@
   };
 </script>
 
-  <title>我的第一篇部落格文章 | Cody Di Da Di</title>
+  <title>CSS 動畫 ：transition | Cody Di Da Di</title>
   
 
 
@@ -173,7 +176,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://supermarpig.github.io/2023/04/10/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E9%83%A8%E8%90%BD%E6%A0%BC%E6%96%87%E7%AB%A0/">
+    <link itemprop="mainEntityOfPage" href="https://supermarpig.github.io/2023/04/13/CSS%20%E5%8B%95%E7%95%AB%20%EF%BC%9Atransition/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://lh3.googleusercontent.com/a/AGNmyxZRq_Cjg7ZBL-eYF5brt0_ldeyXGV1AxUkCo04h3A=s288">
@@ -186,7 +189,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          我的第一篇部落格文章
+          CSS 動畫 ：transition
         </h1>
 
         <div class="post-meta">
@@ -195,16 +198,23 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
+              
 
-              <time title="創建時間：2023-04-10 13:45:37" itemprop="dateCreated datePublished" datetime="2023-04-10T13:45:37+08:00">2023-04-10</time>
+              <time title="創建時間：2023-04-13 10:51:44 / 修改時間：15:11:10" itemprop="dateCreated datePublished" datetime="2023-04-13T10:51:44+08:00">2023-04-13</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2023-04-11 11:10:12" itemprop="dateModified" datetime="2023-04-11T11:10:12+08:00">2023-04-11</time>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
               </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">學習筆記</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">web前端</span></a>
+                </span>
+            </span>
 
           
             <span class="post-meta-item" title="閱讀次數" id="busuanzi_container_page_pv" style="display: none;">
@@ -222,8 +232,8 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2023/04/10/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E9%83%A8%E8%90%BD%E6%A0%BC%E6%96%87%E7%AB%A0/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/04/10/我的第一篇部落格文章/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2023/04/13/CSS%20%E5%8B%95%E7%95%AB%20%EF%BC%9Atransition/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/04/13/CSS 動畫 ：transition/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -232,7 +242,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>13</span>
+              <span>1.3k</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
@@ -250,8 +260,102 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>照著教學創網站 GOGO</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>日常開發遇到不會 就筆記</p>
+</blockquote>
 <span id="more"></span>
+
+<h2 id="transition"><a href="#transition" class="headerlink" title="transition"></a>transition</h2><p><code>transition:all</code>是CSS 中的一個屬性，它控制元素在用戶交互或者更改樣式時發生動畫效果的速度。</p>
+<p>它是 transition 屬性的簡寫，代表所有的可以過渡的CSS 屬性。</p>
+<p>語法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attribute">transition</span>: &lt;property&gt; &lt;duration&gt; &lt;timing-function&gt; &lt;delay&gt;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<ul>
+<li><code>property</code>是要過渡的CSS 屬性的名稱，如果使用all，則表示所有的可以過渡的屬性。</li>
+<li><code>duration</code>是過渡效果的持續時間，以秒或毫秒為單位。</li>
+<li><code>timing-function</code>是過渡效果的速度曲線，可以是<ul>
+<li><code>linear（勻速）</code></li>
+<li><code>ease（慢快慢）</code></li>
+<li><code>ease-in（慢開始）</code></li>
+<li><code>ease-out（慢結束）</code></li>
+<li><code>ease-in-out（慢開始慢結束）</code></li>
+</ul>
+</li>
+<li><code>delay</code>是過渡效果的延遲時間，以秒或毫秒為單位</li>
+</ul>
+<p>舉個例子</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: all <span class="number">2s</span> ease-in-out <span class="number">0.5s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>這意味著當對這個元素的樣式進行更改時，<br>所有的可以過渡的屬性將以2秒的時間、<br>慢開始慢結束的速度曲線、<br>0.5秒的延遲時間進行過渡</p>
+</blockquote>
+<p> 整理表格如下</p>
+<table>
+<thead>
+<tr>
+<th>名稱</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>property name</td>
+<td>指定的屬性名稱</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>轉場動畫持續的時間</td>
+</tr>
+<tr>
+<td>timimg function</td>
+<td>描述轉場時間的變化函式</td>
+</tr>
+<tr>
+<td>delay</td>
+<td>延遲執行轉場動畫的時間</td>
+</tr>
+</tbody></table>
+<h2 id="transition-propert-屬姓名稱"><a href="#transition-propert-屬姓名稱" class="headerlink" title="transition-propert 屬姓名稱"></a>transition-propert 屬姓名稱</h2><p>定義哪些 CSS 屬性名稱要綁定 Transition 動畫。<br>transition-propert 有三種內建屬性：</p>
+<ul>
+<li>none : 無設定屬性，該值為預設值。</li>
+<li>all : 綁定所有 CSS 屬性。</li>
+<li>custom-ident : 依據 CSS 的 class 名稱指定屬性。</li>
+</ul>
+<p>而要是 <code>transition-propert</code> 的值長度與其他 <code>transition 屬性質</code>長度不符合時，多餘的值將會被自動忽略。</p>
+<p>再舉個例子</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">transition-property</span>: opacity, left, top, width;</span><br><span class="line">  <span class="attribute">transition-duration</span>: <span class="number">2s</span>, <span class="number">4s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由上面範例得知，property 屬性的值長度超過 duration 屬型的值長度時 duration 屬性會重複匹配 property屬性。<br>因此 top 的過場時間為 2s，width 的過場時間為 4s。</p>
+<blockquote>
+<p>要注意的一點是，transition 所綁定的 CSS 屬性必須是 可被計算之屬性。<br>舉例來說</p>
+</blockquote>
+<ul>
+<li><p>可被計算屬性：</p>
+<ul>
+<li>width: 100px;</li>
+<li>backgraound-color: #fff;</li>
+<li>text-indent: 30px;</li>
+<li>margin-left: -50%;</li>
+</ul>
+</li>
+<li><p>不可被計算屬性：</p>
+<ul>
+<li>display: block;</li>
+<li>test-aling: center;</li>
+<li>vertical-align: middle;</li>
+</ul>
+</li>
+</ul>
+<p> <strong>484很簡單啊~~~</strong><br><img src="https://media.tenor.com/Is7pMDGXQrkAAAAd/ogvhs-nope.gif" alt="就是這樣"></p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10240496">第四章、今晚，我想來點…雙重口感切換的 Transition</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dwatow.github.io/2018/01-01-iron-man-2018/iron-man-2018-day22/">前端新手村 Transition</a></p>
+</li>
+</ul>
+<p>-<a target="_blank" rel="noopener" href="https://medium.com/@lai0706/css3-%E5%8B%95%E7%95%AB-transitions-d0f41a4ea68b">講講 CSS3 動畫Transitions</a></p>
+<p>-<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/CSS/transition">MDN - transitions</a></p>
+
     </div>
 
     
@@ -266,7 +370,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>文章連結：</strong>
-    <a href="https://supermarpig.github.io/2023/04/10/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E9%83%A8%E8%90%BD%E6%A0%BC%E6%96%87%E7%AB%A0/" title="我的第一篇部落格文章">https://supermarpig.github.io/2023/04/10/我的第一篇部落格文章/</a>
+    <a href="https://supermarpig.github.io/2023/04/13/CSS%20%E5%8B%95%E7%95%AB%20%EF%BC%9Atransition/" title="CSS 動畫 ：transition">https://supermarpig.github.io/2023/04/13/CSS 動畫 ：transition/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
@@ -276,16 +380,23 @@
 
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%97%A5%E5%B8%B8%E5%95%8F%E9%A1%8C%E7%B4%80%E9%8C%84/" rel="tag"># 日常問題紀錄</a>
+              <a href="/tags/CSS/" rel="tag"># CSS</a>
+          </div>
 
         
 
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2023/04/11/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%B8%80/" rel="next" title="每天一點點，學習ES6(一) Enhanced Object Literals">
-      每天一點點，學習ES6(一) Enhanced Object Literals <i class="fa fa-chevron-right"></i>
+    <a href="/2023/04/13/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%B8%89-Tagged-templates/" rel="prev" title="每天一點點，學習ES6(三) Tagged templates">
+      <i class="fa fa-chevron-left"></i> 每天一點點，學習ES6(三) Tagged templates
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/04/13/MarkDown-%E8%AA%9E%E6%B3%95/" rel="next" title="MarkDown 語法大補帖">
+      MarkDown 語法大補帖 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -352,7 +463,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transition"><span class="nav-number">2.</span> <span class="nav-text">transition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transition-propert-%E5%B1%AC%E5%A7%93%E5%90%8D%E7%A8%B1"><span class="nav-number">3.</span> <span class="nav-text">transition-propert 屬姓名稱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -529,9 +640,9 @@ darkmode.showWidget();
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "https://supermarpig.github.io/2023/04/10/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E9%83%A8%E8%90%BD%E6%A0%BC%E6%96%87%E7%AB%A0/";
-    this.page.identifier = "2023/04/10/我的第一篇部落格文章/";
-    this.page.title = "我的第一篇部落格文章";
+    this.page.url = "https://supermarpig.github.io/2023/04/13/CSS%20%E5%8B%95%E7%95%AB%20%EF%BC%9Atransition/";
+    this.page.identifier = "2023/04/13/CSS 動畫 ：transition/";
+    this.page.title = "CSS 動畫 ：transition";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {

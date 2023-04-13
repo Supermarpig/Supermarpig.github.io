@@ -6,7 +6,7 @@
   <link href="https://supermarpig.github.io/atom.xml" rel="self"/>
   
   <link href="https://supermarpig.github.io/"/>
-  <updated>2023-04-13T07:07:58.910Z</updated>
+  <updated>2023-04-13T07:11:00.880Z</updated>
   <id>https://supermarpig.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>MarkDown 語法</title>
+    <title>MarkDown 語法大補帖</title>
     <link href="https://supermarpig.github.io/2023/04/13/MarkDown-%E8%AA%9E%E6%B3%95/"/>
     <id>https://supermarpig.github.io/2023/04/13/MarkDown-%E8%AA%9E%E6%B3%95/</id>
     <published>2023-04-13T07:06:25.000Z</published>
-    <updated>2023-04-13T07:07:58.910Z</updated>
+    <updated>2023-04-13T07:11:00.880Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>找了很多語法教學，不如整理一篇常用的</p><span id="more"></span><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul><li><a href="https://ed521.github.io/2019/08/hexo-markdown/">[教學] 撰寫 Hexo 文章 - Markdown 語法大全</a></li></ul><p>-<a href="https://blog.csdn.net/qq_35164554/article/details/120013432">Markdown骚操作</a></p>]]></content>
     
@@ -30,6 +30,39 @@
     
     
     
+    <category term="工具" scheme="https://supermarpig.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="工具" scheme="https://supermarpig.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="MarkDown" scheme="https://supermarpig.github.io/tags/MarkDown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSS 動畫 ：transition</title>
+    <link href="https://supermarpig.github.io/2023/04/13/CSS%20%E5%8B%95%E7%95%AB%20%EF%BC%9Atransition/"/>
+    <id>https://supermarpig.github.io/2023/04/13/CSS%20%E5%8B%95%E7%95%AB%20%EF%BC%9Atransition/</id>
+    <published>2023-04-13T02:51:44.000Z</published>
+    <updated>2023-04-13T07:11:10.828Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote><p>日常開發遇到不會 就筆記</p></blockquote><span id="more"></span><h2 id="transition"><a href="#transition" class="headerlink" title="transition"></a>transition</h2><p><code>transition:all</code>是CSS 中的一個屬性，它控制元素在用戶交互或者更改樣式時發生動畫效果的速度。</p><p>它是 transition 屬性的簡寫，代表所有的可以過渡的CSS 屬性。</p><p>語法：</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attribute">transition</span>: &lt;property&gt; &lt;duration&gt; &lt;timing-function&gt; &lt;delay&gt;;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>其中：</p><ul><li><code>property</code>是要過渡的CSS 屬性的名稱，如果使用all，則表示所有的可以過渡的屬性。</li><li><code>duration</code>是過渡效果的持續時間，以秒或毫秒為單位。</li><li><code>timing-function</code>是過渡效果的速度曲線，可以是<ul><li><code>linear（勻速）</code></li><li><code>ease（慢快慢）</code></li><li><code>ease-in（慢開始）</code></li><li><code>ease-out（慢結束）</code></li><li><code>ease-in-out（慢開始慢結束）</code></li></ul></li><li><code>delay</code>是過渡效果的延遲時間，以秒或毫秒為單位</li></ul><p>舉個例子</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: all <span class="number">2s</span> ease-in-out <span class="number">0.5s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>這意味著當對這個元素的樣式進行更改時，<br>所有的可以過渡的屬性將以2秒的時間、<br>慢開始慢結束的速度曲線、<br>0.5秒的延遲時間進行過渡</p></blockquote><p> 整理表格如下</p><table><thead><tr><th>名稱</th><th>說明</th></tr></thead><tbody><tr><td>property name</td><td>指定的屬性名稱</td></tr><tr><td>duration</td><td>轉場動畫持續的時間</td></tr><tr><td>timimg function</td><td>描述轉場時間的變化函式</td></tr><tr><td>delay</td><td>延遲執行轉場動畫的時間</td></tr></tbody></table><h2 id="transition-propert-屬姓名稱"><a href="#transition-propert-屬姓名稱" class="headerlink" title="transition-propert 屬姓名稱"></a>transition-propert 屬姓名稱</h2><p>定義哪些 CSS 屬性名稱要綁定 Transition 動畫。<br>transition-propert 有三種內建屬性：</p><ul><li>none : 無設定屬性，該值為預設值。</li><li>all : 綁定所有 CSS 屬性。</li><li>custom-ident : 依據 CSS 的 class 名稱指定屬性。</li></ul><p>而要是 <code>transition-propert</code> 的值長度與其他 <code>transition 屬性質</code>長度不符合時，多餘的值將會被自動忽略。</p><p>再舉個例子</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">transition-property</span>: opacity, left, top, width;</span><br><span class="line">  <span class="attribute">transition-duration</span>: <span class="number">2s</span>, <span class="number">4s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>由上面範例得知，property 屬性的值長度超過 duration 屬型的值長度時 duration 屬性會重複匹配 property屬性。<br>因此 top 的過場時間為 2s，width 的過場時間為 4s。</p><blockquote><p>要注意的一點是，transition 所綁定的 CSS 屬性必須是 可被計算之屬性。<br>舉例來說</p></blockquote><ul><li><p>可被計算屬性：</p><ul><li>width: 100px;</li><li>backgraound-color: #fff;</li><li>text-indent: 30px;</li><li>margin-left: -50%;</li></ul></li><li><p>不可被計算屬性：</p><ul><li>display: block;</li><li>test-aling: center;</li><li>vertical-align: middle;</li></ul></li></ul><p> <strong>484很簡單啊~~~</strong><br><img src="https://media.tenor.com/Is7pMDGXQrkAAAAd/ogvhs-nope.gif" alt="就是這樣"></p><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul><li><p><a href="https://ithelp.ithome.com.tw/articles/10240496">第四章、今晚，我想來點…雙重口感切換的 Transition</a></p></li><li><p><a href="https://dwatow.github.io/2018/01-01-iron-man-2018/iron-man-2018-day22/">前端新手村 Transition</a></p></li></ul><p>-<a href="https://medium.com/@lai0706/css3-%E5%8B%95%E7%95%AB-transitions-d0f41a4ea68b">講講 CSS3 動畫Transitions</a></p><p>-<a href="https://developer.mozilla.org/zh-TW/docs/Web/CSS/transition">MDN - transitions</a></p>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;日常開發遇到不會 就筆記&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="學習筆記" scheme="https://supermarpig.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"/>
+    
+    <category term="web前端" scheme="https://supermarpig.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="日常問題紀錄" scheme="https://supermarpig.github.io/tags/%E6%97%A5%E5%B8%B8%E5%95%8F%E9%A1%8C%E7%B4%80%E9%8C%84/"/>
+    
+    <category term="CSS" scheme="https://supermarpig.github.io/tags/CSS/"/>
     
   </entry>
   
