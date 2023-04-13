@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/sun.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/sun.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"supermarpig.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="前言今天來學習 Tagged templates">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每天一點點，學習ES6(三) Tagged templates">
+<meta property="og:url" content="https://supermarpig.github.io/2023/04/13/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%B8%89-Tagged-templates/index.html">
+<meta property="og:site_name" content="Cody Di Da Di">
+<meta property="og:description" content="前言今天來學習 Tagged templates">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://media.tenor.com/BmCbsCskdA4AAAAM/omg-oh-my-god.gif">
+<meta property="og:image" content="https://media.tenor.com/BP70qe8X0J8AAAAC/crycat-crying-cat.gif">
+<meta property="og:image" content="https://media.tenor.com/SN8okO86hicAAAAM/angry-mad.gif">
+<meta property="article:published_time" content="2023-04-13T00:59:28.000Z">
+<meta property="article:modified_time" content="2023-04-13T06:53:51.310Z">
+<meta property="article:author" content="Cody">
+<meta property="article:tag" content="ES6">
+<meta property="article:tag" content="ECMAScript 6">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="每天一點點">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://media.tenor.com/BmCbsCskdA4AAAAM/omg-oh-my-god.gif">
+
+<link rel="canonical" href="https://supermarpig.github.io/2023/04/13/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%B8%89-Tagged-templates/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>每天一點點，學習ES6(三) Tagged templates | Cody Di Da Di</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Cody Di Da Di" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Cody Di Da Di</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">搭拉拉拉搭搭搭</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/Supermarpig" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://supermarpig.github.io/2023/04/13/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%B8%89-Tagged-templates/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://lh3.googleusercontent.com/a/AGNmyxZRq_Cjg7ZBL-eYF5brt0_ldeyXGV1AxUkCo04h3A=s288">
+      <meta itemprop="name" content="Cody">
+      <meta itemprop="description" content="日常紀錄">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cody Di Da Di">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          每天一點點，學習ES6(三) Tagged templates
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2023-04-13 08:59:28 / 修改時間：14:53:51" itemprop="dateCreated datePublished" datetime="2023-04-13T08:59:28+08:00">2023-04-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">學習筆記</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">web前端</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="閱讀次數" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">閱讀次數：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/04/13/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%B8%89-Tagged-templates/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/04/13/每天一點點，學習ES6-三-Tagged-templates/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>3.1k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>3 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天來學習 <code>Tagged templates</code></p>
+<span id="more"></span>
+
+<p>在找資料的時候發現有兩種 templates</p>
+<ul>
+<li>Tagged templates</li>
+<li>Tagged template literal</li>
+</ul>
+<blockquote>
+<p>This unusual backtick syntax is a new JavaScript feature called a <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates">tagged template literal</a>.</p>
+</blockquote>
+<h2 id="Template-Strings"><a href="#Template-Strings" class="headerlink" title="Template Strings"></a>Template Strings</h2><p>在ES6以前 ，組合字串上需要用冗長的加號不斷的拼湊。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name =<span class="string">&#x27;Cody&#x27;</span></span><br><span class="line"><span class="keyword">var</span> age  =<span class="number">18</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//ES6以前</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hi 我是&quot;</span>+name +<span class="string">&quot;,今年&quot;</span>+age+<span class="string">&quot;歲&quot;</span>)  <span class="comment">//Hi 我是 Cody,今年18歲 </span></span><br><span class="line"><span class="comment">//ES6</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Hi 我是<span class="subst">$&#123;name&#125;</span> ,今年<span class="subst">$&#123;age&#125;</span>歲`</span>)  <span class="comment">//Hi 我是 Cody,今年18歲 </span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>甚至 template strings 也可以利用 multi-line 的效果進而達到換行的效果。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ES6以前</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hi 我是&quot;</span>+name +<span class="string">&quot;,\n今年&quot;</span>+age+<span class="string">&quot;歲&quot;</span>)  </span><br><span class="line"><span class="comment">//Hi 我是 Cody,</span></span><br><span class="line"><span class="comment">//今年18歲 </span></span><br><span class="line"></span><br><span class="line"><span class="comment">//ES6</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Hi 我是<span class="subst">$&#123;name&#125;</span> ,</span></span><br><span class="line"><span class="string">今年<span class="subst">$&#123;age&#125;</span>歲`</span>)</span><br><span class="line"><span class="comment">//Hi 我是 Cody,</span></span><br><span class="line"><span class="comment">//今年18歲 </span></span><br></pre></td></tr></table></figure>
+
+<p>這樣清楚了嗎~<br><img src="https://media.tenor.com/BmCbsCskdA4AAAAM/omg-oh-my-god.gif" alt="茅塞頓開"></p>
+<h2 id="Tagged-Template-Literal"><a href="#Tagged-Template-Literal" class="headerlink" title="Tagged Template Literal"></a>Tagged Template Literal</h2><p>簡單來說 就是另一種函数调用的一种特殊形式</p>
+<p>直接舉個例子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params">a, b, c,</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a, b, c)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//這是一般函數的調用</span></span><br><span class="line"><span class="title function_">foo</span>(<span class="string">&quot;Hello&quot;</span>, <span class="string">&quot;World&quot;</span>) <span class="comment">//Hello World undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//Tagged Template Literal</span></span><br><span class="line"><span class="keyword">const</span> name = <span class="string">&quot;why&quot;</span></span><br><span class="line"><span class="keyword">const</span> age = <span class="number">18</span></span><br><span class="line"><span class="comment">// [&#x27;Hello&#x27;, &#x27;Wo&#x27;, &#x27;rld&#x27;]</span></span><br><span class="line">foo<span class="string">`Hello<span class="subst">$&#123;name&#125;</span>Wo<span class="subst">$&#123;age&#125;</span>rld`</span><span class="comment">//(3)[&#x27;Hello&#x27;,&#x27;Wo&#x27;,&#x27;rld&#x27;,row:Array(3)] &#x27;Cody&#x27; 18</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>這樣的寫法 不太好理解<br>可以改成ES6 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Functions/rest_parameters">rest_parameters</a>的寫法<br>把變數都變成陣列，所以要使用變數時要記得解構出來，整體寫法範例如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params">a, ...b</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(b)</span><br><span class="line">&#125;</span><br><span class="line">foo<span class="string">`Hello<span class="subst">$&#123;name&#125;</span>Wo<span class="subst">$&#123;age&#125;</span>rld`</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//(3)[&#x27;Hello&#x27;,&#x27;Wo&#x27;,&#x27;rld&#x27;,row:Array(3)]</span></span><br><span class="line"><span class="comment">//(2) [&#x27;Cody&#x27;, 18]</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>講那麼多 ，來點實際的案例會比較清楚</p>
+<p><img src="https://media.tenor.com/BP70qe8X0J8AAAAC/crycat-crying-cat.gif" alt="OK"></p>
+<h2 id="實際案例"><a href="#實際案例" class="headerlink" title="實際案例"></a>實際案例</h2><p>一開始並不會覺得厲害之處，平時工作中也不會用到，但是這些知識是有用的，在很多場景中會用到它。</p>
+<h3 id="react的styled-components"><a href="#react的styled-components" class="headerlink" title="react的styled-components"></a>react的styled-components</h3><p>可以直接生成組件，動態生成樣式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">Button</span> = styled.<span class="property">button</span><span class="string">`</span></span><br><span class="line"><span class="string">  background: <span class="subst">$&#123;props =&gt; props.primary ? <span class="string">&#x27;palevioletred&#x27;</span> : <span class="string">&#x27;white&#x27;</span>&#125;</span>;</span></span><br><span class="line"><span class="string">  color: <span class="subst">$&#123;props =&gt; props.primary ? <span class="string">&#x27;white&#x27;</span> : <span class="string">&#x27;palevioletred&#x27;</span>&#125;</span>;</span></span><br><span class="line"><span class="string">  font-size: 1em;</span></span><br><span class="line"><span class="string">  margin: 1em;</span></span><br><span class="line"><span class="string">  padding: 0.25em 1em;</span></span><br><span class="line"><span class="string">  border: 2px solid palevioletred;</span></span><br><span class="line"><span class="string">  border-radius: 3px;</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="多語言轉化-國際化處理"><a href="#多語言轉化-國際化處理" class="headerlink" title="多語言轉化(國際化處理)"></a>多語言轉化(國際化處理)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">i18n<span class="string">`Welcome to <span class="subst">$&#123;siteName&#125;</span>, you are visitor number <span class="subst">$&#123;visitorNumber&#125;</span>!`</span></span><br><span class="line"><span class="comment">// &quot;歡迎訪問XXX，您是第XXXX位訪問者！&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="動態處理函數裡面內容的轉換"><a href="#動態處理函數裡面內容的轉換" class="headerlink" title="動態處理函數裡面內容的轉換"></a>動態處理函數裡面內容的轉換</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> data = &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;鄭鐵&quot;</span>,</span><br><span class="line">    <span class="string">&quot;sex&quot;</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">&quot;role&quot;</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">&quot;time&quot;</span>: <span class="number">1640678098887</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> invite = <span class="keyword">function</span> (<span class="params">arrs, nameExp, sexExp, roleExp, timeExp</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> strName = nameExp;</span><br><span class="line">    <span class="comment">// 性別處理</span></span><br><span class="line">    <span class="keyword">let</span> strSex = [<span class="string">&#x27;先生&#x27;</span>, <span class="string">&#x27;女士&#x27;</span>][sexExp];</span><br><span class="line">    <span class="comment">// 角色處理</span></span><br><span class="line">    <span class="keyword">const</span> role = &#123;</span><br><span class="line">        <span class="string">&quot;1&quot;</span>: <span class="string">&quot;選手&quot;</span>,</span><br><span class="line">        <span class="string">&quot;2&quot;</span>: <span class="string">&quot;裁判&quot;</span>,</span><br><span class="line">        <span class="string">&quot;3&quot;</span>: <span class="string">&quot;計分員&quot;</span>,</span><br><span class="line">        <span class="string">&quot;4&quot;</span>: <span class="string">&quot;攝影師&quot;</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">let</span> strRole = role[roleExp];</span><br><span class="line">    <span class="comment">// 日期處理</span></span><br><span class="line">    <span class="keyword">let</span> strTime = <span class="keyword">new</span> <span class="title class_">Date</span>(timeExp).<span class="title function_">toLocaleDateString</span>(<span class="literal">undefined</span>, &#123;</span><br><span class="line">        <span class="attr">year</span>: <span class="string">&#x27;numeric&#x27;</span>,</span><br><span class="line">        <span class="attr">month</span>: <span class="string">&#x27;long&#x27;</span>,</span><br><span class="line">        <span class="attr">day</span>: <span class="string">&#x27;numeric&#x27;</span></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 輸出內容</span></span><br><span class="line">    <span class="keyword">let</span> output = [arrs[<span class="number">0</span>]];</span><br><span class="line"></span><br><span class="line">    [strName, strSex, strRole, strTime].<span class="title function_">forEach</span>(<span class="function">(<span class="params">str, index</span>) =&gt;</span> &#123;</span><br><span class="line">        output.<span class="title function_">push</span>(str, arrs[index + <span class="number">1</span>] || <span class="string">&#x27;&#x27;</span>);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> output.<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> content = invite<span class="string">`誠摯邀請<span class="subst">$&#123;data.name&#125;</span><span class="subst">$&#123;data.sex&#125;</span>作為<span class="subst">$&#123;data.role&#125;</span>於<span class="subst">$&#123;data.time&#125;</span>参加上海張江杯垂釣競技大賽。</span></span><br><span class="line"><span class="string">主辦方：上海市浦東釣魚協會`</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(content);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>誠摯邀請鄧鐵先生作為選手於2021年12月28日參加上海張江杯垂釣競技大賽。<br>主辦方：上海市浦東釣魚協會</p>
+</blockquote>
+<p>以上都清楚了嗎</p>
+<p>不清楚沒關係</p>
+<p>我是很清楚了拉~</p>
+<p><img src="https://media.tenor.com/SN8okO86hicAAAAM/angry-mad.gif" alt="生氣"></p>
+<hr>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://www.zhangxinxu.com/wordpress/2021/12/js-tagged-templates/">JS 标签模板（Tagged templates）什么时候使用？</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates">MDN-Template literals (Template strings)</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.zhangxinxu.com/wordpress/2021/12/js-tagged-templates/">JS 标签模板（Tagged templates）什么时候使用？</a></p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>作者： </strong>Cody
+  </li>
+  <li class="post-copyright-link">
+    <strong>文章連結：</strong>
+    <a href="https://supermarpig.github.io/2023/04/13/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%B8%89-Tagged-templates/" title="每天一點點，學習ES6(三) Tagged templates">https://supermarpig.github.io/2023/04/13/每天一點點，學習ES6-三-Tagged-templates/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ES6/" rel="tag"># ES6</a>
+              <a href="/tags/ECMAScript-6/" rel="tag"># ECMAScript 6</a>
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/tags/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E/" rel="tag"># 每天一點點</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/04/12/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%BA%8C-Var-Let-Const/" rel="prev" title="每天一點點，學習ES6(二) Var Let Const">
+      <i class="fa fa-chevron-left"></i> 每天一點點，學習ES6(二) Var Let Const
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Template-Strings"><span class="nav-number">2.</span> <span class="nav-text">Template Strings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tagged-Template-Literal"><span class="nav-number">3.</span> <span class="nav-text">Tagged Template Literal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%A6%E9%9A%9B%E6%A1%88%E4%BE%8B"><span class="nav-number">4.</span> <span class="nav-text">實際案例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#react%E7%9A%84styled-components"><span class="nav-number">4.1.</span> <span class="nav-text">react的styled-components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E8%AA%9E%E8%A8%80%E8%BD%89%E5%8C%96-%E5%9C%8B%E9%9A%9B%E5%8C%96%E8%99%95%E7%90%86"><span class="nav-number">4.2.</span> <span class="nav-text">多語言轉化(國際化處理)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8B%95%E6%85%8B%E8%99%95%E7%90%86%E5%87%BD%E6%95%B8%E8%A3%A1%E9%9D%A2%E5%85%A7%E5%AE%B9%E7%9A%84%E8%BD%89%E6%8F%9B"><span class="nav-number">4.3.</span> <span class="nav-text">動態處理函數裡面內容的轉換</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Cody"
+      src="https://lh3.googleusercontent.com/a/AGNmyxZRq_Cjg7ZBL-eYF5brt0_ldeyXGV1AxUkCo04h3A=s288">
+  <p class="site-author-name" itemprop="name">Cody</p>
+  <div class="site-description" itemprop="description">日常紀錄</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Supermarpig" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Supermarpig" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ken51717@gmail.com" title="E-Mail → mailto:ken51717@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">若要轉載文章，麻煩請保留原作者名稱與原始連結。</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="訪客總數">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="總瀏覽次數">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: '32px ',
+  left: 'unset',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://codydidadi.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://supermarpig.github.io/2023/04/13/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%B8%89-Tagged-templates/";
+    this.page.identifier = "2023/04/13/每天一點點，學習ES6-三-Tagged-templates/";
+    this.page.title = "每天一點點，學習ES6(三) Tagged templates";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://codydidadi.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+  
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+</body>
+</html>
