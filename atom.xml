@@ -6,7 +6,7 @@
   <link href="https://supermarpig.github.io/atom.xml" rel="self"/>
   
   <link href="https://supermarpig.github.io/"/>
-  <updated>2023-04-13T06:53:51.310Z</updated>
+  <updated>2023-04-13T07:07:58.910Z</updated>
   <id>https://supermarpig.github.io/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MarkDown 語法</title>
+    <link href="https://supermarpig.github.io/2023/04/13/MarkDown-%E8%AA%9E%E6%B3%95/"/>
+    <id>https://supermarpig.github.io/2023/04/13/MarkDown-%E8%AA%9E%E6%B3%95/</id>
+    <published>2023-04-13T07:06:25.000Z</published>
+    <updated>2023-04-13T07:07:58.910Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>找了很多語法教學，不如整理一篇常用的</p><span id="more"></span><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul><li><a href="https://ed521.github.io/2019/08/hexo-markdown/">[教學] 撰寫 Hexo 文章 - Markdown 語法大全</a></li></ul><p>-<a href="https://blog.csdn.net/qq_35164554/article/details/120013432">Markdown骚操作</a></p>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;找了很多語法教學，不如整理一篇常用的&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>每天一點點，學習ES6(三) Tagged templates</title>
