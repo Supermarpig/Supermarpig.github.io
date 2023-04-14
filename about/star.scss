@@ -1,0 +1,45 @@
+body {
+  background: #060e1b;
+  overflow: hidden;
+
+  .cursor {
+    width: 18.5em;
+    height: 1.25em;
+    white-space: nowrap;
+    border-right: 3px solid transparent;
+    animation: typing 3.5s steps(37, end), blink-caret .75s step-end infinite;
+    font-family: Consolas, Monaco;
+    word-break: break-all;
+    overflow: hidden;
+  }
+
+  // /*打印效果*/
+  // @keyframes typing {
+  //   from {
+  //     width: 0;
+  //   }
+
+  //   to {
+  //     width: 18.5em;
+  //   }
+  // }
+
+  /* 光標閃爍 */
+  @keyframes blink-caret {
+
+    from,
+    to {
+      // box-shadow: 1px 0 0 0 transparent;
+      border-right:0px;
+    }
+
+    50% {
+      // box-shadow: 1px 0 0 0;
+      border-right: 3px solid #FFFFFF;
+    }
+  }
+}
+
+canvas {
+  // opacity: 0.5;
+}

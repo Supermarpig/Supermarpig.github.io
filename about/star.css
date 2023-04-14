@@ -1,0 +1,24 @@
+@charset "UTF-8";
+body {
+  background: #060e1b;
+  overflow: hidden;
+  /* 光標閃爍 */
+}
+body .cursor {
+  width: 18.5em;
+  height: 1.25em;
+  white-space: nowrap;
+  border-right: 3px solid transparent;
+  animation: typing 3.5s steps(37, end), blink-caret 0.75s step-end infinite;
+  font-family: Consolas, Monaco;
+  word-break: break-all;
+  overflow: hidden;
+}
+@keyframes blink-caret {
+  from, to {
+    border-right: 0px;
+  }
+  50% {
+    border-right: 3px solid #FFFFFF;
+  }
+}/*# sourceMappingURL=star.css.map */
