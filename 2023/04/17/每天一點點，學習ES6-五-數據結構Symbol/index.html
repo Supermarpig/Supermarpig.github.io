@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/sun.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/sun.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"supermarpig.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="前言今天要來研究 新增的數據結構 Symbol">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每天一點點，學習ES6(五)數據結構Symbol">
+<meta property="og:url" content="https://supermarpig.github.io/2023/04/17/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%BA%94-%E6%95%B8%E6%93%9A%E7%B5%90%E6%A7%8BSymbol/index.html">
+<meta property="og:site_name" content="Cody Di Da Di">
+<meta property="og:description" content="前言今天要來研究 新增的數據結構 Symbol">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://media.tenor.com/CCHDqLErO7oAAAAd/haha-so.gif">
+<meta property="og:image" content="https://media.tenor.com/wIxFiobxxbIAAAAd/john-jonah-jameson-lol.gif">
+<meta property="og:image" content="https://media.tenor.com/53zhDFlKE8gAAAAd/kabangu-upset.gif">
+<meta property="og:image" content="https://media.tenor.com/Sg7JaLXCkhoAAAAC/awkward-in-trouble.gif">
+<meta property="og:image" content="https://media.tenor.com/yaB9PFnaEtgAAAAC/no-not-in-my-house.gif">
+<meta property="article:published_time" content="2023-04-17T03:55:21.000Z">
+<meta property="article:modified_time" content="2023-04-17T06:48:33.577Z">
+<meta property="article:author" content="Cody">
+<meta property="article:tag" content="ES6">
+<meta property="article:tag" content="ECMAScript 6">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="每天一點點">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://media.tenor.com/CCHDqLErO7oAAAAd/haha-so.gif">
+
+<link rel="canonical" href="https://supermarpig.github.io/2023/04/17/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%BA%94-%E6%95%B8%E6%93%9A%E7%B5%90%E6%A7%8BSymbol/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>每天一點點，學習ES6(五)數據結構Symbol | Cody Di Da Di</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Cody Di Da Di" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Cody Di Da Di</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">搭拉拉拉搭搭搭</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/Supermarpig" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://supermarpig.github.io/2023/04/17/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%BA%94-%E6%95%B8%E6%93%9A%E7%B5%90%E6%A7%8BSymbol/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://lh3.googleusercontent.com/a/AGNmyxZRq_Cjg7ZBL-eYF5brt0_ldeyXGV1AxUkCo04h3A=s288">
+      <meta itemprop="name" content="Cody">
+      <meta itemprop="description" content="日常紀錄">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cody Di Da Di">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          每天一點點，學習ES6(五)數據結構Symbol
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2023-04-17 11:55:21 / 修改時間：14:48:33" itemprop="dateCreated datePublished" datetime="2023-04-17T11:55:21+08:00">2023-04-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">學習筆記</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">web前端</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="閱讀次數" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">閱讀次數：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/04/17/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%BA%94-%E6%95%B8%E6%93%9A%E7%B5%90%E6%A7%8BSymbol/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/04/17/每天一點點，學習ES6-五-數據結構Symbol/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>5.1k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>5 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天要來研究 新增的數據結構 Symbol</p>
+<p><img src="https://media.tenor.com/CCHDqLErO7oAAAAd/haha-so.gif" alt="無奈"></p>
+<span id="more"></span>
+
+<h2 id="簡單數據類型"><a href="#簡單數據類型" class="headerlink" title="簡單數據類型"></a>簡單數據類型</h2><p>ES5中有5中簡單數據類型，</p>
+<ul>
+<li>Undefined</li>
+<li>Null</li>
+<li>Boolean</li>
+<li>Number</li>
+<li>String</li>
+</ul>
+<p>相信大家都很熟悉，也使用的相當流利</p>
+<p><img src="https://media.tenor.com/wIxFiobxxbIAAAAd/john-jonah-jameson-lol.gif" alt="嘿嘿"></p>
+<p>之後再來整理來給未來的我複習複習</p>
+<blockquote>
+<p>今天重點要來整理<code>Symbol</code>到底能用在哪邊</p>
+</blockquote>
+<p>根據<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol">MDN-Symbol</a>說明，只有兩種類型可以做為<code>Obj</code>的key值</p>
+<ul>
+<li>String 類型</li>
+<li>Symbol 類型</li>
+</ul>
+<p>如果使用另一種類型，例如數字，它會被自動轉換為字符串。<br>→ <code>obj[1]</code> 與 <code>obj[&quot;1&quot;]</code> 相同<br>→ <code>obj[true]</code> 與 <code>obj[&quot;true&quot;]</code> 相同</p>
+<h2 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h2><h3 id="語法"><a href="#語法" class="headerlink" title="語法"></a>語法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Symbol</span>([description])</span><br></pre></td></tr></table></figure>
+
+<h3 id="參數"><a href="#參數" class="headerlink" title="參數"></a>參數</h3><p>description<br>可以選擇的<code>String</code>類型。<br>對 <code>symbol</code> 的描述，可用於調適 但不是訪問 <code>symbol</code> 本身。</p>
+<h2 id="Symbol-例子"><a href="#Symbol-例子" class="headerlink" title="Symbol 例子"></a>Symbol 例子</h2><blockquote>
+<p>“symbol” 值表示唯一的標識符。</p>
+</blockquote>
+<p>可以給symbol 一個描述（也稱為symbol 名），這在代碼調試時非常有用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// id 是描述為 &quot;id&quot; 的 symbol</span></span><br><span class="line"><span class="keyword">let</span> id = <span class="title class_">Symbol</span>(<span class="string">&quot;id&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>symbol 保證是唯一的。<br>即使我們創建了許多具有相同描述的symbol，它們的值也是不同。<br><code>ID</code>只是一個標籤，不影響任何東西。<br>例如，這裡有兩個描述相同的symbol —— 它們不相等：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> id1 = <span class="title class_">Symbol</span>(<span class="string">&quot;id&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> id2 = <span class="title class_">Symbol</span>(<span class="string">&quot;id&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="title function_">alert</span>(id1 == id2); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="例子二"><a href="#例子二" class="headerlink" title="例子二"></a>例子二</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> s1 = <span class="title class_">Symbol</span>(<span class="string">&#x27;foo&#x27;</span>)</span><br><span class="line"><span class="keyword">let</span> s2 = <span class="title class_">Symbol</span>(<span class="string">&#x27;bar&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(s1) <span class="comment">// Symbol(foo)</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(s2) <span class="comment">// Symbol(bar)</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(s1 === s2) <span class="comment">// false</span></span><br><span class="line"><span class="comment">//---------------------------------------------------</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&quot;Cody&quot;</span>,</span><br><span class="line">    <span class="title function_">toString</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">name</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> s = <span class="title class_">Symbol</span>(obj) <span class="comment">// 如果参数是Object的時候，會自動調用該對象toString方法</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(s) <span class="comment">// Symbol(Cody)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="關於description"><a href="#關於description" class="headerlink" title="關於description"></a>關於description</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s = <span class="title class_">Symbol</span>()</span><br><span class="line">s.<span class="property">name</span> = <span class="string">&quot;Cody&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(s) <span class="comment">// Symbol&#123;&#125; // Symbol不是對象，不能用對待對象的方式對待Symbol</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(s.<span class="property">description</span>) <span class="comment">// undefind</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(s.<span class="property">name</span>) <span class="comment">// undefind</span></span><br><span class="line"><span class="comment">//---------------------------------------------</span></span><br><span class="line"><span class="keyword">let</span> s = <span class="title class_">Symbol</span>(<span class="string">&#x27;foo&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(s.<span class="property">description</span>) <span class="comment">// foo</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Symbol 需要給一個值，<code>description</code>才找的到東西</p>
+</blockquote>
+<h2 id="Symbol-for"><a href="#Symbol-for" class="headerlink" title="Symbol.for"></a>Symbol.for</h2><ul>
+<li>通過Symbol.for相當於定義在全局的變量，<br>如果之前聲明過，後面再通過Symbol.for的時候，會在全局找，<br>如果描述一樣的話，會和上一個一樣。</li>
+</ul>
+<blockquote>
+<p>可以簡單理解為對象指向同一個堆內存地址。</p>
+</blockquote>
+<p>舉個例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">let</span> s1 = <span class="title class_">Symbol</span>.<span class="title function_">for</span>(<span class="string">&#x27;foo&#x27;</span>)</span><br><span class="line"> <span class="keyword">let</span> s2 = <span class="title class_">Symbol</span>.<span class="title function_">for</span>(<span class="string">&#x27;foo&#x27;</span>)</span><br><span class="line"> <span class="variable language_">console</span>.<span class="property">log</span> (s1) <span class="comment">// Symbol(foo) </span></span><br><span class="line"> <span class="variable language_">console</span> log (s1 === s2) <span class="comment">// true </span></span><br><span class="line"><span class="comment">// 即使是在函數定義域內，通過Symbol.for也會將該Symbol註冊在全局</span></span><br><span class="line"><span class="keyword">function</span>  <span class="title function_">foo</span> ()&#123;</span><br><span class="line">     <span class="keyword">return</span>  <span class="title class_">Symbol</span>.<span class="title function_">for</span>(<span class="string">&#x27;foo&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">const</span> x = foo ()</span><br><span class="line"> <span class="keyword">const</span> y = <span class="title class_">Symbol</span>.<span class="title function_">for</span>(<span class="string">&#x27;foo&#x27;</span>)</span><br><span class="line"> <span class="variable language_">console</span>.<span class="title function_">log</span>(x === y) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>這樣理解為，Function return 的Symbol.for(‘foo’)<br>指向都是同一個地址的 (‘foo’)<br>而且<strong>Symbol.for</strong>會將指向只到<strong>全域</strong></p>
+<p>所以最後一行 X &#x3D;&#x3D;&#x3D; Y 才會等於 <code>True</code></p>
+<p><font size=5 > 完蛋!!打完都覺得要想十分鐘才轉得過來</font></p>
+<p><img src="https://media.tenor.com/53zhDFlKE8gAAAAd/kabangu-upset.gif" alt="眼神死"></p>
+<h2 id="Symbol-keyFor"><a href="#Symbol-keyFor" class="headerlink" title="Symbol.keyFor"></a>Symbol.keyFor</h2><blockquote>
+<p>查看是否在全局登記Symbol裡面的描述。與上面的Symbol.for對應。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> s1 = <span class="title class_">Symbol</span>(<span class="string">&#x27;foo&#x27;</span>)</span><br><span class="line"> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Symbol</span>.<span class="title function_">keyFor</span>(s1)) <span class="comment">// undefind </span></span><br><span class="line"><span class="keyword">const</span> s2 = <span class="title class_">Symbol</span>.<span class="title function_">for</span>(<span class="string">&#x27;foo&#x27;</span>)</span><br><span class="line"> <span class="variable language_">console</span>.<span class="property">log</span> (<span class="title class_">Symbol</span>.<span class="title function_">keyFor</span>(s1)) <span class="comment">// foo</span></span><br></pre></td></tr></table></figure>
+
+<p>這樣表示 <strong>s1</strong> 的Symbol 不是全域參數<br><strong>s2</strong> 指向全域的地址 ，所以 <strong>Symbol.keyFor</strong>才搜尋的到</p>
+<p>好了!!!看到這邊我知道你已經混亂了<br>該來點實際案例!!!!!!</p>
+<p><img src="https://media.tenor.com/Sg7JaLXCkhoAAAAC/awkward-in-trouble.gif" alt="驚訝"></p>
+<h2 id="實際應用"><a href="#實際應用" class="headerlink" title="實際應用"></a>實際應用</h2><h3 id="應用一：解決對象-Obj-中key重複-但是表示不同訊息的情況"><a href="#應用一：解決對象-Obj-中key重複-但是表示不同訊息的情況" class="headerlink" title="應用一：解決對象 Obj 中key重複 但是表示不同訊息的情況"></a>應用一：解決對象 Obj 中key重複 但是表示不同訊息的情況</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 對象對於相同的key的訊息會進行覆蓋</span></span><br><span class="line"><span class="keyword">const</span> grade = &#123;</span><br><span class="line">     zhangsan :&#123;</span><br><span class="line">         address : <span class="string">&quot;xxx&quot;</span> , tel : <span class="string">&quot;111&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    lisi :&#123;</span><br><span class="line">         address : <span class="string">&quot;yyy&quot;</span> , tel : <span class="string">&quot;222&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    lisi :&#123;</span><br><span class="line">         address : <span class="string">&quot;zzz&quot;</span> , tel : <span class="string">&quot;333&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="property">log</span> (grade) <span class="comment">// &#123;zhangsan:&#123;address:&quot;xxx&quot;,tel:&quot;111&quot;&#125;,lisi:&#123;address:&quot;zzz&quot;,tel:&quot;333&quot;&#125;&#125; </span></span><br><span class="line"><span class="comment">// 通過變量構建對象</span></span><br><span class="line"><span class="keyword">const</span> stu1 = <span class="string">&quot;lisi&quot;</span> </span><br><span class="line"><span class="keyword">const</span> stu2 = <span class="string">&quot;lisi&quot;</span> </span><br><span class="line"><span class="keyword">const</span> grade = &#123;</span><br><span class="line">    [stu1]:&#123;</span><br><span class="line">        address : <span class="string">&quot;yyy&quot;</span> , tel : <span class="string">&quot;222&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    [stu2]:&#123;</span><br><span class="line">        address : <span class="string">&quot;zzz&quot;</span> , tel : <span class="string">&quot;333&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span> . log (grade) <span class="comment">// &#123;lisi:&#123;address:&quot;zzz&quot;,tel:&quot;333&quot;&#125;&#125; </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// es6通過Symbol解決key相同，訊息不同情況</span></span><br><span class="line"> <span class="keyword">const</span> stu1 = <span class="title class_">Symbol</span> ( <span class="string">&quot;lisi&quot;</span> )</span><br><span class="line"> <span class="keyword">const</span> stu2 = <span class="title class_">Symbol</span> ( <span class="string">&quot;lisi&quot;</span> )</span><br><span class="line"> <span class="keyword">const</span> grade = &#123;</span><br><span class="line">    [stu1]:&#123;</span><br><span class="line">        address : <span class="string">&quot;yyy&quot;</span> , tel : <span class="string">&quot;222&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    [stu2]:&#123;</span><br><span class="line">        address : <span class="string">&quot;zzz&quot;</span> , tel : <span class="string">&quot;333&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="property">log</span> (grade) <span class="comment">// &#123;Symbol(lisi):&#123;address:&quot;yyy&quot;,tel:&quot;222&quot;&#125;,Symbol(lisi):&#123;address:&quot;zzz&quot;,tel:&quot;333&quot;&#125;&#125; </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="property">log</span> (grade[stu1]) <span class="comment">// &#123;address:&quot;yyy&quot;,tel:&quot;222&quot;&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="應用二：保護-Class-中的部分屬性"><a href="#應用二：保護-Class-中的部分屬性" class="headerlink" title="應用二：保護 Class 中的部分屬性"></a>應用二：保護 <strong>Class</strong> 中的部分屬性</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定義基本類和類中方法調用</span></span><br><span class="line"><span class="keyword">class</span>  <span class="title class_">User</span> &#123;</span><br><span class="line">     <span class="title function_">constructor</span> ( name )&#123;</span><br><span class="line">         <span class="variable language_">this</span>.<span class="property">name</span> = name</span><br><span class="line">    &#125;</span><br><span class="line">    getName ()&#123;</span><br><span class="line">         <span class="keyword">return</span>  <span class="variable language_">this</span>.<span class="property">name</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = <span class="keyword">new</span>  <span class="title class_">User</span> ( <span class="string">&quot;lilei&quot;</span> )</span><br><span class="line"> <span class="variable language_">console</span> . log (user. getName ()) <span class="comment">// lilei </span></span><br><span class="line"><span class="comment">// 不同循環遍歷方式獲取類內部屬性，根據是否可以獲取Symbol作為key的情況</span></span><br><span class="line"><span class="keyword">const</span> sym = <span class="title class_">Symbol</span> ( <span class="string">&quot;AILI&quot;</span> )</span><br><span class="line"> <span class="keyword">class</span>  <span class="title class_">User</span> &#123;</span><br><span class="line">     <span class="title function_">constructor</span> ( name )&#123;</span><br><span class="line">         <span class="variable language_">this</span>.<span class="property">name</span> = name</span><br><span class="line">         <span class="variable language_">this</span>[sym] = <span class="string">&quot;AILI.com&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    getName ()&#123;</span><br><span class="line">         <span class="keyword">return</span>  <span class="variable language_">this</span>.<span class="property">name</span> + <span class="variable language_">this</span> [sym]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = <span class="keyword">new</span>  <span class="title class_">User</span> ( <span class="string">&quot;lilei&quot;</span> )</span><br><span class="line"> <span class="variable language_">console</span>.<span class="title function_">log</span>(user. getName ()) <span class="comment">// lileiAILI.com</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 通過for...in 無法遍歷到Symbol屬性</span></span><br><span class="line"><span class="keyword">for</span> ( <span class="keyword">let</span> key <span class="keyword">in</span> user)&#123;</span><br><span class="line">     <span class="variable language_">console</span> . log (key) <span class="comment">// name</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 同樣不能獲取到Symbol屬性</span></span><br><span class="line"><span class="keyword">for</span> ( <span class="keyword">let</span> key <span class="keyword">of</span>  <span class="title class_">Object</span> . keys (user))&#123;</span><br><span class="line">     <span class="variable language_">console</span>.<span class="property">log</span> (key) <span class="comment">// name</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 只能取到Symbol屬性</span></span><br><span class="line"><span class="keyword">for</span> ( <span class="keyword">let</span> key <span class="keyword">of</span>  <span class="title class_">Object</span> . getOwnPropertySymbols (user))&#123;</span><br><span class="line">     <span class="variable language_">console</span>.<span class="property">log</span> (key) <span class="comment">// Symbol(AILI)</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 即能獲取到普通屬性，又能獲取到Symbol屬性</span></span><br><span class="line"><span class="keyword">for</span> ( <span class="keyword">let</span> key <span class="keyword">of</span>  <span class="title class_">Reflect</span> . ownKeys (user))&#123;</span><br><span class="line">     <span class="variable language_">console</span>.<span class="property">log</span> (key) <span class="comment">// name Symbol(AILI) </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="應用三：消除魔法字符串（比較長或者難以辨認，容易出錯的字符串）"><a href="#應用三：消除魔法字符串（比較長或者難以辨認，容易出錯的字符串）" class="headerlink" title="應用三：消除魔法字符串（比較長或者難以辨認，容易出錯的字符串）"></a>應用三：消除魔法字符串（比較長或者難以辨認，容易出錯的字符串）</h3><p>真實開發情況</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getArea</span>(<span class="params">shape</span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> area = <span class="number">0</span></span><br><span class="line">    <span class="keyword">switch</span>(shape)&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&quot;Triangle&quot;</span>:</span><br><span class="line">            area = <span class="number">1</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">case</span> <span class="string">&quot;Circle&quot;</span>:</span><br><span class="line">            area = <span class="number">2</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> area</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">getArea</span>(<span class="string">&quot;Triangle&quot;</span>)) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p>可以修改為下方情況</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在這個函數中，【Triangle】和【Circle】已經不重要，只要區分開即可，利用Symbol不一致性</span></span><br><span class="line"><span class="keyword">const</span> shapeType = &#123;</span><br><span class="line">     triangle : <span class="title class_">Symbol</span> (),</span><br><span class="line">     circle : <span class="title class_">Symbol</span> ()</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span>  <span class="title function_">getArea</span> ( shape )&#123;</span><br><span class="line">     <span class="keyword">let</span> area = <span class="number">0</span> </span><br><span class="line">    <span class="keyword">switch</span> (shape)&#123;</span><br><span class="line">         <span class="keyword">case</span> shapeType.<span class="property">triangle</span> :</span><br><span class="line">            area = <span class="number">1</span> </span><br><span class="line">            <span class="keyword">break</span> </span><br><span class="line">        <span class="keyword">case</span> shapeType.<span class="property">circle</span> :</span><br><span class="line">            area = <span class="number">2</span> </span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> area</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(getArea (shapeType.<span class="property">triangle</span> )) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p>這樣代碼就會簡潔很多</p>
+<p>以上整理</p>
+<p>希望會有<strong>比較</strong>清楚的感覺</p>
+<p><img src="https://media.tenor.com/yaB9PFnaEtgAAAAC/no-not-in-my-house.gif" alt="搖頭"></p>
+<hr>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://zh.javascript.info/symbol">symbol 类型</a></li>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000040207993">ES6中的新数据类型——Symbol</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yaopengfei/p/16030113.html">第十四节：ES6之Symbol、Set和WeakSet、Map和WeakMap详解</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7107030052709072903#heading-0">一文搞清楚ES6新增数据结构 Symbol Map WeakMap Set WeakSet</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol">MDN-Symbol</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>作者： </strong>Cody
+  </li>
+  <li class="post-copyright-link">
+    <strong>文章連結：</strong>
+    <a href="https://supermarpig.github.io/2023/04/17/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%BA%94-%E6%95%B8%E6%93%9A%E7%B5%90%E6%A7%8BSymbol/" title="每天一點點，學習ES6(五)數據結構Symbol">https://supermarpig.github.io/2023/04/17/每天一點點，學習ES6-五-數據結構Symbol/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ES6/" rel="tag"># ES6</a>
+              <a href="/tags/ECMAScript-6/" rel="tag"># ECMAScript 6</a>
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/tags/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E/" rel="tag"># 每天一點點</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/04/17/React-%E8%AD%A6%E5%91%8A-Invalid-DOM-property-for/" rel="prev" title="React 警告 Invalid DOM property for">
+      <i class="fa fa-chevron-left"></i> React 警告 Invalid DOM property for
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B0%A1%E5%96%AE%E6%95%B8%E6%93%9A%E9%A1%9E%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">簡單數據類型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Symbol"><span class="nav-number">3.</span> <span class="nav-text">Symbol</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AA%9E%E6%B3%95"><span class="nav-number">3.1.</span> <span class="nav-text">語法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%83%E6%95%B8"><span class="nav-number">3.2.</span> <span class="nav-text">參數</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Symbol-%E4%BE%8B%E5%AD%90"><span class="nav-number">4.</span> <span class="nav-text">Symbol 例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90%E4%BA%8C"><span class="nav-number">5.</span> <span class="nav-text">例子二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%9C%E6%96%BCdescription"><span class="nav-number">6.</span> <span class="nav-text">關於description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Symbol-for"><span class="nav-number">7.</span> <span class="nav-text">Symbol.for</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Symbol-keyFor"><span class="nav-number">8.</span> <span class="nav-text">Symbol.keyFor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%A6%E9%9A%9B%E6%87%89%E7%94%A8"><span class="nav-number">9.</span> <span class="nav-text">實際應用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%87%89%E7%94%A8%E4%B8%80%EF%BC%9A%E8%A7%A3%E6%B1%BA%E5%B0%8D%E8%B1%A1-Obj-%E4%B8%ADkey%E9%87%8D%E8%A4%87-%E4%BD%86%E6%98%AF%E8%A1%A8%E7%A4%BA%E4%B8%8D%E5%90%8C%E8%A8%8A%E6%81%AF%E7%9A%84%E6%83%85%E6%B3%81"><span class="nav-number">9.1.</span> <span class="nav-text">應用一：解決對象 Obj 中key重複 但是表示不同訊息的情況</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%87%89%E7%94%A8%E4%BA%8C%EF%BC%9A%E4%BF%9D%E8%AD%B7-Class-%E4%B8%AD%E7%9A%84%E9%83%A8%E5%88%86%E5%B1%AC%E6%80%A7"><span class="nav-number">9.2.</span> <span class="nav-text">應用二：保護 Class 中的部分屬性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%87%89%E7%94%A8%E4%B8%89%EF%BC%9A%E6%B6%88%E9%99%A4%E9%AD%94%E6%B3%95%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%88%E6%AF%94%E8%BC%83%E9%95%B7%E6%88%96%E8%80%85%E9%9B%A3%E4%BB%A5%E8%BE%A8%E8%AA%8D%EF%BC%8C%E5%AE%B9%E6%98%93%E5%87%BA%E9%8C%AF%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%89"><span class="nav-number">9.3.</span> <span class="nav-text">應用三：消除魔法字符串（比較長或者難以辨認，容易出錯的字符串）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">10.</span> <span class="nav-text">References</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Cody"
+      src="https://lh3.googleusercontent.com/a/AGNmyxZRq_Cjg7ZBL-eYF5brt0_ldeyXGV1AxUkCo04h3A=s288">
+  <p class="site-author-name" itemprop="name">Cody</p>
+  <div class="site-description" itemprop="description">日常紀錄</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Supermarpig" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Supermarpig" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ken51717@gmail.com" title="E-Mail → mailto:ken51717@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">若要轉載文章，麻煩請保留原作者名稱與原始連結。</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="訪客總數">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="總瀏覽次數">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: '32px ',
+  left: 'unset',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://codydidadi.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://supermarpig.github.io/2023/04/17/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%BA%94-%E6%95%B8%E6%93%9A%E7%B5%90%E6%A7%8BSymbol/";
+    this.page.identifier = "2023/04/17/每天一點點，學習ES6-五-數據結構Symbol/";
+    this.page.title = "每天一點點，學習ES6(五)數據結構Symbol";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://codydidadi.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+  
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+</body>
+</html>

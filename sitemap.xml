@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://supermarpig.github.io/2023/04/17/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%BA%94-%E6%95%B8%E6%93%9A%E7%B5%90%E6%A7%8BSymbol/</loc>
+    
+    <lastmod>2023-04-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://supermarpig.github.io/2023/04/17/React-%E8%AD%A6%E5%91%8A-Invalid-DOM-property-for/</loc>
     
     <lastmod>2023-04-17</lastmod>
