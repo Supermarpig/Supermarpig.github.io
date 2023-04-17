@@ -6,7 +6,7 @@
   <link href="https://supermarpig.github.io/atom.xml" rel="self"/>
   
   <link href="https://supermarpig.github.io/"/>
-  <updated>2023-04-17T02:05:44.113Z</updated>
+  <updated>2023-04-17T02:50:40.500Z</updated>
   <id>https://supermarpig.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>React 警告 Invalid DOM property for</title>
+    <link href="https://supermarpig.github.io/2023/04/17/React-%E8%AD%A6%E5%91%8A-Invalid-DOM-property-for/"/>
+    <id>https://supermarpig.github.io/2023/04/17/React-%E8%AD%A6%E5%91%8A-Invalid-DOM-property-for/</id>
+    <published>2023-04-17T02:38:11.000Z</published>
+    <updated>2023-04-17T02:50:40.500Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>警告不影響使用 ，但影響美觀</p><span id="more"></span><p><img src="https://www.jiyik.com/uploads/220621/I_2022062122313268a1fe.png" alt="Invalid"></p><p>來看看是哪兒出問題</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ⛔️ Warning: Invalid DOM property `for`. Did you mean `htmlFor`?</span></span><br><span class="line">      &lt;input type=<span class="string">&quot;checkbox&quot;</span> id=<span class="string">&quot;menu&quot;</span>&gt;&lt;/input&gt;</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;menu&quot;</span> <span class="attr">className</span>=<span class="string">&quot;line&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;menu&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br></pre></td></tr></table></figure><p>問題是使用 for 屬性將label標籤與input綁定，<br>但 for 是 JavaScript 中的保留字。</p><blockquote><p>在React 中需要更換成 htmlFor 而不是for</p></blockquote><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">&quot;checkbox&quot;</span> id=<span class="string">&quot;menu&quot;</span>&gt;&lt;/input&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">label</span> <span class="attr">htmlFor</span>=<span class="string">&quot;menu&quot;</span> <span class="attr">className</span>=<span class="string">&quot;line&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;menu&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br></pre></td></tr></table></figure><p>我們必須在React 中使用 htmlFor 的原因是因為 for 關鍵字是一個保留字- 它用於for 循環。</p><p>這也是使用 className 屬性而不是 class 的原因。<br>class這個詞是保留的，因為它被用來聲明一個ES6 類。</p><hr><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul><li><a href="https://www.jiyik.com/tm/xwzj/web_1243.html">Invalid DOM</a></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;警告不影響使用 ，但影響美觀&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="學習筆記" scheme="https://supermarpig.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"/>
+    
+    <category term="web前端" scheme="https://supermarpig.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="開發筆記" scheme="https://supermarpig.github.io/tags/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/"/>
+    
+    <category term="React" scheme="https://supermarpig.github.io/tags/React/"/>
+    
+  </entry>
   
   <entry>
     <title>少用vw來控制字體大小</title>
