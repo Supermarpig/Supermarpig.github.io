@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/sun.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/sun.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"supermarpig.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="前言昨天剛研究完另一種數據結構Symbol趁記憶猶新的時候，把 Set 跟 Map一起解決!!">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每天一點點，學習ES6(六)數據結構 Set Map">
+<meta property="og:url" content="https://supermarpig.github.io/2023/04/18/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E5%85%AD-%E6%95%B8%E6%93%9A%E7%B5%90%E6%A7%8B-Set-Map/index.html">
+<meta property="og:site_name" content="Cody Di Da Di">
+<meta property="og:description" content="前言昨天剛研究完另一種數據結構Symbol趁記憶猶新的時候，把 Set 跟 Map一起解決!!">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://media.tenor.com/GtZnj_mssJUAAAAM/yes.gif">
+<meta property="og:image" content="https://media.tenor.com/dIlSHuNhTuAAAAAM/cats-cpr.gif">
+<meta property="article:published_time" content="2023-04-18T01:50:33.000Z">
+<meta property="article:modified_time" content="2023-04-18T06:31:45.987Z">
+<meta property="article:author" content="Cody">
+<meta property="article:tag" content="ES6">
+<meta property="article:tag" content="ECMAScript 6">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="每天一點點">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://media.tenor.com/GtZnj_mssJUAAAAM/yes.gif">
+
+<link rel="canonical" href="https://supermarpig.github.io/2023/04/18/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E5%85%AD-%E6%95%B8%E6%93%9A%E7%B5%90%E6%A7%8B-Set-Map/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>每天一點點，學習ES6(六)數據結構 Set Map | Cody Di Da Di</title>
+  
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8308348781288895"
+     crossorigin="anonymous"></script>
+  
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Cody Di Da Di" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Cody Di Da Di</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">搭拉拉拉搭搭搭</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/Supermarpig" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://supermarpig.github.io/2023/04/18/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E5%85%AD-%E6%95%B8%E6%93%9A%E7%B5%90%E6%A7%8B-Set-Map/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://lh3.googleusercontent.com/a/AGNmyxZRq_Cjg7ZBL-eYF5brt0_ldeyXGV1AxUkCo04h3A=s288">
+      <meta itemprop="name" content="Cody">
+      <meta itemprop="description" content="日常紀錄">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cody Di Da Di">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          每天一點點，學習ES6(六)數據結構 Set Map
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2023-04-18 09:50:33 / 修改時間：14:31:45" itemprop="dateCreated datePublished" datetime="2023-04-18T09:50:33+08:00">2023-04-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">學習筆記</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">web前端</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="閱讀次數" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">閱讀次數：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/04/18/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E5%85%AD-%E6%95%B8%E6%93%9A%E7%B5%90%E6%A7%8B-Set-Map/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/04/18/每天一點點，學習ES6-六-數據結構-Set-Map/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>8.3k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>8 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>昨天剛研究完另一種數據結構<strong>Symbol</strong><br>趁記憶猶新的時候，把 <strong>Set</strong> 跟 <strong>Map</strong>一起解決!!</p>
+<p><img src="https://media.tenor.com/GtZnj_mssJUAAAAM/yes.gif" alt="yes"></p>
+<span id="more"></span>
+
+<p>在ES6之前，儲存數據的結構主要有兩種:</p>
+<ul>
+<li><strong>Array</strong></li>
+<li><strong>Object</strong></li>
+</ul>
+<blockquote>
+<p>在ES6中新增了另外兩種數據結構: <strong>Set</strong>、<strong>Map</strong><br>以及它们的另外形式<strong>WeakSet</strong>、<strong>WeakMap</strong></p>
+</blockquote>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><p><code>Set</code>是<code>es6</code>新增的數據結構，類似於樹組，<br>但是裡面的值都是唯一的，沒有重複的值，我們一般稱為<code>集合</code></p>
+<p>Set本身是一个構造函數，用來生成 Set 數據結構</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> s = <span class="keyword">new</span> <span class="title class_">Set</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="構造函數的三大特點"><a href="#構造函數的三大特點" class="headerlink" title="- 構造函數的三大特點"></a>- 構造函數的三大特點</h3><blockquote>
+<p>構造函數的函數名的第一個字母通常大寫。<br>函數體內使用this關鍵字，代表所要生成的對象實例。<br>生成對象的時候，必須使用new命令來調用構造函數。</p>
+</blockquote>
+<h3 id="Set-的常見方法"><a href="#Set-的常見方法" class="headerlink" title="Set 的常見方法"></a>Set 的常見方法</h3><p><strong>Set常見的屬性</strong>:</p>
+<ul>
+<li><p>size:返回Set中元素的個數;<br><strong>Set常用的方法:</strong></p>
+</li>
+<li><p><strong>add(value)</strong>:添加某個元素，返回Set對象本身;</p>
+</li>
+<li><p><strong>delete(value)</strong>:從set中刪除和這個值相等的元素，返回Boolean類型;</p>
+</li>
+<li><p><strong>has(value)</strong>:判斷set中是否存在某個元素，返回Boolean類型;</p>
+</li>
+<li><p><strong>clear()</strong>:清空set中所有的元素，沒有返回值;</p>
+</li>
+<li><p><strong>forEach(callback, [ thisArg])</strong>:通過forEach遍歷set;</p>
+</li>
+</ul>
+<h4 id="size"><a href="#size" class="headerlink" title="size"></a>size</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.<span class="property">size</span> <span class="comment">// 0   &lt;-----返回裡面的length</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="add-value"><a href="#add-value" class="headerlink" title="add(value)"></a>add(value)</h4><p>添加某個值，返回 Set 結構本身</p>
+<p>當添加已經存在的元素，set不會進行處理添加</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s.<span class="title function_">add</span>(<span class="number">1</span>).<span class="title function_">add</span>(<span class="number">2</span>).<span class="title function_">add</span>(<span class="number">2</span>); <span class="comment">// 2只被加了一次</span></span><br><span class="line"><span class="comment">//Set(2) &#123;1, 2&#125;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="delete-value"><a href="#delete-value" class="headerlink" title="delete(value)"></a>delete(value)</h4><p>删除某個值，返回一個布爾值(<strong>True</strong> or <strong>False</strong>)，表示删除是否成功</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.<span class="title function_">delete</span>(<span class="number">1</span>) <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="has-value"><a href="#has-value" class="headerlink" title="has(value)"></a>has(value)</h4><p>返回一个(<strong>True</strong> or <strong>False</strong>)，判斷該值是否為Set的元素</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.<span class="title function_">has</span>(<span class="number">2</span>) <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="clear"><a href="#clear" class="headerlink" title="clear()"></a>clear()</h4><p>清除Set內所有元素，沒有返回值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.<span class="title function_">clear</span>()</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="遍歷"><a href="#遍歷" class="headerlink" title="遍歷"></a>遍歷</h4><p><code>Set</code>實現遍歷的方法有下：</p>
+<ul>
+<li>**keys()**：返回key值的遍歷器</li>
+<li>**values()**：返回value值的遍歷器</li>
+<li>**entries()**：返回entries的遍歷器</li>
+<li>**forEach()**：使用回调函數遍歷每個元素</li>
+</ul>
+<blockquote>
+<p><code>Set</code>的遍歷順序就是插入順序</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="title class_">Set</span>([<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;green&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> set.<span class="title function_">keys</span>()) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(item);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// red</span></span><br><span class="line"><span class="comment">// green</span></span><br><span class="line"><span class="comment">// blue</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> set.<span class="title function_">values</span>()) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(item);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// red</span></span><br><span class="line"><span class="comment">// green</span></span><br><span class="line"><span class="comment">// blue</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> set.<span class="title function_">entries</span>()) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(item);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// [&quot;red&quot;, &quot;red&quot;]</span></span><br><span class="line"><span class="comment">// [&quot;green&quot;, &quot;green&quot;]</span></span><br><span class="line"><span class="comment">// [&quot;blue&quot;, &quot;blue&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>forEach()</code>用於對每個成員執行某種操作，沒有返回值，鍵值、鍵名都相等，<br>同樣的<code>forEach</code>方法有<code>第二個參數</code>，用於<code>綁定</code>處理函數的this</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="title class_">Set</span>([<span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>]);</span><br><span class="line">set.<span class="title function_">forEach</span>(<span class="function">(<span class="params">value, key</span>) =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(key + <span class="string">&#x27; : &#x27;</span> + value))</span><br><span class="line"><span class="comment">// 1 : 1</span></span><br><span class="line"><span class="comment">// 4 : 4</span></span><br><span class="line"><span class="comment">// 9 : 9</span></span><br></pre></td></tr></table></figure>
+
+<p><code>擴展運算符</code>和<code>Set 結構</code>相結合實現數組或字符串去重</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Array</span></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">3</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">let</span> unique = [...<span class="keyword">new</span> <span class="title class_">Set</span>(arr)]; <span class="comment">// [3, 5, 2]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// String</span></span><br><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;352255&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> unique = [...<span class="keyword">new</span> <span class="title class_">Set</span>(str)].<span class="title function_">join</span>(<span class="string">&quot;&quot;</span>); <span class="comment">// &quot;352&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>實現<code>並集</code>、<code>交集</code>、和<code>差集</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> <span class="title class_">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</span><br><span class="line"><span class="keyword">let</span> b = <span class="keyword">new</span> <span class="title class_">Set</span>([<span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 並集</span></span><br><span class="line"><span class="keyword">let</span> union = <span class="keyword">new</span> <span class="title class_">Set</span>([...a, ...b]);</span><br><span class="line"><span class="comment">// Set &#123;1, 2, 3, 4&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 交集</span></span><br><span class="line"><span class="keyword">let</span> intersect = <span class="keyword">new</span> <span class="title class_">Set</span>([...a].<span class="title function_">filter</span>(<span class="function"><span class="params">x</span> =&gt;</span> b.<span class="title function_">has</span>(x)));</span><br><span class="line"><span class="comment">// set &#123;2, 3&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// （a 相對於 b 的）差集</span></span><br><span class="line"><span class="keyword">let</span> difference = <span class="keyword">new</span> <span class="title class_">Set</span>([...a].<span class="title function_">filter</span>(<span class="function"><span class="params">x</span> =&gt;</span> !b.<span class="title function_">has</span>(x)));</span><br><span class="line"><span class="comment">// Set &#123;1&#125;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><p><code>Map</code>類型是<code>key</code>值對的有序列表，而<code>key</code>和<code>value</code>都可以是任意類型</p>
+<p><code>Map</code>本身是一個構造函數，用來生成 Map 數據結構</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> m = <span class="keyword">new</span> <span class="title class_">Map</span>()</span><br></pre></td></tr></table></figure>
+
+<h3 id="Map的常見方法"><a href="#Map的常見方法" class="headerlink" title="Map的常見方法"></a>Map的常見方法</h3><p><strong>Map常見的屬性</strong>:</p>
+<ul>
+<li><p><strong>size</strong>:返回Map中元素的個數;<br><strong>Map常用的方法:</strong></p>
+</li>
+<li><p><strong>set(key, value)</strong>:在Map中添加<code>key</code>、<code>value</code>，並且返回整個Map對象</p>
+</li>
+<li><p><strong>get(key)</strong>:根據<code>key</code>獲取Map中的<code>value</code>;</p>
+</li>
+<li><p><strong>delete(value)</strong>:從Map中刪除和這個值相等的元素，返回Boolean類型;</p>
+</li>
+<li><p><strong>has(value)</strong>:判斷Map中是否存在某個元素，返回Boolean類型;</p>
+</li>
+<li><p><strong>clear()</strong>:清空Map中所有的元素，沒有返回值;</p>
+</li>
+<li><p><strong>forEach(callback, [ thisArg])</strong>:通過forEach遍歷Map;</p>
+</li>
+</ul>
+<h4 id="Size"><a href="#Size" class="headerlink" title="Size"></a>Size</h4><p><code>size</code>屬性返回Map 結構的元素總數。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> map = <span class="keyword">new</span> <span class="title class_">Map</span>();</span><br><span class="line">map.<span class="title function_">set</span>(<span class="string">&#x27;foo&#x27;</span>, <span class="literal">true</span>);</span><br><span class="line">map.<span class="title function_">set</span>(<span class="string">&#x27;bar&#x27;</span>, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">map.<span class="property">size</span> <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="set"><a href="#set" class="headerlink" title="set()"></a>set()</h4><p>設置<code>key</code>對應的鍵值為<code>value</code>，然後返回整個Map 結構</p>
+<p>如果key已經有值，則<code>value</code>值會被更新，否則就新生成該<code>value</code></p>
+<p>同時返回的是當前Map對象，可採用鍊式寫法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> m = <span class="keyword">new</span> <span class="title class_">Map</span>();</span><br><span class="line"></span><br><span class="line">m.<span class="title function_">set</span>(<span class="string">&#x27;edition&#x27;</span>, <span class="number">6</span>)        <span class="comment">// key是字符串</span></span><br><span class="line">m.<span class="title function_">set</span>(<span class="number">262</span>, <span class="string">&#x27;standard&#x27;</span>)     <span class="comment">// key是數值</span></span><br><span class="line">m.<span class="title function_">set</span>(<span class="literal">undefined</span>, <span class="string">&#x27;nah&#x27;</span>)    <span class="comment">// key是 undefined</span></span><br><span class="line">m.<span class="title function_">set</span>(<span class="number">1</span>, <span class="string">&#x27;a&#x27;</span>).<span class="title function_">set</span>(<span class="number">2</span>, <span class="string">&#x27;b&#x27;</span>).<span class="title function_">set</span>(<span class="number">3</span>, <span class="string">&#x27;c&#x27;</span>) <span class="comment">// 鏈式寫法</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="get"><a href="#get" class="headerlink" title="get()"></a>get()</h4><p><code>get</code>方法讀取<code>key</code>對應的<code>value</code>值，如果找不到<code>key</code>，返回<code>undefined</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> m = <span class="keyword">new</span> <span class="title class_">Map</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> hello = <span class="keyword">function</span>(<span class="params"></span>) &#123;<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;hello&#x27;</span>);&#125;;</span><br><span class="line">m.<span class="title function_">set</span>(hello, <span class="string">&#x27;Hello ES6!&#x27;</span>) <span class="comment">// key是函数Function</span></span><br><span class="line"></span><br><span class="line">m.<span class="title function_">get</span>(hello)  <span class="comment">// Hello ES6!</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="has"><a href="#has" class="headerlink" title="has()"></a>has()</h4><p><code>has</code>方法返回一個<code>Boolean</code>，表示某個<code>key</code>是否在當前Map 對象之中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> m = <span class="keyword">new</span> <span class="title class_">Map</span>();</span><br><span class="line"></span><br><span class="line">m.<span class="title function_">set</span>(<span class="string">&#x27;edition&#x27;</span>, <span class="number">6</span>);</span><br><span class="line">m.<span class="title function_">set</span>(<span class="number">262</span>, <span class="string">&#x27;standard&#x27;</span>);</span><br><span class="line">m.<span class="title function_">set</span>(<span class="literal">undefined</span>, <span class="string">&#x27;nah&#x27;</span>);</span><br><span class="line"></span><br><span class="line">m.<span class="title function_">has</span>(<span class="string">&#x27;edition&#x27;</span>)     <span class="comment">// true</span></span><br><span class="line">m.<span class="title function_">has</span>(<span class="string">&#x27;years&#x27;</span>)       <span class="comment">// false</span></span><br><span class="line">m.<span class="title function_">has</span>(<span class="number">262</span>)           <span class="comment">// true</span></span><br><span class="line">m.<span class="title function_">has</span>(<span class="literal">undefined</span>)     <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="delete"><a href="#delete" class="headerlink" title="delete()"></a>delete()</h4><p><code>delete</code>方法刪除某個<code>key</code>，返回<code>true</code>。如果<code>刪除失敗</code>，返回<code>false</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> m = <span class="keyword">new</span> <span class="title class_">Map</span>();</span><br><span class="line">m.<span class="title function_">set</span>(<span class="literal">undefined</span>,<span class="string">&#x27;nah&#x27;</span>);</span><br><span class="line">m.<span class="title function_">has</span>(<span class="literal">undefined</span>)  <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line">m.<span class="title function_">delete</span>(<span class="literal">undefined</span>)</span><br><span class="line">m.<span class="title function_">has</span>(<span class="literal">undefined</span>)  <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="clear-1"><a href="#clear-1" class="headerlink" title="clear()"></a>clear()</h4><p><code>clear</code>方法清除所有元素，沒有返回值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> <span class="title class_">Map</span>();</span><br><span class="line">map.<span class="title function_">set</span>(<span class="string">&#x27;foo&#x27;</span>, <span class="literal">true</span>);</span><br><span class="line">map.<span class="title function_">set</span>(<span class="string">&#x27;bar&#x27;</span>, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">map.<span class="property">size</span> <span class="comment">// 2</span></span><br><span class="line">map.<span class="title function_">clear</span>()</span><br><span class="line">map.<span class="property">size</span> <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="遍歷-1"><a href="#遍歷-1" class="headerlink" title="遍歷"></a>遍歷</h3><p><code>Map</code>結構原生提供<code>三個遍歷器生成函數</code>和<code>一個遍歷方法</code>：</p>
+<ul>
+<li>**keys()**：返回<code>key</code>的遍歷器</li>
+<li>**values()**：返回<code>value</code>的遍歷器</li>
+<li>**entries()**：返回<code>所有元素</code>的遍歷器</li>
+<li>**forEach()**：遍歷Map 的所有<code>元素</code><br>遍歷順序就是插入順序</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> map = <span class="keyword">new</span> <span class="title class_">Map</span>([</span><br><span class="line">  [<span class="string">&#x27;F&#x27;</span>, <span class="string">&#x27;no&#x27;</span>],</span><br><span class="line">  [<span class="string">&#x27;T&#x27;</span>,  <span class="string">&#x27;yes&#x27;</span>],</span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">of</span> map.<span class="title function_">keys</span>()) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(key);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// &quot;F&quot;</span></span><br><span class="line"><span class="comment">// &quot;T&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> map.<span class="title function_">values</span>()) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// &quot;no&quot;</span></span><br><span class="line"><span class="comment">// &quot;yes&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> map.<span class="title function_">entries</span>()) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(item[<span class="number">0</span>], item[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// &quot;F&quot; &quot;no&quot;</span></span><br><span class="line"><span class="comment">// &quot;T&quot; &quot;yes&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> map.<span class="title function_">entries</span>()) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(key, value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// &quot;F&quot; &quot;no&quot;</span></span><br><span class="line"><span class="comment">// &quot;T&quot; &quot;yes&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于使用map.entries()</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> map) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(key, value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// &quot;F&quot; &quot;no&quot;</span></span><br><span class="line"><span class="comment">// &quot;T&quot; &quot;yes&quot;</span></span><br><span class="line"></span><br><span class="line">map.<span class="title function_">forEach</span>(<span class="keyword">function</span>(<span class="params">value, key, map</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Key: %s, Value: %s&quot;</span>, key, value);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Key: F, Value: no</span></span><br><span class="line"><span class="comment">// Key: T, Value: yes</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="複製與合併"><a href="#複製與合併" class="headerlink" title="複製與合併"></a><code>複製</code>與<code>合併</code></h4><p><code>clone</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> original = <span class="keyword">new</span> <span class="title class_">Map</span>([</span><br><span class="line">  [<span class="number">1</span>, <span class="string">&#x27;one&#x27;</span>]</span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> clone = <span class="keyword">new</span> <span class="title class_">Map</span>(original);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(clone.<span class="title function_">get</span>(<span class="number">1</span>)); <span class="comment">// one</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(original === clone); <span class="comment">// false. Useful for shallow comparison</span></span><br></pre></td></tr></table></figure>
+
+<p><code>合併</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> first = <span class="keyword">new</span> <span class="title class_">Map</span>([</span><br><span class="line">  [<span class="number">1</span>, <span class="string">&#x27;one&#x27;</span>],</span><br><span class="line">  [<span class="number">2</span>, <span class="string">&#x27;two&#x27;</span>],</span><br><span class="line">  [<span class="number">3</span>, <span class="string">&#x27;three&#x27;</span>],</span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> second = <span class="keyword">new</span> <span class="title class_">Map</span>([</span><br><span class="line">  [<span class="number">1</span>, <span class="string">&#x27;uno&#x27;</span>],</span><br><span class="line">  [<span class="number">2</span>, <span class="string">&#x27;dos&#x27;</span>]</span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Merge two maps. The last repeated key wins.</span></span><br><span class="line"><span class="comment">// Spread operator essentially converts a Map to an Array</span></span><br><span class="line"><span class="keyword">var</span> merged = <span class="keyword">new</span> <span class="title class_">Map</span>([...first, ...second]);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(merged.<span class="title function_">get</span>(<span class="number">1</span>)); <span class="comment">// uno</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(merged.<span class="title function_">get</span>(<span class="number">2</span>)); <span class="comment">// dos</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(merged.<span class="title function_">get</span>(<span class="number">3</span>)); <span class="comment">// three</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Map</code>也可以跟 <code>Array</code> 合併：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> first = <span class="keyword">new</span> <span class="title class_">Map</span>([</span><br><span class="line">  [<span class="number">1</span>, <span class="string">&#x27;one&#x27;</span>],</span><br><span class="line">  [<span class="number">2</span>, <span class="string">&#x27;two&#x27;</span>],</span><br><span class="line">  [<span class="number">3</span>, <span class="string">&#x27;three&#x27;</span>],</span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> second = <span class="keyword">new</span> <span class="title class_">Map</span>([</span><br><span class="line">  [<span class="number">1</span>, <span class="string">&#x27;uno&#x27;</span>],</span><br><span class="line">  [<span class="number">2</span>, <span class="string">&#x27;dos&#x27;</span>]</span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Merge maps with an array. The last repeated key wins.</span></span><br><span class="line"><span class="keyword">var</span> merged = <span class="keyword">new</span> <span class="title class_">Map</span>([...first, ...second, [<span class="number">1</span>, <span class="string">&#x27;eins&#x27;</span>]]);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(merged.<span class="title function_">get</span>(<span class="number">1</span>)); <span class="comment">// eins</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(merged.<span class="title function_">get</span>(<span class="number">2</span>)); <span class="comment">// dos</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(merged.<span class="title function_">get</span>(<span class="number">3</span>)); <span class="comment">// three</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="WeakSet-和-WeakMap"><a href="#WeakSet-和-WeakMap" class="headerlink" title="WeakSet 和 WeakMap"></a><code>WeakSet</code> 和 <code>WeakMap</code></h2><h3 id="WeakSet"><a href="#WeakSet" class="headerlink" title="WeakSet"></a>WeakSet</h3><p>和<code>Set</code>類似的另外一個<code>數據結構</code>稱之為<code>WeakSet</code>，<br>也是<code>內部元素</code>不能重複的<code>數據結構</code>。</p>
+<h4 id="與Set有何差異"><a href="#與Set有何差異" class="headerlink" title="與Set有何差異"></a>與<code>Set</code>有何差異</h4><ul>
+<li><p>WeakSet中只能存放<code>引用類型</code>，不能是<code>其他類型的值</code>;</p>
+<ul>
+<li><code>引用類型</code>統稱為<code>object 類型</code>，細分的話有：<code>Object</code> 類型、<code>Array</code> 類型、<code>Date</code> 類型、<code>RegExp</code> 類型、<code>Function</code> 類型</li>
+</ul>
+</li>
+<li><p>WeakSet對元素的引用是<code>弱引用</code>，如果沒有其他引用對某個對象進行引用，那麼<code>垃圾回收機制</code>可以對該<code>對象</code>進行回收;</p>
+</li>
+</ul>
+<p>舉個例子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> ws=<span class="keyword">new</span> <span class="title class_">WeakSet</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 元素不是引用類型</span></span><br><span class="line"><span class="keyword">let</span> weakSet=<span class="keyword">new</span> <span class="title class_">WeakSet</span>([<span class="number">2</span>,<span class="number">3</span>]);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(weakSet) </span><br><span class="line">  <span class="comment">//  報錯!!!</span></span><br><span class="line">  <span class="comment">//  Uncaught TypeError: Invalid value used in weak set</span></span><br><span class="line">  <span class="comment">//  at WeakSet.add (&lt;anonymous&gt;)</span></span><br><span class="line">  <span class="comment">//  at new WeakSet (&lt;anonymous&gt;)</span></span><br><span class="line">  <span class="comment">//  at &lt;anonymous&gt;:4:13</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 元素為引用類型</span></span><br><span class="line"><span class="keyword">let</span> obj1=&#123;<span class="attr">name</span>:<span class="number">1</span>&#125;</span><br><span class="line"><span class="keyword">let</span> obj2=&#123;<span class="attr">name</span>:<span class="number">1</span>&#125;</span><br><span class="line"><span class="keyword">let</span> ws=<span class="keyword">new</span> <span class="title class_">WeakSet</span>([obj1,obj2]); </span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(ws) <span class="comment">//WeakSet &#123;&#123;…&#125;, &#123;…&#125;&#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//--------------------------------------------</span></span><br><span class="line"><span class="keyword">let</span> a = [[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>]];</span><br><span class="line"><span class="keyword">const</span> ws = <span class="keyword">new</span> <span class="title class_">WeakSet</span>(a);</span><br><span class="line"><span class="comment">// WeakSet &#123;[1, 2], [3, 4]&#125;</span></span><br><span class="line"></span><br><span class="line">a = <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(ws) <span class="comment">//WeakSet&#123;&#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// weakSet a為null ，weakSet就會被垃圾回收機制一起清空   ----＞所謂的弱型別</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//--------------------------------------------</span></span><br><span class="line"><span class="keyword">let</span> a = [[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>]];</span><br><span class="line"><span class="keyword">const</span> ws = <span class="keyword">new</span> <span class="title class_">Set</span>(a);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(ws) <span class="comment">// Set(2) &#123;Array(2), Array(2)&#125;</span></span><br><span class="line"></span><br><span class="line">a=<span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(ws) <span class="comment">// Set(2) &#123;Array(2), Array(2)&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Set  a 為null ，不會被清空    ----＞ 所謂的強型別</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>來舉一個實際 <strong>Stack Overflow</strong> 的案例</p>
+<blockquote>
+<p>不能通過非構造方法創建出來的對象調用構造函數的方法</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> personSet = <span class="keyword">new</span> <span class="title class_">WeakSet</span>()</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    personSet.<span class="title function_">add</span>(<span class="variable language_">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">running</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!personSet.<span class="title function_">has</span>(<span class="variable language_">this</span>)) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&quot;不能通过非构造方法创建出来的对象调用running方法&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;running~&quot;</span>, <span class="variable language_">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> <span class="title class_">Person</span>()</span><br><span class="line">p.<span class="title function_">running</span>()</span><br><span class="line">p = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">p.<span class="property">running</span>.<span class="title function_">call</span>(&#123;<span class="attr">name</span>: <span class="string">&quot;why&quot;</span>&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="WeakMap"><a href="#WeakMap" class="headerlink" title="WeakMap"></a>WeakMap</h3><p>和<code>Map</code>類型的另外一個數據結構稱之為<code>WeakMap</code>，<br>也是以<code>key值對</code>的形式存在的。</p>
+<h4 id="在API中WeakMap與Map有兩個區別"><a href="#在API中WeakMap與Map有兩個區別" class="headerlink" title="在API中WeakMap與Map有兩個區別"></a>在API中WeakMap與Map有兩個區別</h4><ul>
+<li>沒有遍歷操作的<code>API</code></li>
+<li>沒有<code>clear</code>清空方法</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// WeakMap 可以使用 set 方法添加元素</span></span><br><span class="line"><span class="keyword">const</span> wm1 = <span class="keyword">new</span> <span class="title class_">WeakMap</span>();</span><br><span class="line"><span class="keyword">const</span> key = &#123;<span class="attr">foo</span>: <span class="number">1</span>&#125;;</span><br><span class="line">wm1.<span class="title function_">set</span>(key, <span class="number">2</span>);</span><br><span class="line">wm1.<span class="title function_">get</span>(key) <span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// WeakMap 也可以接受一个Array，</span></span><br><span class="line"><span class="comment">// 作为構造函數的参数</span></span><br><span class="line"><span class="keyword">const</span> k1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">const</span> k2 = [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>];</span><br><span class="line"><span class="keyword">const</span> wm2 = <span class="keyword">new</span> <span class="title class_">WeakMap</span>([[k1, <span class="string">&#x27;foo&#x27;</span>], [k2, <span class="string">&#x27;bar&#x27;</span>]]);</span><br><span class="line">wm2.<span class="title function_">get</span>(k2) <span class="comment">// &quot;bar&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>WeakMap</code>只接受<code>Obj</code>作為<code>key</code>（null除外），不接受<code>其他類型</code>的值作為<code>key</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> map = <span class="keyword">new</span> <span class="title class_">WeakMap</span>();</span><br><span class="line">map.<span class="title function_">set</span>(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="comment">// TypeError: 1 is not an object!</span></span><br><span class="line">map.<span class="title function_">set</span>(<span class="title class_">Symbol</span>(), <span class="number">2</span>)</span><br><span class="line"><span class="comment">// TypeError: Invalid value used as weak map key</span></span><br><span class="line">map.<span class="title function_">set</span>(<span class="literal">null</span>, <span class="number">2</span>)</span><br><span class="line"><span class="comment">// TypeError: Invalid value used as weak map key</span></span><br></pre></td></tr></table></figure>
+
+<p><code>WeakMap</code>的<code>key</code>所指向的<code>Obj</code>，一旦不再需要，裡面的<code>key</code>和所對應的<code>value</code>會自動消失，不用手動刪除</p>
+<p>舉個例子<code>: 在網頁的DOM 元素上添加數據，就可以使用</code>WeakMap<code>結構，當該DOM 元素被清除，其所對應的</code>WeakMap&#96;記錄就會自動被移除</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> wm = <span class="keyword">new</span> <span class="title class_">WeakMap</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;example&#x27;</span>);</span><br><span class="line"></span><br><span class="line">wm.<span class="title function_">set</span>(element, <span class="string">&#x27;some information&#x27;</span>);</span><br><span class="line">wm.<span class="title function_">get</span>(element) <span class="comment">// &quot;some information&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：<code>WeakMap</code>弱引用的只是<code>key</code>，而不是<code>value</code>。<code>key</code>依然是正常引用</p>
+<p>下面代碼中，<code>key</code>值obj會在WeakMap產生新的引用，當你修改obj不會影響到內部<code>value</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> wm = <span class="keyword">new</span> <span class="title class_">WeakMap</span>();</span><br><span class="line"><span class="keyword">let</span> key = &#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">foo</span>: <span class="number">1</span>&#125;;</span><br><span class="line"></span><br><span class="line">wm.<span class="title function_">set</span>(key, obj);</span><br><span class="line">obj = <span class="literal">null</span>;</span><br><span class="line">wm.<span class="title function_">get</span>(key)</span><br><span class="line"><span class="comment">// Object &#123;foo: 1&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>新增了兩個<code>set</code>&amp;<code>map</code>數據結構，找資料發現還有他們對應的弱型別-.-+<br>搞得一個頭兩個大!!!</p>
+<p>找了很多範例，終於是有一點點點點的<strong>明白</strong></p>
+<p>希望大家也清楚了^_______________^</p>
+<p><img src="https://media.tenor.com/dIlSHuNhTuAAAAAM/cats-cpr.gif" alt="清楚"></p>
+<hr>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/#docs/set-map">ECMAScript 6 入门</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://caibaojian.com/es6/set-map.html">ES6 set和map数据结构</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Set">MDN-Set</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Map">MDN-MAp</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6955064579109945380">JavaScript 中的構造函數</a></p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>作者： </strong>Cody
+  </li>
+  <li class="post-copyright-link">
+    <strong>文章連結：</strong>
+    <a href="https://supermarpig.github.io/2023/04/18/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E5%85%AD-%E6%95%B8%E6%93%9A%E7%B5%90%E6%A7%8B-Set-Map/" title="每天一點點，學習ES6(六)數據結構 Set Map">https://supermarpig.github.io/2023/04/18/每天一點點，學習ES6-六-數據結構-Set-Map/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ES6/" rel="tag"># ES6</a>
+              <a href="/tags/ECMAScript-6/" rel="tag"># ECMAScript 6</a>
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/tags/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E/" rel="tag"># 每天一點點</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/04/17/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%BA%94-%E6%95%B8%E6%93%9A%E7%B5%90%E6%A7%8BSymbol/" rel="prev" title="每天一點點，學習ES6(五)數據結構Symbol">
+      <i class="fa fa-chevron-left"></i> 每天一點點，學習ES6(五)數據結構Symbol
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set"><span class="nav-number">2.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A7%8B%E9%80%A0%E5%87%BD%E6%95%B8%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E9%BB%9E"><span class="nav-number">2.1.</span> <span class="nav-text">- 構造函數的三大特點</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set-%E7%9A%84%E5%B8%B8%E8%A6%8B%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">Set 的常見方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#size"><span class="nav-number">2.2.1.</span> <span class="nav-text">size</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#add-value"><span class="nav-number">2.2.2.</span> <span class="nav-text">add(value)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#delete-value"><span class="nav-number">2.2.3.</span> <span class="nav-text">delete(value)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#has-value"><span class="nav-number">2.2.4.</span> <span class="nav-text">has(value)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#clear"><span class="nav-number">2.2.5.</span> <span class="nav-text">clear()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%81%8D%E6%AD%B7"><span class="nav-number">2.2.6.</span> <span class="nav-text">遍歷</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map"><span class="nav-number">3.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Map%E7%9A%84%E5%B8%B8%E8%A6%8B%E6%96%B9%E6%B3%95"><span class="nav-number">3.1.</span> <span class="nav-text">Map的常見方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Size"><span class="nav-number">3.1.1.</span> <span class="nav-text">Size</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#set"><span class="nav-number">3.1.2.</span> <span class="nav-text">set()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#get"><span class="nav-number">3.1.3.</span> <span class="nav-text">get()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#has"><span class="nav-number">3.1.4.</span> <span class="nav-text">has()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#delete"><span class="nav-number">3.1.5.</span> <span class="nav-text">delete()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#clear-1"><span class="nav-number">3.1.6.</span> <span class="nav-text">clear()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%8D%E6%AD%B7-1"><span class="nav-number">3.2.</span> <span class="nav-text">遍歷</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A4%87%E8%A3%BD%E8%88%87%E5%90%88%E4%BD%B5"><span class="nav-number">3.2.1.</span> <span class="nav-text">複製與合併</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WeakSet-%E5%92%8C-WeakMap"><span class="nav-number">4.</span> <span class="nav-text">WeakSet 和 WeakMap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#WeakSet"><span class="nav-number">4.1.</span> <span class="nav-text">WeakSet</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%88%87Set%E6%9C%89%E4%BD%95%E5%B7%AE%E7%95%B0"><span class="nav-number">4.1.1.</span> <span class="nav-text">與Set有何差異</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WeakMap"><span class="nav-number">4.2.</span> <span class="nav-text">WeakMap</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8API%E4%B8%ADWeakMap%E8%88%87Map%E6%9C%89%E5%85%A9%E5%80%8B%E5%8D%80%E5%88%A5"><span class="nav-number">4.2.1.</span> <span class="nav-text">在API中WeakMap與Map有兩個區別</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B5%90%E8%AB%96"><span class="nav-number">5.</span> <span class="nav-text">結論</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">6.</span> <span class="nav-text">References</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Cody"
+      src="https://lh3.googleusercontent.com/a/AGNmyxZRq_Cjg7ZBL-eYF5brt0_ldeyXGV1AxUkCo04h3A=s288">
+  <p class="site-author-name" itemprop="name">Cody</p>
+  <div class="site-description" itemprop="description">日常紀錄</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Supermarpig" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Supermarpig" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ken51717@gmail.com" title="E-Mail → mailto:ken51717@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+<!--google_adsense-->
+
+  <div class="links-of-blogroll-title">
+    <i class="fa fa-google"></i> AdSense
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-8308348781288895"
+        data-ad-slot="9308046558"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
+<!--/google_adsense-->
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">若要轉載文章，麻煩請保留原作者名稱與原始連結。</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="訪客總數">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="總瀏覽次數">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: '32px ',
+  left: 'unset',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://codydidadi.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://supermarpig.github.io/2023/04/18/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E5%85%AD-%E6%95%B8%E6%93%9A%E7%B5%90%E6%A7%8B-Set-Map/";
+    this.page.identifier = "2023/04/18/每天一點點，學習ES6-六-數據結構-Set-Map/";
+    this.page.title = "每天一點點，學習ES6(六)數據結構 Set Map";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://codydidadi.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+  
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+</body>
+</html>
