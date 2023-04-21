@@ -34,7 +34,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://media.tenor.com/FcNL2m-rZTEAAAAd/sleepy-sleep.gif">
 <meta property="article:published_time" content="2023-04-21T03:10:42.000Z">
-<meta property="article:modified_time" content="2023-04-21T03:20:24.504Z">
+<meta property="article:modified_time" content="2023-04-21T03:22:29.421Z">
 <meta property="article:author" content="Cody">
 <meta property="article:tag" content="React">
 <meta property="article:tag" content="JS">
@@ -219,7 +219,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2023-04-21 11:10:42 / 修改時間：11:20:24" itemprop="dateCreated datePublished" datetime="2023-04-21T11:10:42+08:00">2023-04-21</time>
+              <time title="創建時間：2023-04-21 11:10:42 / 修改時間：11:22:29" itemprop="dateCreated datePublished" datetime="2023-04-21T11:10:42+08:00">2023-04-21</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -261,7 +261,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>648</span>
+              <span>647</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
@@ -289,7 +289,7 @@
 <p>如果需要修改 <code>completed</code> 改成<code>true</code> Or <code>!todo.completed</code> 可以這樣寫：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//點擊修改 使否已完成</span></span><br><span class="line">   <span class="title function_">setTodo</span>(</span><br><span class="line">     todo.<span class="title function_">map</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">if</span> (item.<span class="property">id</span> === id) &#123;   <span class="comment">//這句是判斷 是否有相同的id  可以依照各位想做的判斷自行修改</span></span><br><span class="line">         <span class="keyword">return</span> &#123;</span><br><span class="line">           ...item,</span><br><span class="line">           <span class="attr">completed</span>: !item.<span class="property">completed</span>,    </span><br><span class="line"></span><br><span class="line">         &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> item</span><br><span class="line">     &#125;),</span><br><span class="line">   )</span><br></pre></td></tr></table></figure>
 
-<p>也可以不加判斷 ，將全部修改成<code>false</code></p>
+<p>也可以不加判斷 ，將全部修改成<code>true</code></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 中間列表  ---將全部的完成選取成TRUE</span></span><br><span class="line">     <span class="title function_">setTodo</span>(</span><br><span class="line">       todo.<span class="title function_">map</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">         <span class="keyword">return</span> &#123;</span><br><span class="line">           ...item,</span><br><span class="line">           <span class="attr">completed</span>: <span class="literal">true</span>,</span><br><span class="line">         &#125;</span><br><span class="line">       &#125;)</span><br><span class="line">     )</span><br></pre></td></tr></table></figure>
 
 <p>以上</p>
