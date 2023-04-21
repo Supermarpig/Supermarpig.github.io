@@ -25,20 +25,23 @@
     var CONFIG = {"hostname":"supermarpig.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="日常紀錄">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="https://supermarpig.github.io/tags/index.html">
+  <meta name="description" content="前言開發中筆記筆記!!">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React useState 修改 Object value">
+<meta property="og:url" content="https://supermarpig.github.io/2023/04/21/React-useState-%E4%BF%AE%E6%94%B9-Object-value/index.html">
 <meta property="og:site_name" content="Cody Di Da Di">
-<meta property="og:description" content="日常紀錄">
+<meta property="og:description" content="前言開發中筆記筆記!!">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2023-04-10T08:19:44.000Z">
-<meta property="article:modified_time" content="2023-04-10T08:25:24.973Z">
+<meta property="og:image" content="https://media.tenor.com/FcNL2m-rZTEAAAAd/sleepy-sleep.gif">
+<meta property="article:published_time" content="2023-04-21T03:10:42.000Z">
+<meta property="article:modified_time" content="2023-04-21T03:20:24.504Z">
 <meta property="article:author" content="Cody">
-<meta property="article:tag" content="前端,後端,全端,網頁,技術,網頁開發,前端開發,後端開發,JavaScript,HTML,CSS,SCSS">
+<meta property="article:tag" content="React">
+<meta property="article:tag" content="JS">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://media.tenor.com/FcNL2m-rZTEAAAAd/sleepy-sleep.gif">
 
-<link rel="canonical" href="https://supermarpig.github.io/tags/">
+<link rel="canonical" href="https://supermarpig.github.io/2023/04/21/React-useState-%E4%BF%AE%E6%94%B9-Object-value/">
 
 
 <script id="page-configurations">
@@ -46,7 +49,7 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-TW'
   };
 </script>
@@ -54,8 +57,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8308348781288895"
      crossorigin="anonymous"></script>
 
-  <title>tags | Cody Di Da Di
- - 搭拉拉拉搭搭搭</title>
+  <title>React useState 修改 Object value | Cody Di Da Di - 搭拉拉拉搭搭搭</title>
   
 
 
@@ -185,55 +187,186 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="zh-TW">
-      <header class="post-header">
-
-<h1 class="post-title" itemprop="name headline">tags
-</h1>
-
-<div class="post-meta">
   
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://supermarpig.github.io/2023/04/21/React-useState-%E4%BF%AE%E6%94%B9-Object-value/">
 
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://lh3.googleusercontent.com/a/AGNmyxZRq_Cjg7ZBL-eYF5brt0_ldeyXGV1AxUkCo04h3A=s288">
+      <meta itemprop="name" content="Cody">
+      <meta itemprop="description" content="日常紀錄">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cody Di Da Di">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          React useState 修改 Object value
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2023-04-21 11:10:42 / 修改時間：11:20:24" itemprop="dateCreated datePublished" datetime="2023-04-21T11:10:42+08:00">2023-04-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">學習筆記</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">web前端</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="閱讀次數" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">閱讀次數：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/04/21/React-useState-%E4%BF%AE%E6%94%B9-Object-value/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/04/21/React-useState-修改-Object-value/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>648</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>1 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>開發中筆記筆記!!</p>
+<span id="more"></span>
+
+<p>在一般Array中<br>裡面對有很多Obj<br>但想修改其中的內容該如何修正</p>
+<p>以下範例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//這是一般Array內的內容</span></span><br><span class="line">  <span class="keyword">const</span> [todo, setTodo] = <span class="title function_">useState</span>(<span class="string">&quot;&quot;</span>)  <span class="comment">//放todo Array</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="comment">//將輸入的東西加入todo Array內</span></span><br><span class="line">            <span class="title function_">setTodo</span>([</span><br><span class="line">                ...todo,</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">text</span>: inputText,</span><br><span class="line">                    <span class="attr">completed</span>: <span class="literal">false</span>,</span><br><span class="line">                    <span class="attr">id</span>: <span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>() * <span class="number">1000</span>),</span><br><span class="line">                &#125;,</span><br><span class="line">            ])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>如果需要修改 <code>completed</code> 改成<code>true</code> Or <code>!todo.completed</code> 可以這樣寫：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//點擊修改 使否已完成</span></span><br><span class="line">   <span class="title function_">setTodo</span>(</span><br><span class="line">     todo.<span class="title function_">map</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">if</span> (item.<span class="property">id</span> === id) &#123;   <span class="comment">//這句是判斷 是否有相同的id  可以依照各位想做的判斷自行修改</span></span><br><span class="line">         <span class="keyword">return</span> &#123;</span><br><span class="line">           ...item,</span><br><span class="line">           <span class="attr">completed</span>: !item.<span class="property">completed</span>,    </span><br><span class="line"></span><br><span class="line">         &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> item</span><br><span class="line">     &#125;),</span><br><span class="line">   )</span><br></pre></td></tr></table></figure>
+
+<p>也可以不加判斷 ，將全部修改成<code>false</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 中間列表  ---將全部的完成選取成TRUE</span></span><br><span class="line">     <span class="title function_">setTodo</span>(</span><br><span class="line">       todo.<span class="title function_">map</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">         <span class="keyword">return</span> &#123;</span><br><span class="line">           ...item,</span><br><span class="line">           <span class="attr">completed</span>: <span class="literal">true</span>,</span><br><span class="line">         &#125;</span><br><span class="line">       &#125;)</span><br><span class="line">     )</span><br></pre></td></tr></table></figure>
+
+<p>以上</p>
+<p>希望有幫助到各位</p>
+<p><img src="https://media.tenor.com/FcNL2m-rZTEAAAAd/sleepy-sleep.gif" alt="累"></p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.google.com/">我聰明的小腦袋</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>你的支持是我活力的來源  :)</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打賞
+  </button>
+  <div id="qr" style="display: none;">
+
+  </div>
 </div>
 
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-              目前共有 14 個標籤
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/CSS/" style="font-size: 12px; color: #ccc">CSS</a> <a href="/tags/ECMAScript-6/" style="font-size: 30px; color: #111">ECMAScript 6</a> <a href="/tags/ES6/" style="font-size: 30px; color: #111">ES6</a> <a href="/tags/JS/" style="font-size: 21px; color: #6f6f6f">JS</a> <a href="/tags/JavaScript/" style="font-size: 30px; color: #111">JavaScript</a> <a href="/tags/MarkDown/" style="font-size: 12px; color: #ccc">MarkDown</a> <a href="/tags/React/" style="font-size: 21px; color: #6f6f6f">React</a> <a href="/tags/implicit-coercion/" style="font-size: 12px; color: #ccc">implicit coercion</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 12px; color: #ccc">工具</a> <a href="/tags/%E6%96%87%E5%AD%97%E5%A4%A7%E5%B0%8F/" style="font-size: 12px; color: #ccc">文字大小</a> <a href="/tags/%E6%97%A5%E5%B8%B8%E5%95%8F%E9%A1%8C%E7%B4%80%E9%8C%84/" style="font-size: 12px; color: #ccc">日常問題紀錄</a> <a href="/tags/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E/" style="font-size: 30px; color: #111">每天一點點</a> <a href="/tags/%E8%AA%9E%E6%B3%95%E7%B3%96/" style="font-size: 12px; color: #ccc">語法糖</a> <a href="/tags/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/" style="font-size: 21px; color: #6f6f6f">開發筆記</a>
-            </div>
-          </div>
         
-      </div>
-      
-      
-      
-    </div>
-    
 
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>作者： </strong>Cody
+  </li>
+  <li class="post-copyright-link">
+    <strong>文章連結：</strong>
+    <a href="https://supermarpig.github.io/2023/04/21/React-useState-%E4%BF%AE%E6%94%B9-Object-value/" title="React useState 修改 Object value">https://supermarpig.github.io/2023/04/21/React-useState-修改-Object-value/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+               <a href="/tags/React/" rel="tag"> <i class="fa fa-tag"></i> React</a>
+               <a href="/tags/JS/" rel="tag"> <i class="fa fa-tag"></i> JS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/04/19/implicit-coercion/" rel="prev" title="JS魔術師 implicit coercion">
+      <i class="fa fa-chevron-left"></i> JS魔術師 implicit coercion
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
     
-    
-    
+  </article>
+  
+  
+  
+
 
 
           </div>
           
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -280,6 +413,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -461,6 +595,26 @@ darkmode.showWidget();
   }
   // defer loading until the whole page loading is completed
   window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://supermarpig.github.io/2023/04/21/React-useState-%E4%BF%AE%E6%94%B9-Object-value/";
+    this.page.identifier = "2023/04/21/React-useState-修改-Object-value/";
+    this.page.title = "React useState 修改 Object value";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://codydidadi.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
 </script>
 
   
