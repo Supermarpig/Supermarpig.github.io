@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/sun.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/sun.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8308348781288895"
+     crossorigin="anonymous"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"supermarpig.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="前言今天來研究 Promise 很多大哥學會 Promise後都覺得不過如此但初次接觸 我完全看不懂啊~~~~~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每天一點點，學習ES6-七-Promise">
+<meta property="og:url" content="https://supermarpig.github.io/2023/04/24/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%B8%83-Promise/index.html">
+<meta property="og:site_name" content="Cody Di Da Di">
+<meta property="og:description" content="前言今天來研究 Promise 很多大哥學會 Promise後都覺得不過如此但初次接觸 我完全看不懂啊~~~~~">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://media.tenor.com/O3boKw1jQG4AAAAM/cute.gif">
+<meta property="og:image" content="https://static.vue-js.com/1b02ae90-58a9-11eb-85f6-6fac77c0c9b3.png">
+<meta property="article:published_time" content="2023-04-24T03:45:59.000Z">
+<meta property="article:modified_time" content="2023-04-24T08:25:00.931Z">
+<meta property="article:author" content="Cody">
+<meta property="article:tag" content="ES6">
+<meta property="article:tag" content="ECMAScript 6">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="每天一點點">
+<meta property="article:tag" content="Promise">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://media.tenor.com/O3boKw1jQG4AAAAM/cute.gif">
+
+<link rel="canonical" href="https://supermarpig.github.io/2023/04/24/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%B8%83-Promise/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8308348781288895"
+     crossorigin="anonymous"></script>
+
+  <title>每天一點點，學習ES6-七-Promise | Cody Di Da Di - 搭拉拉拉搭搭搭</title>
+  
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8308348781288895"
+     crossorigin="anonymous"></script>
+   
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Cody Di Da Di" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Cody Di Da Di</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">搭拉拉拉搭搭搭</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Supermarpig" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Supermarpig" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ken51717@gmail.com" title="E-Mail → mailto:ken51717@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/Supermarpig" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://supermarpig.github.io/2023/04/24/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%B8%83-Promise/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://lh3.googleusercontent.com/a/AGNmyxZRq_Cjg7ZBL-eYF5brt0_ldeyXGV1AxUkCo04h3A=s288">
+      <meta itemprop="name" content="Cody">
+      <meta itemprop="description" content="日常紀錄">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cody Di Da Di">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          每天一點點，學習ES6-七-Promise
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2023-04-24 11:45:59 / 修改時間：16:25:00" itemprop="dateCreated datePublished" datetime="2023-04-24T11:45:59+08:00">2023-04-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">學習筆記</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">web前端</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="閱讀次數" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">閱讀次數：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/04/24/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%B8%83-Promise/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/04/24/每天一點點，學習ES6-七-Promise/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>5.4k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>5 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天來研究 Promise</p>
+<p>很多大哥學會 <strong>Promise</strong>後都覺得不過如此<br>但初次接觸 我完全看不懂啊~~~~~</p>
+<p><img src="https://media.tenor.com/O3boKw1jQG4AAAAM/cute.gif" alt="懊惱"></p>
+<span id="more"></span>
+
+<p>在以往我們如果處理多層異步操作，我們往往會像下面那樣編寫我們的代碼</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">doSomething</span>(<span class="keyword">function</span>(<span class="params">result</span>) &#123;</span><br><span class="line">  <span class="title function_">doSomethingElse</span>(result, <span class="keyword">function</span>(<span class="params">newResult</span>) &#123;</span><br><span class="line">    <span class="title function_">doThirdThing</span>(newResult, <span class="keyword">function</span>(<span class="params">finalResult</span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;得到最终结果: &#x27;</span> + finalResult);</span><br><span class="line">    &#125;, failureCallback);</span><br><span class="line">  &#125;, failureCallback);</span><br><span class="line">&#125;, failureCallback);</span><br></pre></td></tr></table></figure>
+
+<p>閱讀上面代碼，是不是很難受，上述形成了經典的<code>回調地獄</code></p>
+<p>現在通過<code>Promise</code>的改寫上面的代碼</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">doSomething</span>().<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">result</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">doSomethingElse</span>(result);</span><br><span class="line">&#125;)</span><br><span class="line">.<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">newResult</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">doThirdThing</span>(newResult);</span><br><span class="line">&#125;)</span><br><span class="line">.<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">finalResult</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;得到最终结果: &#x27;</span> + finalResult);</span><br><span class="line">&#125;)</span><br><span class="line">.<span class="title function_">catch</span>(failureCallback);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>一個 promise 代表一個異步運算的最終結果</p>
+</blockquote>
+<p>Promise 語法結構提供了更多的程式設計上的可能性，它是一個經過長時間實戰的結構，在許多知名的函式庫或框架中很早就有見到 Promise 物件的身影，例如 Dojo、jQuery、YUI、 Ember、Angular、WinJS、Q 等等，之後 Promises&#x2F;A+ 社區則提供了統一的標準。在最近新一代的 ES6 標準中將會包含了 Promise 的實作，提供原生的語言內建支援，這將是個開始，往後會有愈來愈多 API 以此為基礎架構在其上</p>
+<p><code>Promise</code> 這種異步執行結構的需求，在伺服器端(Node.js)遠遠大於瀏覽器端，原因是瀏覽器通常只有會有一個使用者在操作，而且除了網路連線要求之類的 I&#x2F;O(例如 AJAX)、DOM 事件處理、動畫流程處理(計時器)外，並沒有太多需要異步執行 I&#x2F;O 處理的情況。伺服器端(Node.js)所面臨到情況就很嚴峻，除了與外部資源 I&#x2F;O 的處理情況到處都有之外，而且伺服器端(Node.js)是需要同時服務多人使用的情況。</p>
+<p>Promise 是一個強大的異步執行流程語法結構，在 ES6 Promise 標準中，實作內容只有一個建構函式與一個then方法、一個catch方法，再加上四個必需以<code>Promise關鍵字</code>呼叫的靜態函式，<code>Promise.resolve</code>、<code>Promise.reject</code>、<code>Promise.all</code>、<code>Promise.race</code>。語法介紹頁面只有 7 頁，內容少之又少。但為何 Promise 結構不容易被理解？原因在於同步與異步回調函式執行的概念，以及其中很多流程運作，需要用另一種方式來思考要如何進行。當然，需要理解的規則也很多。</p>
+<blockquote>
+<p>以初學者來說，從規則來理解它的運作方式，會是比較容易進入的學習路徑。</p>
+</blockquote>
+<hr>
+<p>說道**<code>Promise</code>**前要先了解 異步 Callback(回調)</p>
+<h2 id="異步-Callback-回調"><a href="#異步-Callback-回調" class="headerlink" title="異步 Callback(回調)"></a>異步 Callback(回調)</h2><blockquote>
+<p>Promise 中的所有回調函式，都是異步執行的</p>
+</blockquote>
+<p>但 並非所有使用Callback Function 的API 都是異步執行的!!!!</p>
+<p>JS語言內建 API 中使用的回調函式不一定是異步執行的，也有<code>同步執行</code>的<br>例如 <strong><code>Array.forEach</code></strong></p>
+<p>要讓開發者自訂的 <code>callbacks</code>(回調)的執行轉變為異步，有以下幾種方式:</p>
+<ul>
+<li>使用計時器(timer)函式: setTimeout, setInterval</li>
+<li>特殊的函式: nextTick, setImmediate</li>
+<li>執行 I&#x2F;O: 監聽網路、資料庫查詢或讀寫外部資源</li>
+<li>訂閱事件</li>
+</ul>
+<blockquote>
+<p>註: 執行 I&#x2F;O 的 API 通常會出現在伺服器端(Node.js)，例如讀寫檔案、資料庫互動等等，這些 API 都會經過特別的設計。瀏覽器端只有少數幾個。</p>
+</blockquote>
+<p>在 <code>Promise</code>結構中<code>異步回調函式</code>只是其中一個重要的參與分子，但 <code>Promise</code> 的重點並不只是在異步執行的回調函式，它可以把<code>多個異步執行的函式</code>，執行流程轉變為<code>序列執行</code>(一個接一個)，或是<code>並行執行</code>(全部都要處理完再說)，並且作更好的錯誤處理方式。也就是說，<code>Promise 結構</code>是一種異步執行的控制<code>流程架構</code></p>
+<hr>
+<h2 id="異步-Function-與-同步-Function"><a href="#異步-Function-與-同步-Function" class="headerlink" title="異步 Function 與 同步  Function"></a>異步 Function 與 同步  Function</h2><h3 id="同步-Function"><a href="#同步-Function" class="headerlink" title="同步 Function"></a>同步 Function</h3><blockquote>
+<p>同步執行函式的結果要不就是回傳一個值，要不然就是執行到一半發生例外，中斷目前的程式然後拋出例外。</p>
+</blockquote>
+<h3 id="異步-Function"><a href="#異步-Function" class="headerlink" title="異步 Function"></a>異步 Function</h3><blockquote>
+<p>異步執行函式的結果要不就是帶有回傳值的成功，要不就是帶有回傳理由的失敗。</p>
+</blockquote>
+<p>兩個看起來很像</p>
+<p>可以理解成 ↓</p>
+<ul>
+<li>同步，程式 發生錯誤就會停止</li>
+<li>異步，程式 發生錯誤還是會繼續，只是會給你一個錯誤的理由</li>
+</ul>
+<blockquote>
+<p>Promise 物件的設計就是針對異步函式的執行結果所設計的，promise 物件最後的結果要不然就用一個回傳值來 fulfilled(實現)，要不然就用一個理由(錯誤)來 rejected(拒絕)。</p>
+</blockquote>
+<p>你可能會認為這種用失敗(或拒絕)或成功的兩分法結果，似乎有點太武斷了，但在許多異步的結構中，的確是用成功或失敗來作為代表，例如 AJAX 的語法結構。promise 物件用實現(解決)與拒絕來作為兩分法的分別字詞。對於有回傳值的情況，沒有什麼太多的考慮空間，必定都是實現狀態，但對於何時才算是拒絕的狀態，這有可能需要仔細考量，例如以下的情況:</p>
+<ul>
+<li><p>好的拒絕狀態應該是:</p>
+<ul>
+<li>I&#x2F;O 操作時發生錯誤，例如讀寫檔案或是網路上的資料時，中途發生例外情況</li>
+<li>無法完成預期的工作，例如accessUsersContacts函式是要讀取手機上的聯絡人名單，因為權限不足而失敗</li>
+<li>內部錯誤導致無法進行異步的程序，例如環境的問題或是程式開發者傳送錯誤的傳入值</li>
+</ul>
+</li>
+<li><p>壞的拒絕狀態例如:</p>
+<ul>
+<li>沒有找到值或是輸出是空白的情況，例如對資料庫查詢，目前沒有找到結果，回傳值是 0。它不應該是個拒絕狀態，而是帶有 0 值的實現。</li>
+<li>詢問類的函式，例如hasPermissionToAccessUsersContacts函式詢問是否有讀取手機上聯絡人名單的權限，當回傳的結果是 false，也就是沒有權限時，應該是一個帶有 false 值的實現。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>不同的想法會導致不同的設計，舉一個明確的實例來說明拒絕狀態的情境設計。</p>
+</blockquote>
+<p><code>jQuery</code> 的<code>ajax()</code>方法，它在<code>失敗</code>時會呼叫<code>fail處理函式</code>，  </p>
+<p>失敗的情況除了網路連線的問題外，它會在雖然伺服器有回應，<br>但是是屬於失敗類型的 HTTP 狀態碼時，也算作是失敗的狀態。</p>
+<p>但另一個可以用於類似功能的 <code>Fetch API</code> 並沒有，fetch使用 Promise 架構，只有在網路連線發生問題才會轉為 rejected(拒絕)狀態，只要是伺服器有回應都算已實現狀態。</p>
+<blockquote>
+<p>註: 在 JavaScript 中函式的設計，必定有回傳值，沒寫只是回傳 undefined，相當於return undefined</p>
+</blockquote>
+<hr>
+<h2 id="Promise-狀態"><a href="#Promise-狀態" class="headerlink" title="Promise 狀態"></a>Promise 狀態</h2><p><code>promise</code>對象僅有<code>三種</code>狀態</p>
+<ul>
+<li><code>pending</code>（進行中）</li>
+<li><code>fulfilled</code>（已成功）</li>
+<li><code>rejected</code>（已失敗）</li>
+</ul>
+<h2 id="Promise-特點"><a href="#Promise-特點" class="headerlink" title="Promise 特點"></a>Promise 特點</h2><ul>
+<li>對象的狀態不受外界影響，只有異步操作的結果，可以決定當前是哪一種狀態</li>
+<li>一旦狀態改變（從<code>pending</code>變為<code>fulfilled</code> 和 從<code>pending</code>變為<code>rejected</code>），<br>就不會再變，任何時候都可以得到這個結果</li>
+</ul>
+<h2 id="Promise-流程"><a href="#Promise-流程" class="headerlink" title="Promise 流程"></a>Promise 流程</h2><p>認真閱讀<code>下圖</code>，我們能夠輕鬆了解promise整個流程</p>
+<p><img src="https://static.vue-js.com/1b02ae90-58a9-11eb-85f6-6fac77c0c9b3.png" alt="promise流程"></p>
+<h2 id="Promise-用法"><a href="#Promise-用法" class="headerlink" title="Promise 用法"></a>Promise 用法</h2><p><code>Promise</code>對像是一個構造函數，用來生成Promise實例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="keyword">function</span>(<span class="params">resolve, reject</span>) &#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Promise-代碼結構"><a href="#Promise-代碼結構" class="headerlink" title="Promise 代碼結構"></a>Promise 代碼結構</h2><ul>
+<li>在通過new創建Promise對象時，我們需要傳入一個回調函數，我們稱之為executor;<ul>
+<li>這個回調函數會被立即執行，並且給傳入另外兩個回調函數resolve、reject;</li>
+<li>當我們調用resolve回調函數時，會執行Promise對象的then方法傳入的回調函數;</li>
+<li>當我們調用reject回調函數時，會執行Promise對象的catch方法傳入的回調函數;</li>
+</ul>
+</li>
+</ul>
+<p>下面Promise使用過程，我們可以將它劃分成<code>三個狀態</code>:</p>
+<ul>
+<li><p>待定(pending): 初始狀態，既沒有被兌現，也沒有被拒絕;</p>
+<ul>
+<li>當執行executor中的代碼時，處於該狀態;</li>
+</ul>
+</li>
+<li><p>已兌現(<code>fulfilled</code>): 意味著操作成功完成;</p>
+<ul>
+<li>執行了resolve時，處於該狀態;</li>
+</ul>
+</li>
+<li><p>已拒絕(<code>rejected</code>): 意味著操作失敗;</p>
+<ul>
+<li>執行了reject時，處於該狀態;</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">待定(<code>pending</code>)</th>
+<th align="center">已兌現(<code>fulfilled</code>)</th>
+<th align="center">已拒絕(<code>rejected</code>)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">初始狀態，既沒有被兌現，也沒有被拒絕</td>
+<td align="center">操作成功完成</td>
+<td align="center">操作失敗</td>
+</tr>
+<tr>
+<td align="center">當執行executor中的代碼時，<br>處於該狀態</td>
+<td align="center">執行了resolve時，<br>處於該狀態</td>
+<td align="center">執行了reject時，<br>處於該狀態</td>
+</tr>
+</tbody></table>
+<p>我們來看一下<code>Promise</code>代碼結構:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// Promise</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">resolve</span>(<span class="string">&quot;success message&quot;</span>)</span><br><span class="line">    <span class="comment">// reject(&quot;failture message&quot;)</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fooPromise = <span class="title function_">foo</span>()</span><br><span class="line"><span class="comment">// then方法傳入的回調函數兩個回掉函數:</span></span><br><span class="line"><span class="comment">// &gt; 第一個, 會在Promise執行resolve函數時, 被回調</span></span><br><span class="line"><span class="comment">// &gt; 第二個, 會在Promise執行reject函數時, 被回調</span></span><br><span class="line"></span><br><span class="line">fooPromise.<span class="title function_">then</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">&#125;, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(err)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//catch方法傳入的回調函數, 會在Promise執行reject函數時, 被回調</span></span><br><span class="line"></span><br><span class="line">fooPromise.<span class="title function_">catch</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 傳入的這個函數, 被稱之為 executor</span></span><br><span class="line"><span class="comment">// &gt; resolve: 回調函數, 在成功時, 回調resolve函數</span></span><br><span class="line"><span class="comment">// &gt; reject: 回調函數, 在失敗時, 回調reject函數</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;promise傳入的函數被執行了&quot;</span>)</span><br><span class="line">   <span class="comment">// resolve()</span></span><br><span class="line">    <span class="title function_">reject</span>()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">promise.<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">promise.<span class="title function_">catch</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Promise重構請求"><a href="#Promise重構請求" class="headerlink" title="Promise重構請求"></a>Promise重構請求</h2><p>那麼有了Promise，我們就可以將之前的代碼進行重構了:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// request.js</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">requestData</span>(<span class="params">url</span>) &#123;</span><br><span class="line">  <span class="comment">// 異步請求的代碼會被放入到executor中</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 模擬網路請求</span></span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 拿到請求的结果</span></span><br><span class="line">      <span class="comment">// url傳入的是yz, 請求成功</span></span><br><span class="line">      <span class="keyword">if</span> (url === <span class="string">&quot;yz&quot;</span>) &#123;</span><br><span class="line">        <span class="comment">// 成功</span></span><br><span class="line">        <span class="keyword">let</span> names = [<span class="string">&quot;abc&quot;</span>, <span class="string">&quot;cba&quot;</span>, <span class="string">&quot;nba&quot;</span>]</span><br><span class="line">        <span class="title function_">resolve</span>(names)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123; <span class="comment">// 否則請求失敗</span></span><br><span class="line">        <span class="comment">// 失敗</span></span><br><span class="line">        <span class="keyword">let</span> errMessage = <span class="string">&quot;請求失敗, url錯誤&quot;</span></span><br><span class="line">        <span class="title function_">reject</span>(errMessage)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;, <span class="number">3000</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">const</span> promise = <span class="title function_">requestData</span>(<span class="string">&quot;coderWhy&quot;</span>)</span><br><span class="line">promise.<span class="title function_">then</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;請求成功:&quot;</span>, res)</span><br><span class="line">&#125;, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;請求失敗:&quot;</span>, err)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>今天先研究到這邊</p>
+<p>明天再來研究<code>實例方法</code></p>
+<hr>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/#docs/promise">Promise 对象</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7109467029241298958">重学ES6-ES12(九)Promise简单介绍</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/getify/You-Dont-Know-JS">You Don’t Know JS: async &amp; performance</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise">MDN-promise</a></li>
+<li><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10197427">JavaScript - Promise (1)</a></li>
+<li><a target="_blank" rel="noopener" href="https://pjchender.dev/javascript/js-promise/">[JS] Promise 的使用</a></li>
+<li><a target="_blank" rel="noopener" href="https://promisesaplus.com/">Promises&#x2F;A+</a><br>-<a target="_blank" rel="noopener" href="https://github.com/eyesofkids/javascript-es6-promise">從 ES6 開始的 JavaScript 學習生活</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>你的支持是我活力的來源  :)</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打賞
+  </button>
+  <div id="qr" style="display: none;">
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>作者： </strong>Cody
+  </li>
+  <li class="post-copyright-link">
+    <strong>文章連結：</strong>
+    <a href="https://supermarpig.github.io/2023/04/24/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%B8%83-Promise/" title="每天一點點，學習ES6-七-Promise">https://supermarpig.github.io/2023/04/24/每天一點點，學習ES6-七-Promise/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+               <a href="/tags/ES6/" rel="tag"> <i class="fa fa-tag"></i> ES6</a>
+               <a href="/tags/ECMAScript-6/" rel="tag"> <i class="fa fa-tag"></i> ECMAScript 6</a>
+               <a href="/tags/JavaScript/" rel="tag"> <i class="fa fa-tag"></i> JavaScript</a>
+               <a href="/tags/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E/" rel="tag"> <i class="fa fa-tag"></i> 每天一點點</a>
+               <a href="/tags/Promise/" rel="tag"> <i class="fa fa-tag"></i> Promise</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/04/21/React-useState-%E4%BF%AE%E6%94%B9-Object-value/" rel="prev" title="React useState 修改 Object value">
+      <i class="fa fa-chevron-left"></i> React useState 修改 Object value
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%95%B0%E6%AD%A5-Callback-%E5%9B%9E%E8%AA%BF"><span class="nav-number">2.</span> <span class="nav-text">異步 Callback(回調)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%95%B0%E6%AD%A5-Function-%E8%88%87-%E5%90%8C%E6%AD%A5-Function"><span class="nav-number">3.</span> <span class="nav-text">異步 Function 與 同步  Function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5-Function"><span class="nav-number">3.1.</span> <span class="nav-text">同步 Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%95%B0%E6%AD%A5-Function"><span class="nav-number">3.2.</span> <span class="nav-text">異步 Function</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise-%E7%8B%80%E6%85%8B"><span class="nav-number">4.</span> <span class="nav-text">Promise 狀態</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise-%E7%89%B9%E9%BB%9E"><span class="nav-number">5.</span> <span class="nav-text">Promise 特點</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise-%E6%B5%81%E7%A8%8B"><span class="nav-number">6.</span> <span class="nav-text">Promise 流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise-%E7%94%A8%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">Promise 用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise-%E4%BB%A3%E7%A2%BC%E7%B5%90%E6%A7%8B"><span class="nav-number">8.</span> <span class="nav-text">Promise 代碼結構</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise%E9%87%8D%E6%A7%8B%E8%AB%8B%E6%B1%82"><span class="nav-number">9.</span> <span class="nav-text">Promise重構請求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">10.</span> <span class="nav-text">References</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Cody"
+      src="https://lh3.googleusercontent.com/a/AGNmyxZRq_Cjg7ZBL-eYF5brt0_ldeyXGV1AxUkCo04h3A=s288">
+  <p class="site-author-name" itemprop="name">Cody</p>
+  <div class="site-description" itemprop="description">日常紀錄</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+<!--google_adsense-->
+
+  <div class="links-of-blogroll-title">
+    <i class="fa fa-google"></i> AdSense
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-8308348781288895"
+        data-ad-slot="9308046558"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
+<!--/google_adsense-->
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">若要轉載文章，麻煩請保留原作者名稱與原始連結。</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="訪客總數">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="總瀏覽次數">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: '32px ',
+  left: 'unset',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://codydidadi.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://supermarpig.github.io/2023/04/24/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%B8%83-Promise/";
+    this.page.identifier = "2023/04/24/每天一點點，學習ES6-七-Promise/";
+    this.page.title = "每天一點點，學習ES6-七-Promise";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://codydidadi.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+  
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+</body>
+</html>
