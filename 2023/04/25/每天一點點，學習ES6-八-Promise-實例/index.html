@@ -36,13 +36,13 @@
 <meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7aff503ab0fa41d3a7c0f21280c817ee~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp">
 <meta property="og:image" content="https://media.tenor.com/uHhB_rq-SC4AAAAC/spongebob-squarepants-dance.gif">
 <meta property="article:published_time" content="2023-04-25T01:12:15.000Z">
-<meta property="article:modified_time" content="2023-04-25T09:41:33.337Z">
+<meta property="article:modified_time" content="2023-04-25T09:52:29.663Z">
 <meta property="article:author" content="Cody">
 <meta property="article:tag" content="ES6">
 <meta property="article:tag" content="ECMAScript 6">
 <meta property="article:tag" content="JavaScript">
-<meta property="article:tag" content="Promise">
 <meta property="article:tag" content="每天一點點">
+<meta property="article:tag" content="Promise">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://media.tenor.com/B5_d8kamVzcAAAAM/aaron-rodgers-smile.gif">
 
@@ -97,8 +97,8 @@
   </style>
 </noscript>
 
-<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><link rel="alternate" href="/atom.xml" title="Cody Di Da Di" type="application/atom+xml">
-</head>
+<link rel="alternate" href="/atom.xml" title="Cody Di Da Di" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -224,7 +224,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2023-04-25 09:12:15 / 修改時間：17:41:33" itemprop="dateCreated datePublished" datetime="2023-04-25T09:12:15+08:00">2023-04-25</time>
+              <time title="創建時間：2023-04-25 09:12:15 / 修改時間：17:52:29" itemprop="dateCreated datePublished" datetime="2023-04-25T09:12:15+08:00">2023-04-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -289,7 +289,7 @@
 <p><img src="https://media.tenor.com/B5_d8kamVzcAAAAM/aaron-rodgers-smile.gif" alt="推眼鏡"></p>
 <span id="more"></span>
 
-<h2 id="Promise-實例"><a href="#Promise-實例" class="headerlink" title="Promise 實例"></a>Promise 實例</h2><p>Promise的 <strong><code>then</code></strong> 、**<code>catch</code><strong>、</strong><code>finally</code>** 方法，</p>
+<h2 id="Promise-實例"><a href="#Promise-實例" class="headerlink" title="Promise 實例"></a>Promise 實例</h2><p>Promise的 <strong><code>then</code></strong> 、 <strong><code>catch</code></strong> 、 <strong><code>finally</code></strong> 方法，</p>
 <p>都屬於<code>Promise</code>的實例方法，都是存放在 <strong><code>Promise</code></strong> 的 <strong><code>prototype</code></strong> 上的</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">getOwnPropertyDescriptors</span>(<span class="title class_">Promise</span>.<span class="property"><span class="keyword">prototype</span></span>))</span><br></pre></td></tr></table></figure>
 
@@ -330,41 +330,8 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">promise</span><br><span class="line">.<span class="title function_">then</span>(<span class="function"><span class="params">result</span> =&gt;</span> &#123;···&#125;)</span><br><span class="line">.<span class="title function_">catch</span>(<span class="function"><span class="params">error</span> =&gt;</span> &#123;···&#125;)</span><br><span class="line">.<span class="title function_">finally</span>(<span class="function">() =&gt;</span> &#123;···&#125;);</span><br></pre></td></tr></table></figure>
 
 <h2 id="Promise-API-也稱構造函數方法"><a href="#Promise-API-也稱構造函數方法" class="headerlink" title="Promise API 也稱構造函數方法"></a>Promise API 也稱構造函數方法</h2><p>總共有以下的方法：</p>
-<table>
-<thead>
-<tr>
-<th align="center">Promise API</th>
-<th align="center"></th>
-<th align="center"></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">all()</td>
-<td align="center"><code>Promise.all()</code>方法用於將多個 Promise實例，包裝成一個新的 Promise實例</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">race()</td>
-<td align="center"><code>Promise.race()</code>方法同樣是將多個Promise 實例，包裝成一個新的Promise 實例</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">allSettled()</td>
-<td align="center"><code>Promise.allSettled()</code>方法接受一組Promise 實例作為參數，包裝成一個新的Promise 實例<br>只有等到所有這些參數實例都返回結果，不管是<code>fulfilled</code>還是<code>rejected</code>，包裝實例才會結束</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">resolve()</td>
-<td align="center"><code>Promise.resolve()</code>將現有對象轉為 Promise對象</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">reject()</td>
-<td align="center"><code>Promise.reject(reason)</code>方法也會返回一個新的Promise 實例，該實例的狀態為rejected</td>
-<td align="center"></td>
-</tr>
-</tbody></table>
-<h3 id="all"><a href="#all" class="headerlink" title="all()"></a>all()</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> p = <span class="title class_">Promise</span>.<span class="title function_">all</span>([p1, p2, p3]);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>| Promise API |  |<br>| :–: | :–: | :–: |<br>|  all() |  <code>Promise.all()</code>方法用於將多個 Promise實例，包裝成一個新的 Promise實例|<br>| race() | <code>Promise.race()</code>方法同樣是將多個Promise 實例，包裝成一個新的Promise 實例  |<br>|   allSettled()|<code>Promise.allSettled()</code>方法接受一組Promise 實例作為參數，包裝成一個新的Promise 實例<br>只有等到所有這些參數實例都返回結果，不管是<code>fulfilled</code>還是<code>rejected</code>，包裝實例才會結束  |<br>| resolve() |  <code>Promise.resolve()</code>將現有對象轉為 Promise對象 |<br>| reject() |  <code>Promise.reject(reason)</code>方法也會返回一個新的Promise 實例，該實例的狀態為rejected |</p>
+<h3 id="all"><a href="#all" class="headerlink" title="all()"></a>all()</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> p = <span class="title class_">Promise</span>.<span class="title function_">all</span>([p1, p2, p3]);</span><br></pre></td></tr></table></figure>
 
 <p>接受一個<code>數組Array</code>（疊代對象）作為參數，數組成員都應為Promise實例</p>
 <p>實例p的狀態由<code>p1</code>、<code>p2</code>、<code>p3</code>決定，分為兩種：</p>
@@ -471,8 +438,8 @@
                <a href="/tags/ES6/" rel="tag"> <i class="fa fa-tag"></i> ES6</a>
                <a href="/tags/ECMAScript-6/" rel="tag"> <i class="fa fa-tag"></i> ECMAScript 6</a>
                <a href="/tags/JavaScript/" rel="tag"> <i class="fa fa-tag"></i> JavaScript</a>
-               <a href="/tags/Promise/" rel="tag"> <i class="fa fa-tag"></i> Promise</a>
                <a href="/tags/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E/" rel="tag"> <i class="fa fa-tag"></i> 每天一點點</a>
+               <a href="/tags/Promise/" rel="tag"> <i class="fa fa-tag"></i> Promise</a>
           </div>
 
         
