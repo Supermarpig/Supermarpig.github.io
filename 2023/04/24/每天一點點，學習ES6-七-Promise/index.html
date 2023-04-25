@@ -25,17 +25,17 @@
     var CONFIG = {"hostname":"supermarpig.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="前言今天來研究 Promise 很多大哥學會 Promise後都覺得不過如此但初次接觸 我完全看不懂啊~~~~~">
+  <meta name="description" content="前言今天來研究 Promise 很多大哥學會 **Promise**後都覺得不過如此但初次接觸 我完全看不懂啊~~~~~">
 <meta property="og:type" content="article">
 <meta property="og:title" content="每天一點點，學習ES6-七-Promise">
 <meta property="og:url" content="https://supermarpig.github.io/2023/04/24/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%B8%83-Promise/index.html">
 <meta property="og:site_name" content="Cody Di Da Di">
-<meta property="og:description" content="前言今天來研究 Promise 很多大哥學會 Promise後都覺得不過如此但初次接觸 我完全看不懂啊~~~~~">
+<meta property="og:description" content="前言今天來研究 Promise 很多大哥學會 **Promise**後都覺得不過如此但初次接觸 我完全看不懂啊~~~~~">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://media.tenor.com/O3boKw1jQG4AAAAM/cute.gif">
 <meta property="og:image" content="https://static.vue-js.com/1b02ae90-58a9-11eb-85f6-6fac77c0c9b3.png">
 <meta property="article:published_time" content="2023-04-24T03:45:59.000Z">
-<meta property="article:modified_time" content="2023-04-24T08:25:00.931Z">
+<meta property="article:modified_time" content="2023-04-25T08:10:41.087Z">
 <meta property="article:author" content="Cody">
 <meta property="article:tag" content="ES6">
 <meta property="article:tag" content="ECMAScript 6">
@@ -221,10 +221,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2023-04-24 11:45:59 / 修改時間：16:25:00" itemprop="dateCreated datePublished" datetime="2023-04-24T11:45:59+08:00">2023-04-24</time>
+              <time title="創建時間：2023-04-24 11:45:59" itemprop="dateCreated datePublished" datetime="2023-04-24T11:45:59+08:00">2023-04-24</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2023-04-25 16:10:41" itemprop="dateModified" datetime="2023-04-25T16:10:41+08:00">2023-04-25</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -284,7 +290,7 @@
 
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天來研究 Promise</p>
-<p>很多大哥學會 <strong>Promise</strong>後都覺得不過如此<br>但初次接觸 我完全看不懂啊~~~~~</p>
+<p>很多大哥學會 **<code>Promise</code>**後都覺得不過如此<br>但初次接觸 我完全看不懂啊~~~~~</p>
 <p><img src="https://media.tenor.com/O3boKw1jQG4AAAAM/cute.gif" alt="懊惱"></p>
 <span id="more"></span>
 
@@ -305,7 +311,7 @@
 <p>以初學者來說，從規則來理解它的運作方式，會是比較容易進入的學習路徑。</p>
 </blockquote>
 <hr>
-<p>說道**<code>Promise</code>**前要先了解 異步 Callback(回調)</p>
+<p>說道 <strong><code>Promise</code></strong> 前要先了解 異步 Callback(回調)</p>
 <h2 id="異步-Callback-回調"><a href="#異步-Callback-回調" class="headerlink" title="異步 Callback(回調)"></a>異步 Callback(回調)</h2><blockquote>
 <p>Promise 中的所有回調函式，都是異步執行的</p>
 </blockquote>
@@ -494,7 +500,10 @@
     <a href="/2023/04/21/React-useState-%E4%BF%AE%E6%94%B9-Object-value/" rel="prev" title="React useState 修改 Object value">
       <i class="fa fa-chevron-left"></i> React useState 修改 Object value
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2023/04/25/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E5%85%AB-Promise-%E5%AF%A6%E4%BE%8B/" rel="next" title="每天一點點，學習ES6-八-Promise 實例">
+      每天一點點，學習ES6-八-Promise 實例 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -576,7 +585,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
