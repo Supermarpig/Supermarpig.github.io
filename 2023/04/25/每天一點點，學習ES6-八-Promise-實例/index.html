@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7aff503ab0fa41d3a7c0f21280c817ee~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp">
 <meta property="og:image" content="https://media.tenor.com/uHhB_rq-SC4AAAAC/spongebob-squarepants-dance.gif">
 <meta property="article:published_time" content="2023-04-25T01:12:15.000Z">
-<meta property="article:modified_time" content="2023-04-25T09:52:29.663Z">
+<meta property="article:modified_time" content="2023-04-25T09:55:02.433Z">
 <meta property="article:author" content="Cody">
 <meta property="article:tag" content="ES6">
 <meta property="article:tag" content="ECMAScript 6">
@@ -224,7 +224,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2023-04-25 09:12:15 / 修改時間：17:52:29" itemprop="dateCreated datePublished" datetime="2023-04-25T09:12:15+08:00">2023-04-25</time>
+              <time title="創建時間：2023-04-25 09:12:15 / 修改時間：17:55:02" itemprop="dateCreated datePublished" datetime="2023-04-25T09:12:15+08:00">2023-04-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -330,7 +330,34 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">promise</span><br><span class="line">.<span class="title function_">then</span>(<span class="function"><span class="params">result</span> =&gt;</span> &#123;···&#125;)</span><br><span class="line">.<span class="title function_">catch</span>(<span class="function"><span class="params">error</span> =&gt;</span> &#123;···&#125;)</span><br><span class="line">.<span class="title function_">finally</span>(<span class="function">() =&gt;</span> &#123;···&#125;);</span><br></pre></td></tr></table></figure>
 
 <h2 id="Promise-API-也稱構造函數方法"><a href="#Promise-API-也稱構造函數方法" class="headerlink" title="Promise API 也稱構造函數方法"></a>Promise API 也稱構造函數方法</h2><p>總共有以下的方法：</p>
-<p>| Promise API |  |<br>| :–: | :–: | :–: |<br>|  all() |  <code>Promise.all()</code>方法用於將多個 Promise實例，包裝成一個新的 Promise實例|<br>| race() | <code>Promise.race()</code>方法同樣是將多個Promise 實例，包裝成一個新的Promise 實例  |<br>|   allSettled()|<code>Promise.allSettled()</code>方法接受一組Promise 實例作為參數，包裝成一個新的Promise 實例<br>只有等到所有這些參數實例都返回結果，不管是<code>fulfilled</code>還是<code>rejected</code>，包裝實例才會結束  |<br>| resolve() |  <code>Promise.resolve()</code>將現有對象轉為 Promise對象 |<br>| reject() |  <code>Promise.reject(reason)</code>方法也會返回一個新的Promise 實例，該實例的狀態為rejected |</p>
+<table>
+<thead>
+<tr>
+<th align="center">Promise API</th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">all()</td>
+<td align="center"><code>Promise.all()</code>方法用於將多個 Promise實例，包裝成一個新的 Promise實例</td>
+</tr>
+<tr>
+<td align="center">race()</td>
+<td align="center"><code>Promise.race()</code>方法同樣是將多個Promise 實例，包裝成一個新的Promise 實例</td>
+</tr>
+<tr>
+<td align="center">allSettled()</td>
+<td align="center"><code>Promise.allSettled()</code>方法接受一組Promise 實例作為參數，包裝成一個新的Promise 實例<br>只有等到所有這些參數實例都返回結果，不管是<code>fulfilled</code>還是<code>rejected</code>，包裝實例才會結束</td>
+</tr>
+<tr>
+<td align="center">resolve()</td>
+<td align="center"><code>Promise.resolve()</code>將現有對象轉為 Promise對象</td>
+</tr>
+<tr>
+<td align="center">reject()</td>
+<td align="center"><code>Promise.reject(reason)</code>方法也會返回一個新的Promise 實例，該實例的狀態為rejected</td>
+</tr>
+</tbody></table>
 <h3 id="all"><a href="#all" class="headerlink" title="all()"></a>all()</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> p = <span class="title class_">Promise</span>.<span class="title function_">all</span>([p1, p2, p3]);</span><br></pre></td></tr></table></figure>
 
 <p>接受一個<code>數組Array</code>（疊代對象）作為參數，數組成員都應為Promise實例</p>
