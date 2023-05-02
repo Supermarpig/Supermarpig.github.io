@@ -6,7 +6,7 @@
   <link href="https://supermarpig.github.io/atom.xml" rel="self"/>
   
   <link href="https://supermarpig.github.io/"/>
-  <updated>2023-04-28T09:33:10.539Z</updated>
+  <updated>2023-05-02T09:44:11.703Z</updated>
   <id>https://supermarpig.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://supermarpig.github.io/2023/04/28/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%B9%9D-Generators/"/>
     <id>https://supermarpig.github.io/2023/04/28/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%B9%9D-Generators/</id>
     <published>2023-04-28T06:58:49.000Z</published>
-    <updated>2023-04-28T09:33:10.539Z</updated>
+    <updated>2023-05-02T09:44:11.703Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>學會了異步 <code>promise</code> 來來研究<code>Generators</code></p><p><img src="https://media.tenor.com/CiJuhjUFaeIAAAAC/gojo-satoru-jujutsu-kaisen.gif" alt="雀躍"></p><span id="more"></span><p>待新增…</p><p>學不會中…</p><p>QQ</p><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul><li><a href="https://javascript.info/generators">Generators</a></li><li><a href="https://es6.ruanyifeng.com/#docs/generator-async">Generator 函数的异步应用</a></li><li><a href="https://pjchender.dev/javascript/js-generator/">[JS] JavaScript Generator 的使用</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>學會了異步 <code>promise</code> 來來研究<code>Generators</code></p><p><img src="https://media.tenor.com/CiJuhjUFaeIAAAAC/gojo-satoru-jujutsu-kaisen.gif" alt="雀躍"></p><span id="more"></span><hr><h2 id="傳統方法"><a href="#傳統方法" class="headerlink" title="傳統方法"></a>傳統方法</h2><p>ES6 誕生以前，不同步驟的方法，大致有下面四種。</p><ul><li>回調函數</li><li>事件監聽</li><li>發布&#x2F;訂閱</li><li>承諾對象<br>Generator 函數將 JavaScript 異步編程帶入了一個全新的階段。</li></ul><h2 id="回調函數"><a href="#回調函數" class="headerlink" title="回調函數"></a>回調函數</h2><p>就是大家所稱的 <code>CallBack</code></p><blockquote><p>JavaScript 對異常編寫程序的實際發現，就是回調函數。</p></blockquote><p>所稱回調函數，就是把任務的第二段單獨寫在一個函數裡，等到重新執行進行這個任務的時候，就直接調用這個函數。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fs.<span class="title function_">readFile</span>(<span class="string">&#x27;/etc/passwd&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>, <span class="keyword">function</span> (<span class="params">err, data</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(data);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><hr><p>待新增…</p><p>學不會中…</p><p>QQ</p><hr><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul><li><a href="https://javascript.info/generators">Generators</a></li><li><a href="https://es6.ruanyifeng.com/#docs/generator-async">Generator 函数的异步应用</a></li><li><a href="https://pjchender.dev/javascript/js-generator/">[JS] JavaScript Generator 的使用</a></li></ul>]]></content>
     
     
     <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;學會了異步 &lt;code&gt;promise&lt;/code&gt; 來來研究&lt;code&gt;Generators&lt;/code&gt;&lt;/p&gt;
