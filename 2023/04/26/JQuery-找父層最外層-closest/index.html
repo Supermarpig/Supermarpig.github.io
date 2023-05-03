@@ -244,20 +244,6 @@
               <span class="post-meta-item-text">閱讀次數：</span>
               <span id="busuanzi_value_page_pv"></span>
             </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2023/04/26/JQuery-%E6%89%BE%E7%88%B6%E5%B1%A4%E6%9C%80%E5%A4%96%E5%B1%A4-closest/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/04/26/JQuery-找父層最外層-closest/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
             <span class="post-meta-item" title="文章字數">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
@@ -364,13 +350,22 @@
 
           </div>
           
-    
-  <div class="comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
-    </div>
-  </div>
-  
+
+<div>
+    <section id="comments" class="comments">
+      <style>
+        .utterances{max-width: 100%;}
+      </style>
+        <script src="https://utteranc.es/client.js"
+        repo="Supermarpig/utterancesRepo"
+        issue-term="title"
+        theme="github-light"
+        label="💬"
+        crossorigin="anonymous"
+        async>
+  </script>
+  </section>
+</div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -588,37 +583,6 @@ var options = {
 const darkmode = new Darkmode(options);
 window.darkmode = darkmode;
 darkmode.showWidget();
-</script>
-
-<script>
-  function loadCount() {
-    var d = document, s = d.createElement('script');
-    s.src = 'https://codydidadi.disqus.com/count.js';
-    s.id = 'dsq-count-scr';
-    (d.head || d.body).appendChild(s);
-  }
-  // defer loading until the whole page loading is completed
-  window.addEventListener('load', loadCount, false);
-</script>
-<script>
-  var disqus_config = function() {
-    this.page.url = "https://supermarpig.github.io/2023/04/26/JQuery-%E6%89%BE%E7%88%B6%E5%B1%A4%E6%9C%80%E5%A4%96%E5%B1%A4-closest/";
-    this.page.identifier = "2023/04/26/JQuery-找父層最外層-closest/";
-    this.page.title = "JQuery 找父層最外層 closest";
-    };
-  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
-    if (window.DISQUS) {
-      DISQUS.reset({
-        reload: true,
-        config: disqus_config
-      });
-    } else {
-      var d = document, s = d.createElement('script');
-      s.src = 'https://codydidadi.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', '' + +new Date());
-      (d.head || d.body).appendChild(s);
-    }
-  });
 </script>
 
   
