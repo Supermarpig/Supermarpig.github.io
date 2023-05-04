@@ -25,23 +25,23 @@
     var CONFIG = {"hostname":"supermarpig.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="前言警告不影響使用 ，但影響美觀">
+  <meta name="description" content="前言紀錄一下 在web端 使用input的狀況下 遇到的問題">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React 警告 Invalid DOM property for">
-<meta property="og:url" content="https://supermarpig.github.io/2023/04/17/React-%E8%AD%A6%E5%91%8A-Invalid-DOM-property-for/index.html">
+<meta property="og:title" content="Input Focus 踩坑紀錄">
+<meta property="og:url" content="https://supermarpig.github.io/2023/05/04/Input-Focus-%E8%B8%A9%E5%9D%91%E7%B4%80%E9%8C%84/index.html">
 <meta property="og:site_name" content="Cody Di Da Di">
-<meta property="og:description" content="前言警告不影響使用 ，但影響美觀">
+<meta property="og:description" content="前言紀錄一下 在web端 使用input的狀況下 遇到的問題">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://www.jiyik.com/uploads/220621/I_2022062122313268a1fe.png">
-<meta property="article:published_time" content="2023-04-17T02:38:11.000Z">
-<meta property="article:modified_time" content="2023-04-17T02:53:08.527Z">
+<meta property="article:published_time" content="2023-05-04T08:16:47.000Z">
+<meta property="article:modified_time" content="2023-05-04T08:43:09.911Z">
 <meta property="article:author" content="Cody">
-<meta property="article:tag" content="React">
-<meta property="article:tag" content="開發筆記">
+<meta property="article:tag" content="input">
+<meta property="article:tag" content="focus">
+<meta property="article:tag" content="JS">
+<meta property="article:tag" content="語法糖">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.jiyik.com/uploads/220621/I_2022062122313268a1fe.png">
 
-<link rel="canonical" href="https://supermarpig.github.io/2023/04/17/React-%E8%AD%A6%E5%91%8A-Invalid-DOM-property-for/">
+<link rel="canonical" href="https://supermarpig.github.io/2023/05/04/Input-Focus-%E8%B8%A9%E5%9D%91%E7%B4%80%E9%8C%84/">
 
 
 <script id="page-configurations">
@@ -57,7 +57,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8308348781288895"
      crossorigin="anonymous"></script>
 
-  <title>React 警告 Invalid DOM property for | Cody Di Da Di - 搭拉拉拉搭搭搭</title>
+  <title>Input Focus 踩坑紀錄 | Cody Di Da Di - 搭拉拉拉搭搭搭</title>
   
 
 
@@ -190,7 +190,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://supermarpig.github.io/2023/04/17/React-%E8%AD%A6%E5%91%8A-Invalid-DOM-property-for/">
+    <link itemprop="mainEntityOfPage" href="https://supermarpig.github.io/2023/05/04/Input-Focus-%E8%B8%A9%E5%9D%91%E7%B4%80%E9%8C%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://lh3.googleusercontent.com/a/AGNmyxZRq_Cjg7ZBL-eYF5brt0_ldeyXGV1AxUkCo04h3A=s288">
@@ -203,7 +203,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          React 警告 Invalid DOM property for
+          Input Focus 踩坑紀錄
         </h1>
 
         <div class="post-meta">
@@ -214,7 +214,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2023-04-17 10:38:11 / 修改時間：10:53:08" itemprop="dateCreated datePublished" datetime="2023-04-17T10:38:11+08:00">2023-04-17</time>
+              <time title="創建時間：2023-05-04 16:16:47 / 修改時間：16:43:09" itemprop="dateCreated datePublished" datetime="2023-05-04T16:16:47+08:00">2023-05-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -242,7 +242,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>676</span>
+              <span>1.3k</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
@@ -260,24 +260,37 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>警告不影響使用 ，但影響美觀</p>
-<span id="more"></span>
-
-<p><img src="https://www.jiyik.com/uploads/220621/I_2022062122313268a1fe.png" alt="Invalid"></p>
-<p>來看看是哪兒出問題</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ⛔️ Warning: Invalid DOM property `for`. Did you mean `htmlFor`?</span></span><br><span class="line">      &lt;input type=<span class="string">&quot;checkbox&quot;</span> id=<span class="string">&quot;menu&quot;</span>&gt;&lt;/input&gt;</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;menu&quot;</span> <span class="attr">className</span>=<span class="string">&quot;line&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;menu&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-<p>問題是使用 for 屬性將label標籤與input綁定，<br>但 for 是 JavaScript 中的保留字。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h2 id="紀錄一下-在web端-使用input的狀況下-遇到的問題"><a href="#紀錄一下-在web端-使用input的狀況下-遇到的問題" class="headerlink" title="紀錄一下 在web端 使用input的狀況下 遇到的問題"></a>紀錄一下 在web端 使用input的狀況下 遇到的問題<br><span id="more"></span></h2><h2 id="Ios-input-focus-頁面會放大"><a href="#Ios-input-focus-頁面會放大" class="headerlink" title="Ios input focus 頁面會放大"></a>Ios input focus 頁面會放大</h2><p>ios在手機瀏覽時，點擊<code>input</code>時，螢幕會自動<code>放大</code>，造成頁面可以左右滑動的問題。</p>
 <blockquote>
-<p>在React 中需要更換成 htmlFor 而不是for</p>
+<p><code>textarea</code>框好像也會有這方面的問題</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">&quot;checkbox&quot;</span> id=<span class="string">&quot;menu&quot;</span>&gt;&lt;/input&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">label</span> <span class="attr">htmlFor</span>=<span class="string">&quot;menu&quot;</span> <span class="attr">className</span>=<span class="string">&quot;line&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;menu&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>在網路上找到很多原因，但好像也沒有比較有關連性的<br>比較有建設性的說法</p>
+<blockquote>
+<p>蘋果覺得點擊輸入框放大是一個“很好”的體驗，就擅自把頁面給放大了</p>
+</blockquote>
+<h3 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h3><p>試了很多種，以下方法符合我的使用狀況  ↓</p>
+<p>發現在 <code>font-size</code> &lt; <code>16px</code> 時， safari 會幫你放大</p>
+<p>所以只要將 點擊input後顯示的畫面內容 的<code>font-size</code> 更改為16px 即可。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//input</span></span><br><span class="line">font-<span class="attr">size</span>:16px;</span><br></pre></td></tr></table></figure>
 
-<p>我們必須在React 中使用 htmlFor 的原因是因為 for 關鍵字是一個保留字- 它用於for 循環。</p>
-<p>這也是使用 className 屬性而不是 class 的原因。<br>class這個詞是保留的，因為它被用來聲明一個ES6 類。</p>
+<hr>
+<h2 id="input-點擊時-，跳出一層Div-來輸入時，-還是可以滑動底層的scroll"><a href="#input-點擊時-，跳出一層Div-來輸入時，-還是可以滑動底層的scroll" class="headerlink" title="input 點擊時 ，跳出一層Div 來輸入時， 還是可以滑動底層的scroll"></a>input 點擊時 ，跳出一層Div 來輸入時， 還是可以滑動底層的scroll</h2><h3 id="情境說明"><a href="#情境說明" class="headerlink" title="情境說明"></a>情境說明</h3><p>在表單選項中，有一個<code>input</code> 點擊時，會跳出一時，會跳出一<code>Div</code>裡面有地址選項給user點擊，<br>但發現跳出來時，可以滑動前面畫面的Scroll Y軸 影響使用體驗!!</p>
+<h3 id="解決方式"><a href="#解決方式" class="headerlink" title="解決方式"></a>解決方式</h3><p>在CSS 設定一個<code>position</code>選項</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.hidden</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: fixed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然後在JS 中 新增下列兩個function</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> topNum;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">onShow</span>(<span class="params"></span>)&#123;</span><br><span class="line">    topNum = $(<span class="string">&quot;body&quot;</span>).<span class="title function_">scrollTop</span>()</span><br><span class="line">    $(<span class="string">&quot;body&quot;</span>).<span class="title function_">addClass</span>(<span class="string">&quot;hidden&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">onHide</span>(<span class="params"></span>)&#123;</span><br><span class="line">    $(<span class="string">&quot;body&quot;</span>).<span class="title function_">removeClass</span>(<span class="string">&quot;hidden&quot;</span>)</span><br><span class="line">    $(<span class="string">&quot;body&quot;</span>).<span class="title function_">scrollTop</span>(topNum)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然後新增一個監聽事件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;.inputBTN&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">        <span class="comment">//loading 點點開啟</span></span><br><span class="line">        $(<span class="string">&quot;.loading-flex&quot;</span>).<span class="title function_">show</span>();</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            $(<span class="string">&quot;#writeBTN&quot;</span>).<span class="title function_">trigger</span>(<span class="string">&#x27;focus&#x27;</span>);</span><br><span class="line">            <span class="title function_">onShow</span>();                            <span class="comment">//&lt;----------------------開啟   加在這裡</span></span><br><span class="line">            <span class="comment">//把 loading的點點點關掉</span></span><br><span class="line">            $(<span class="string">&quot;.loading-flex&quot;</span>).<span class="title function_">hide</span>();</span><br><span class="line">        &#125;, <span class="number">1000</span>)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$(<span class="string">&quot;.close-btn&quot;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="title function_">onHide</span>();                            <span class="comment">//&lt;----------------------關閉    加在這裡</span></span><br><span class="line">        &#125;, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>以上是最近<code>input</code>  點擊事件有遇到的紀錄</p>
+<p>如有錯誤再麻煩跟我分享</p>
 <hr>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.jiyik.com/tm/xwzj/web_1243.html">Invalid DOM</a></li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1546543">input聚焦時頁面放大的解決</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.astralweb.com.tw/stop-zoom-in-on-input-focus-on-mobile-devices/">在行動裝置上避免點擊輸入框時畫面放大</a></li>
+<li><a target="_blank" rel="noopener" href="https://hackmd.io/@eating-coding/fe-note/https%3A%2F%2Fhackmd.io%2F%40eating-coding%2FB1_4ogB8K">iOS input&#x2F;textarea focus時頁面放大</a></li>
 </ul>
 
     </div>
@@ -304,7 +317,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>文章連結：</strong>
-    <a href="https://supermarpig.github.io/2023/04/17/React-%E8%AD%A6%E5%91%8A-Invalid-DOM-property-for/" title="React 警告 Invalid DOM property for">https://supermarpig.github.io/2023/04/17/React-警告-Invalid-DOM-property-for/</a>
+    <a href="https://supermarpig.github.io/2023/05/04/Input-Focus-%E8%B8%A9%E5%9D%91%E7%B4%80%E9%8C%84/" title="Input Focus 踩坑紀錄">https://supermarpig.github.io/2023/05/04/Input-Focus-踩坑紀錄/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
@@ -315,8 +328,10 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-               <a href="/tags/React/" rel="tag"> <i class="fa fa-tag"></i> React</a>
-               <a href="/tags/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/" rel="tag"> <i class="fa fa-tag"></i> 開發筆記</a>
+               <a href="/tags/input/" rel="tag"> <i class="fa fa-tag"></i> input</a>
+               <a href="/tags/focus/" rel="tag"> <i class="fa fa-tag"></i> focus</a>
+               <a href="/tags/JS/" rel="tag"> <i class="fa fa-tag"></i> JS</a>
+               <a href="/tags/%E8%AA%9E%E6%B3%95%E7%B3%96/" rel="tag"> <i class="fa fa-tag"></i> 語法糖</a>
           </div>
 
         
@@ -325,13 +340,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/04/17/%E5%B0%91%E7%94%A8vw%E4%BE%86%E6%8E%A7%E5%88%B6%E5%AD%97%E9%AB%94%E5%A4%A7%E5%B0%8F/" rel="prev" title="少用vw來控制字體大小">
-      <i class="fa fa-chevron-left"></i> 少用vw來控制字體大小
+    <a href="/2023/04/28/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%B9%9D-Generators/" rel="prev" title="每天一點點，學習ES6-九-Generators">
+      <i class="fa fa-chevron-left"></i> 每天一點點，學習ES6-九-Generators
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2023/04/17/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%BA%94-%E6%95%B8%E6%93%9A%E7%B5%90%E6%A7%8BSymbol/" rel="next" title="每天一點點，學習ES6(五)數據結構Symbol">
-      每天一點點，學習ES6(五)數據結構Symbol <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -406,7 +418,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%80%E9%8C%84%E4%B8%80%E4%B8%8B-%E5%9C%A8web%E7%AB%AF-%E4%BD%BF%E7%94%A8input%E7%9A%84%E7%8B%80%E6%B3%81%E4%B8%8B-%E9%81%87%E5%88%B0%E7%9A%84%E5%95%8F%E9%A1%8C"><span class="nav-number">2.</span> <span class="nav-text">紀錄一下 在web端 使用input的狀況下 遇到的問題</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ios-input-focus-%E9%A0%81%E9%9D%A2%E6%9C%83%E6%94%BE%E5%A4%A7"><span class="nav-number">3.</span> <span class="nav-text">Ios input focus 頁面會放大</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B1%BA%E6%96%B9%E6%B3%95"><span class="nav-number">3.1.</span> <span class="nav-text">解決方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#input-%E9%BB%9E%E6%93%8A%E6%99%82-%EF%BC%8C%E8%B7%B3%E5%87%BA%E4%B8%80%E5%B1%A4Div-%E4%BE%86%E8%BC%B8%E5%85%A5%E6%99%82%EF%BC%8C-%E9%82%84%E6%98%AF%E5%8F%AF%E4%BB%A5%E6%BB%91%E5%8B%95%E5%BA%95%E5%B1%A4%E7%9A%84scroll"><span class="nav-number">4.</span> <span class="nav-text">input 點擊時 ，跳出一層Div 來輸入時， 還是可以滑動底層的scroll</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%83%85%E5%A2%83%E8%AA%AA%E6%98%8E"><span class="nav-number">4.1.</span> <span class="nav-text">情境說明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B1%BA%E6%96%B9%E5%BC%8F"><span class="nav-number">4.2.</span> <span class="nav-text">解決方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

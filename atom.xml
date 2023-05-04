@@ -6,7 +6,7 @@
   <link href="https://supermarpig.github.io/atom.xml" rel="self"/>
   
   <link href="https://supermarpig.github.io/"/>
-  <updated>2023-05-03T02:44:07.394Z</updated>
+  <updated>2023-05-04T08:43:09.911Z</updated>
   <id>https://supermarpig.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Input Focus 踩坑紀錄</title>
+    <link href="https://supermarpig.github.io/2023/05/04/Input-Focus-%E8%B8%A9%E5%9D%91%E7%B4%80%E9%8C%84/"/>
+    <id>https://supermarpig.github.io/2023/05/04/Input-Focus-%E8%B8%A9%E5%9D%91%E7%B4%80%E9%8C%84/</id>
+    <published>2023-05-04T08:16:47.000Z</published>
+    <updated>2023-05-04T08:43:09.911Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h2 id="紀錄一下-在web端-使用input的狀況下-遇到的問題"><a href="#紀錄一下-在web端-使用input的狀況下-遇到的問題" class="headerlink" title="紀錄一下 在web端 使用input的狀況下 遇到的問題"></a>紀錄一下 在web端 使用input的狀況下 遇到的問題<br><span id="more"></span></h2><h2 id="Ios-input-focus-頁面會放大"><a href="#Ios-input-focus-頁面會放大" class="headerlink" title="Ios input focus 頁面會放大"></a>Ios input focus 頁面會放大</h2><p>ios在手機瀏覽時，點擊<code>input</code>時，螢幕會自動<code>放大</code>，造成頁面可以左右滑動的問題。</p><blockquote><p><code>textarea</code>框好像也會有這方面的問題</p></blockquote><p>在網路上找到很多原因，但好像也沒有比較有關連性的<br>比較有建設性的說法</p><blockquote><p>蘋果覺得點擊輸入框放大是一個“很好”的體驗，就擅自把頁面給放大了</p></blockquote><h3 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h3><p>試了很多種，以下方法符合我的使用狀況  ↓</p><p>發現在 <code>font-size</code> &lt; <code>16px</code> 時， safari 會幫你放大</p><p>所以只要將 點擊input後顯示的畫面內容 的<code>font-size</code> 更改為16px 即可。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//input</span></span><br><span class="line">font-<span class="attr">size</span>:16px;</span><br></pre></td></tr></table></figure><hr><h2 id="input-點擊時-，跳出一層Div-來輸入時，-還是可以滑動底層的scroll"><a href="#input-點擊時-，跳出一層Div-來輸入時，-還是可以滑動底層的scroll" class="headerlink" title="input 點擊時 ，跳出一層Div 來輸入時， 還是可以滑動底層的scroll"></a>input 點擊時 ，跳出一層Div 來輸入時， 還是可以滑動底層的scroll</h2><h3 id="情境說明"><a href="#情境說明" class="headerlink" title="情境說明"></a>情境說明</h3><p>在表單選項中，有一個<code>input</code> 點擊時，會跳出一時，會跳出一<code>Div</code>裡面有地址選項給user點擊，<br>但發現跳出來時，可以滑動前面畫面的Scroll Y軸 影響使用體驗!!</p><h3 id="解決方式"><a href="#解決方式" class="headerlink" title="解決方式"></a>解決方式</h3><p>在CSS 設定一個<code>position</code>選項</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.hidden</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: fixed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>然後在JS 中 新增下列兩個function</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> topNum;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">onShow</span>(<span class="params"></span>)&#123;</span><br><span class="line">    topNum = $(<span class="string">&quot;body&quot;</span>).<span class="title function_">scrollTop</span>()</span><br><span class="line">    $(<span class="string">&quot;body&quot;</span>).<span class="title function_">addClass</span>(<span class="string">&quot;hidden&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">onHide</span>(<span class="params"></span>)&#123;</span><br><span class="line">    $(<span class="string">&quot;body&quot;</span>).<span class="title function_">removeClass</span>(<span class="string">&quot;hidden&quot;</span>)</span><br><span class="line">    $(<span class="string">&quot;body&quot;</span>).<span class="title function_">scrollTop</span>(topNum)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>然後新增一個監聽事件</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;.inputBTN&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">        <span class="comment">//loading 點點開啟</span></span><br><span class="line">        $(<span class="string">&quot;.loading-flex&quot;</span>).<span class="title function_">show</span>();</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            $(<span class="string">&quot;#writeBTN&quot;</span>).<span class="title function_">trigger</span>(<span class="string">&#x27;focus&#x27;</span>);</span><br><span class="line">            <span class="title function_">onShow</span>();                            <span class="comment">//&lt;----------------------開啟   加在這裡</span></span><br><span class="line">            <span class="comment">//把 loading的點點點關掉</span></span><br><span class="line">            $(<span class="string">&quot;.loading-flex&quot;</span>).<span class="title function_">hide</span>();</span><br><span class="line">        &#125;, <span class="number">1000</span>)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$(<span class="string">&quot;.close-btn&quot;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="title function_">onHide</span>();                            <span class="comment">//&lt;----------------------關閉    加在這裡</span></span><br><span class="line">        &#125;, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>以上是最近<code>input</code>  點擊事件有遇到的紀錄</p><p>如有錯誤再麻煩跟我分享</p><hr><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul><li><a href="https://cloud.tencent.com/developer/article/1546543">input聚焦時頁面放大的解決</a></li><li><a href="https://www.astralweb.com.tw/stop-zoom-in-on-input-focus-on-mobile-devices/">在行動裝置上避免點擊輸入框時畫面放大</a></li><li><a href="https://hackmd.io/@eating-coding/fe-note/https%3A%2F%2Fhackmd.io%2F%40eating-coding%2FB1_4ogB8K">iOS input&#x2F;textarea focus時頁面放大</a></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;h2 id=&quot;紀錄一下-在web端-使用input的狀況下-遇到的問題&quot;&gt;&lt;a href=&quot;#紀錄一下-在web端-使用input的狀況下-遇到的問題&quot; class=&quot;headerlink&quot; title=&quot;紀錄一下 在web端 使用input的狀況下 遇到的問題&quot;&gt;&lt;/a&gt;紀錄一下 在web端 使用input的狀況下 遇到的問題&lt;br&gt;</summary>
+    
+    
+    
+    <category term="學習筆記" scheme="https://supermarpig.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/"/>
+    
+    <category term="web前端" scheme="https://supermarpig.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="input" scheme="https://supermarpig.github.io/tags/input/"/>
+    
+    <category term="focus" scheme="https://supermarpig.github.io/tags/focus/"/>
+    
+    <category term="JS" scheme="https://supermarpig.github.io/tags/JS/"/>
+    
+    <category term="語法糖" scheme="https://supermarpig.github.io/tags/%E8%AA%9E%E6%B3%95%E7%B3%96/"/>
+    
+  </entry>
   
   <entry>
     <title>每天一點點，學習ES6-九-Generators</title>
@@ -100,9 +129,9 @@
     
     <category term="JavaScript" scheme="https://supermarpig.github.io/tags/JavaScript/"/>
     
-    <category term="Promise" scheme="https://supermarpig.github.io/tags/Promise/"/>
-    
     <category term="每天一點點" scheme="https://supermarpig.github.io/tags/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E/"/>
+    
+    <category term="Promise" scheme="https://supermarpig.github.io/tags/Promise/"/>
     
   </entry>
   
@@ -133,9 +162,9 @@
     
     <category term="JavaScript" scheme="https://supermarpig.github.io/tags/JavaScript/"/>
     
-    <category term="Promise" scheme="https://supermarpig.github.io/tags/Promise/"/>
-    
     <category term="每天一點點" scheme="https://supermarpig.github.io/tags/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E/"/>
+    
+    <category term="Promise" scheme="https://supermarpig.github.io/tags/Promise/"/>
     
   </entry>
   
@@ -185,9 +214,9 @@
     
     <category term="JS" scheme="https://supermarpig.github.io/tags/JS/"/>
     
-    <category term="implicit coercion" scheme="https://supermarpig.github.io/tags/implicit-coercion/"/>
-    
     <category term="語法糖" scheme="https://supermarpig.github.io/tags/%E8%AA%9E%E6%B3%95%E7%B3%96/"/>
+    
+    <category term="implicit coercion" scheme="https://supermarpig.github.io/tags/implicit-coercion/"/>
     
   </entry>
   
@@ -270,9 +299,9 @@
     <category term="web前端" scheme="https://supermarpig.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/web%E5%89%8D%E7%AB%AF/"/>
     
     
-    <category term="開發筆記" scheme="https://supermarpig.github.io/tags/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/"/>
-    
     <category term="React" scheme="https://supermarpig.github.io/tags/React/"/>
+    
+    <category term="開發筆記" scheme="https://supermarpig.github.io/tags/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/"/>
     
   </entry>
   
