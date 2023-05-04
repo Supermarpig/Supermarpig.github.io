@@ -25,20 +25,20 @@
     var CONFIG = {"hostname":"supermarpig.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="前言紀錄一下 在web端 使用input的狀況下 遇到的問題">
+  <meta name="description" content="前言紀錄一下 在手機上 使用input的狀況下 遇到的問題">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Input Focus 踩坑紀錄">
 <meta property="og:url" content="https://supermarpig.github.io/2023/05/04/Input-Focus-%E8%B8%A9%E5%9D%91%E7%B4%80%E9%8C%84/index.html">
 <meta property="og:site_name" content="Cody Di Da Di">
-<meta property="og:description" content="前言紀錄一下 在web端 使用input的狀況下 遇到的問題">
+<meta property="og:description" content="前言紀錄一下 在手機上 使用input的狀況下 遇到的問題">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2023-05-04T08:16:47.000Z">
-<meta property="article:modified_time" content="2023-05-04T08:43:09.911Z">
+<meta property="article:modified_time" content="2023-05-04T08:50:06.426Z">
 <meta property="article:author" content="Cody">
 <meta property="article:tag" content="input">
 <meta property="article:tag" content="focus">
 <meta property="article:tag" content="JS">
-<meta property="article:tag" content="語法糖">
+<meta property="article:tag" content="IOS">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://supermarpig.github.io/2023/05/04/Input-Focus-%E8%B8%A9%E5%9D%91%E7%B4%80%E9%8C%84/">
@@ -92,8 +92,8 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/atom.xml" title="Cody Di Da Di" type="application/atom+xml">
-<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><link rel="alternate" href="/atom.xml" title="Cody Di Da Di" type="application/atom+xml">
+</head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -214,7 +214,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2023-05-04 16:16:47 / 修改時間：16:43:09" itemprop="dateCreated datePublished" datetime="2023-05-04T16:16:47+08:00">2023-05-04</time>
+              <time title="創建時間：2023-05-04 16:16:47 / 修改時間：16:50:06" itemprop="dateCreated datePublished" datetime="2023-05-04T16:16:47+08:00">2023-05-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -260,7 +260,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h2 id="紀錄一下-在web端-使用input的狀況下-遇到的問題"><a href="#紀錄一下-在web端-使用input的狀況下-遇到的問題" class="headerlink" title="紀錄一下 在web端 使用input的狀況下 遇到的問題"></a>紀錄一下 在web端 使用input的狀況下 遇到的問題<br><span id="more"></span></h2><h2 id="Ios-input-focus-頁面會放大"><a href="#Ios-input-focus-頁面會放大" class="headerlink" title="Ios input focus 頁面會放大"></a>Ios input focus 頁面會放大</h2><p>ios在手機瀏覽時，點擊<code>input</code>時，螢幕會自動<code>放大</code>，造成頁面可以左右滑動的問題。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h2 id="紀錄一下-在手機上-使用input的狀況下-遇到的問題"><a href="#紀錄一下-在手機上-使用input的狀況下-遇到的問題" class="headerlink" title="紀錄一下 在手機上 使用input的狀況下 遇到的問題"></a>紀錄一下 在手機上 使用input的狀況下 遇到的問題<br><span id="more"></span></h2><h2 id="Ios-input-focus-頁面會放大"><a href="#Ios-input-focus-頁面會放大" class="headerlink" title="Ios input focus 頁面會放大"></a>Ios input focus 頁面會放大</h2><p>ios在手機瀏覽時，點擊<code>input</code>時，螢幕會自動<code>放大</code>，造成頁面可以左右滑動的問題。</p>
 <blockquote>
 <p><code>textarea</code>框好像也會有這方面的問題</p>
 </blockquote>
@@ -331,7 +331,7 @@
                <a href="/tags/input/" rel="tag"> <i class="fa fa-tag"></i> input</a>
                <a href="/tags/focus/" rel="tag"> <i class="fa fa-tag"></i> focus</a>
                <a href="/tags/JS/" rel="tag"> <i class="fa fa-tag"></i> JS</a>
-               <a href="/tags/%E8%AA%9E%E6%B3%95%E7%B3%96/" rel="tag"> <i class="fa fa-tag"></i> 語法糖</a>
+               <a href="/tags/IOS/" rel="tag"> <i class="fa fa-tag"></i> IOS</a>
           </div>
 
         
@@ -418,7 +418,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%80%E9%8C%84%E4%B8%80%E4%B8%8B-%E5%9C%A8web%E7%AB%AF-%E4%BD%BF%E7%94%A8input%E7%9A%84%E7%8B%80%E6%B3%81%E4%B8%8B-%E9%81%87%E5%88%B0%E7%9A%84%E5%95%8F%E9%A1%8C"><span class="nav-number">2.</span> <span class="nav-text">紀錄一下 在web端 使用input的狀況下 遇到的問題</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ios-input-focus-%E9%A0%81%E9%9D%A2%E6%9C%83%E6%94%BE%E5%A4%A7"><span class="nav-number">3.</span> <span class="nav-text">Ios input focus 頁面會放大</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B1%BA%E6%96%B9%E6%B3%95"><span class="nav-number">3.1.</span> <span class="nav-text">解決方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#input-%E9%BB%9E%E6%93%8A%E6%99%82-%EF%BC%8C%E8%B7%B3%E5%87%BA%E4%B8%80%E5%B1%A4Div-%E4%BE%86%E8%BC%B8%E5%85%A5%E6%99%82%EF%BC%8C-%E9%82%84%E6%98%AF%E5%8F%AF%E4%BB%A5%E6%BB%91%E5%8B%95%E5%BA%95%E5%B1%A4%E7%9A%84scroll"><span class="nav-number">4.</span> <span class="nav-text">input 點擊時 ，跳出一層Div 來輸入時， 還是可以滑動底層的scroll</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%83%85%E5%A2%83%E8%AA%AA%E6%98%8E"><span class="nav-number">4.1.</span> <span class="nav-text">情境說明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B1%BA%E6%96%B9%E5%BC%8F"><span class="nav-number">4.2.</span> <span class="nav-text">解決方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%80%E9%8C%84%E4%B8%80%E4%B8%8B-%E5%9C%A8%E6%89%8B%E6%A9%9F%E4%B8%8A-%E4%BD%BF%E7%94%A8input%E7%9A%84%E7%8B%80%E6%B3%81%E4%B8%8B-%E9%81%87%E5%88%B0%E7%9A%84%E5%95%8F%E9%A1%8C"><span class="nav-number">2.</span> <span class="nav-text">紀錄一下 在手機上 使用input的狀況下 遇到的問題</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ios-input-focus-%E9%A0%81%E9%9D%A2%E6%9C%83%E6%94%BE%E5%A4%A7"><span class="nav-number">3.</span> <span class="nav-text">Ios input focus 頁面會放大</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B1%BA%E6%96%B9%E6%B3%95"><span class="nav-number">3.1.</span> <span class="nav-text">解決方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#input-%E9%BB%9E%E6%93%8A%E6%99%82-%EF%BC%8C%E8%B7%B3%E5%87%BA%E4%B8%80%E5%B1%A4Div-%E4%BE%86%E8%BC%B8%E5%85%A5%E6%99%82%EF%BC%8C-%E9%82%84%E6%98%AF%E5%8F%AF%E4%BB%A5%E6%BB%91%E5%8B%95%E5%BA%95%E5%B1%A4%E7%9A%84scroll"><span class="nav-number">4.</span> <span class="nav-text">input 點擊時 ，跳出一層Div 來輸入時， 還是可以滑動底層的scroll</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%83%85%E5%A2%83%E8%AA%AA%E6%98%8E"><span class="nav-number">4.1.</span> <span class="nav-text">情境說明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B1%BA%E6%96%B9%E5%BC%8F"><span class="nav-number">4.2.</span> <span class="nav-text">解決方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -447,7 +447,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
