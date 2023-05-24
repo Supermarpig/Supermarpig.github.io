@@ -261,9 +261,9 @@
     
     <category term="JS" scheme="https://supermarpig.github.io/tags/JS/"/>
     
-    <category term="語法糖" scheme="https://supermarpig.github.io/tags/%E8%AA%9E%E6%B3%95%E7%B3%96/"/>
-    
     <category term="implicit coercion" scheme="https://supermarpig.github.io/tags/implicit-coercion/"/>
+    
+    <category term="語法糖" scheme="https://supermarpig.github.io/tags/%E8%AA%9E%E6%B3%95%E7%B3%96/"/>
     
   </entry>
   
@@ -346,9 +346,9 @@
     <category term="web前端" scheme="https://supermarpig.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/web%E5%89%8D%E7%AB%AF/"/>
     
     
-    <category term="React" scheme="https://supermarpig.github.io/tags/React/"/>
-    
     <category term="開發筆記" scheme="https://supermarpig.github.io/tags/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/"/>
+    
+    <category term="React" scheme="https://supermarpig.github.io/tags/React/"/>
     
   </entry>
   

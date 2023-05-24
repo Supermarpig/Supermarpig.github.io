@@ -2,28 +2,16 @@ body {
   background: #060e1b;
   overflow: hidden;
 
-  .cursor {
-    width: 18.5em;
-    height: 1.25em;
-    white-space: nowrap;
-    border-right: 3px solid transparent;
-    animation: typing 3.5s steps(37, end), blink-caret .75s step-end infinite;
-    font-family: Consolas, Monaco;
-    word-break: break-all;
-    overflow: hidden;
+  canvas {
+    // opacity: 0.5;
+    z-index: 1;
   }
-
-  // /*打印效果*/
-  // @keyframes typing {
-  //   from {
-  //     width: 0;
-  //   }
-
-  //   to {
-  //     width: 18.5em;
-  //   }
-  // }
-
+  .main{
+    z-index: 5000;
+    width: 80%;
+    height: 80%;
+    background-color: #FFF;
+  }
   /* 光標閃爍 */
   @keyframes blink-caret {
 
@@ -40,6 +28,3 @@ body {
   }
 }
 
-canvas {
-  // opacity: 0.5;
-}
