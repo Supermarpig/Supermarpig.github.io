@@ -33,12 +33,12 @@
 <meta property="og:description" content="前言針對TS 來看看TypeScript 的數據類型">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2023-05-25T04:05:52.000Z">
-<meta property="article:modified_time" content="2023-05-25T09:15:37.432Z">
+<meta property="article:modified_time" content="2023-05-26T01:21:52.125Z">
 <meta property="article:author" content="Cody">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="TypeScript">
-<meta property="article:tag" content="泛型">
 <meta property="article:tag" content="面向對象">
+<meta property="article:tag" content="泛型">
 <meta property="article:tag" content="數據類型">
 <meta name="twitter:card" content="summary">
 
@@ -213,10 +213,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2023-05-25 12:05:52 / 修改時間：17:15:37" itemprop="dateCreated datePublished" datetime="2023-05-25T12:05:52+08:00">2023-05-25</time>
+              <time title="創建時間：2023-05-25 12:05:52" itemprop="dateCreated datePublished" datetime="2023-05-25T12:05:52+08:00">2023-05-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2023-05-26 09:21:52" itemprop="dateModified" datetime="2023-05-26T09:21:52+08:00">2023-05-26</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -361,7 +367,7 @@
 </thead>
 <tbody><tr>
 <td align="center">enum</td>
-<td align="center">表示枚舉類型</td>
+<td align="center">表示列舉類型</td>
 <td align="center">enum Color { Red, Green, Blue }; let color: Color &#x3D; Color.Red;</td>
 </tr>
 <tr>
@@ -419,7 +425,7 @@
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">tupleArr</span>:[number, string, boolean];</span><br><span class="line">tupleArr = [<span class="number">12</span>, <span class="string">&#x27;34&#x27;</span>, <span class="literal">true</span>]; <span class="comment">//ok</span></span><br><span class="line">typleArr = [<span class="number">12</span>, <span class="string">&#x27;34&#x27;</span>] <span class="comment">// no ok</span></span><br></pre></td></tr></table></figure>
 
 <p>賦值的類型、位置、個數需要和定義（生明）的類型、位置、個數一致</p>
-<h3 id="enum"><a href="#enum" class="headerlink" title="enum"></a>enum</h3><p><code>enum</code>類型是對<code>JavaScript</code>標準數據類型的一個補充，使用枚舉類型可以為一組數值賦予友好的名字</p>
+<h3 id="enum"><a href="#enum" class="headerlink" title="enum"></a>enum</h3><p><code>enum</code>類型是對<code>JavaScript</code>標準數據類型的一個補充，使用列舉類型可以為一組數值賦予友好的名字</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">enum <span class="title class_">Color</span> &#123;<span class="title class_">Red</span>, <span class="title class_">Green</span>, <span class="title class_">Blue</span>&#125;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">c</span>: <span class="title class_">Color</span> = <span class="title class_">Color</span>.<span class="property">Green</span>;</span><br></pre></td></tr></table></figure>
 
 <h3 id="any"><a href="#any" class="headerlink" title="any"></a>any</h3><p>可以指定<code>任何類型</code>的值，在編程階段還不清楚類型的變量指定一個類型，不希望類型檢查器對這些值進行檢查而是直接讓它們通過編譯階段的檢查，這時候可以使用any類型</p>
@@ -494,8 +500,8 @@
           <div class="post-tags">
                <a href="/tags/JavaScript/" rel="tag"> <i class="fa fa-tag"></i> JavaScript</a>
                <a href="/tags/TypeScript/" rel="tag"> <i class="fa fa-tag"></i> TypeScript</a>
-               <a href="/tags/%E6%B3%9B%E5%9E%8B/" rel="tag"> <i class="fa fa-tag"></i> 泛型</a>
                <a href="/tags/%E9%9D%A2%E5%90%91%E5%B0%8D%E8%B1%A1/" rel="tag"> <i class="fa fa-tag"></i> 面向對象</a>
+               <a href="/tags/%E6%B3%9B%E5%9E%8B/" rel="tag"> <i class="fa fa-tag"></i> 泛型</a>
                <a href="/tags/%E6%95%B8%E6%93%9A%E9%A1%9E%E5%9E%8B/" rel="tag"> <i class="fa fa-tag"></i> 數據類型</a>
           </div>
 
@@ -508,7 +514,10 @@
     <a href="/2023/05/24/%E9%87%8D%E6%96%B0%E5%AD%B8%E7%BF%92TS-%E4%B8%80-TypeScript-%E7%90%86%E8%A7%A3/" rel="prev" title="重新學習TS(一)TypeScript 理解">
       <i class="fa fa-chevron-left"></i> 重新學習TS(一)TypeScript 理解
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2023/05/26/%E9%87%8D%E6%96%B0%E5%AD%B8%E7%BF%92TS-%E4%B8%89-TypeScript-enum-%E5%88%97%E8%88%89%E9%A1%9E%E5%9E%8B/" rel="next" title="重新學習TS-三-TypeScript-enum 列舉類型">
+      重新學習TS-三-TypeScript-enum 列舉類型 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -599,7 +608,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -612,7 +621,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
