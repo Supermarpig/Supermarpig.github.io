@@ -33,7 +33,7 @@
 <meta property="og:description" content="前言網路上看到面試題 ，也來拿來記錄練習">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2023-05-28T13:48:16.000Z">
-<meta property="article:modified_time" content="2023-05-29T01:13:55.313Z">
+<meta property="article:modified_time" content="2023-05-29T01:19:16.088Z">
 <meta property="article:author" content="Cody">
 <meta property="article:tag" content="屬性是否存在">
 <meta property="article:tag" content="對象">
@@ -93,8 +93,8 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/atom.xml" title="Cody Di Da Di" type="application/atom+xml">
-<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><link rel="alternate" href="/atom.xml" title="Cody Di Da Di" type="application/atom+xml">
+</head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -221,7 +221,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2023-05-29 09:13:55" itemprop="dateModified" datetime="2023-05-29T09:13:55+08:00">2023-05-29</time>
+                <time title="修改時間：2023-05-29 09:19:16" itemprop="dateModified" datetime="2023-05-29T09:19:16+08:00">2023-05-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -286,11 +286,13 @@
 
 <p>本來 <code>obj[key] !== undefined;</code> 應該要是 <code>true</code> 但是結果顯示<code>false</code></p>
 <p>所以不能用<code>undefined</code>來判斷</p>
-<p>那該如何判斷呢   </p>
+<p>那該如何判斷呢</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hasProperty</span>(<span class="params">obj,key</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Object</span>.<span class="title function_">keys</span>(obj).<span class="title function_">includes</span>(key)</span><br><span class="line"> &#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123; a : <span class="literal">undefined</span> ,b : <span class="number">1</span>&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( <span class="title function_">hasProperty</span>(obj , <span class="string">&#x27;a&#x27;</span>))   <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( <span class="title function_">hasProperty</span>(<span class="title class_">Object</span>.<span class="title function_">keys</span>(obj)))   <span class="comment">// [&#x27;a&#x27; ,&#x27;b&#x27; ]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p>這樣又可以判斷 上面是否有包含 a 這個屬性 (但是 a 這個屬性顯示<code>undefined</code>)</p>
 <p>但是如果</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(obj,<span class="string">&#x27;c&#x27;</span>&#123;</span><br><span class="line">    <span class="attr">enumerable</span>:<span class="literal">false</span>,</span><br><span class="line">    <span class="attr">value</span>:<span class="number">1</span>,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 <p>用上方的方式 加了一個<code>C</code> Obj進去<br>內容為:不可遍歷，值等於1</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">c</span>);   <span class="comment">//true    &lt;---------判斷得出來</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">hasProperty</span>(obj,<span class="string">&#x27;c&#x27;</span>)); <span class="comment">// false    &lt;-----------但上面的方法會找不到 C 這個東西</span></span><br></pre></td></tr></table></figure>
 
@@ -298,13 +300,11 @@
 <p>接下來也有人會這樣寫</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hasProperty</span>(<span class="params">obj,key</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> obj.<span class="title function_">hasOwnProperty</span>(key);</span><br><span class="line"> &#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123; a : <span class="literal">undefined</span> ,b : <span class="number">1</span>&#125;;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(obj,<span class="string">&#x27;c&#x27;</span>&#123;</span><br><span class="line">    <span class="attr">enumerable</span>:<span class="literal">false</span>,</span><br><span class="line">    <span class="attr">value</span>:<span class="number">1</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">hasProperty</span>(obj,<span class="string">&#x27;c&#x27;</span>)); <span class="comment">// true    &lt;-----------找到 C</span></span><br></pre></td></tr></table></figure>
 
-
 <p>那如果改成 <code>toString</code></p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">hasProperty</span>(obj,<span class="string">&#x27;toString&#x27;</span>));   <span class="comment">//false     &lt;-------------判斷不出來原型鏈上的東西 只能判斷自己的property</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">toString</span>)   <span class="comment">//  [Function :toString]   顯示是有這個toString函數的</span></span><br></pre></td></tr></table></figure>
 
-<p>所以最好的解法還是用 <code>key... in </code></p>
+<p>所以最好的解法還是用 <code>key... in</code></p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">function</span> <span class="title function_">hasProperty</span>(<span class="params">obj,key</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> key <span class="keyword">in</span> obj;</span><br><span class="line"> &#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123; a : <span class="literal">undefined</span> ,b : <span class="number">1</span>&#125;;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(obj,<span class="string">&#x27;c&#x27;</span>&#123;</span><br><span class="line">    <span class="attr">enumerable</span>:<span class="literal">false</span>,</span><br><span class="line">    <span class="attr">value</span>:<span class="number">1</span>,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">hasProperty</span>(obj,<span class="string">&#x27;a&#x27;</span>));  <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">hasProperty</span>(obj,<span class="string">&#x27;c&#x27;</span>));  <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">hasProperty</span>(obj,<span class="string">&#x27;toString&#x27;</span>));  <span class="comment">// true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 
     </div>
 
