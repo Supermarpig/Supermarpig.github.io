@@ -25,20 +25,24 @@
     var CONFIG = {"hostname":"supermarpig.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="前言照著教學創網站 GOGO">
+  <meta name="description" content="前言了解了各個類型現在來研究 接口是蝦咪東西">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我的第一篇部落格文章">
-<meta property="og:url" content="https://supermarpig.github.io/2023/04/10/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E9%83%A8%E8%90%BD%E6%A0%BC%E6%96%87%E7%AB%A0/index.html">
+<meta property="og:title" content="重新學習TS-四-TypeScript-接口">
+<meta property="og:url" content="https://supermarpig.github.io/2023/05/29/%E9%87%8D%E6%96%B0%E5%AD%B8%E7%BF%92TS-%E5%9B%9B-TypeScript-%E6%8E%A5%E5%8F%A3/index.html">
 <meta property="og:site_name" content="Cody Di Da Di">
-<meta property="og:description" content="前言照著教學創網站 GOGO">
+<meta property="og:description" content="前言了解了各個類型現在來研究 接口是蝦咪東西">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2023-04-10T05:45:37.000Z">
-<meta property="article:modified_time" content="2023-04-11T03:10:12.776Z">
+<meta property="og:image" content="https://static.vue-js.com/25d3a790-0b2b-11ec-a752-75723a64e8f5.png">
+<meta property="og:image" content="https://static.vue-js.com/2f6d3c30-0b2b-11ec-8e64-91fdec0f05a1.png">
+<meta property="og:image" content="https://static.vue-js.com/38a41760-0b2b-11ec-8e64-91fdec0f05a1.png">
+<meta property="article:published_time" content="2023-05-29T14:25:27.000Z">
+<meta property="article:modified_time" content="2023-05-31T07:55:16.973Z">
 <meta property="article:author" content="Cody">
 <meta property="article:tag" content="前端,後端,全端,網頁,技術,網頁開發,前端開發,後端開發,JavaScript,HTML,CSS,SCSS">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://static.vue-js.com/25d3a790-0b2b-11ec-a752-75723a64e8f5.png">
 
-<link rel="canonical" href="https://supermarpig.github.io/2023/04/10/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E9%83%A8%E8%90%BD%E6%A0%BC%E6%96%87%E7%AB%A0/">
+<link rel="canonical" href="https://supermarpig.github.io/2023/05/29/%E9%87%8D%E6%96%B0%E5%AD%B8%E7%BF%92TS-%E5%9B%9B-TypeScript-%E6%8E%A5%E5%8F%A3/">
 
 
 <script id="page-configurations">
@@ -54,7 +58,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8308348781288895"
      crossorigin="anonymous"></script>
 
-  <title>我的第一篇部落格文章 | Cody Di Da Di - 搭拉拉拉搭搭搭</title>
+  <title>重新學習TS-四-TypeScript-接口 | Cody Di Da Di - 搭拉拉拉搭搭搭</title>
   
 
 
@@ -187,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://supermarpig.github.io/2023/04/10/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E9%83%A8%E8%90%BD%E6%A0%BC%E6%96%87%E7%AB%A0/">
+    <link itemprop="mainEntityOfPage" href="https://supermarpig.github.io/2023/05/29/%E9%87%8D%E6%96%B0%E5%AD%B8%E7%BF%92TS-%E5%9B%9B-TypeScript-%E6%8E%A5%E5%8F%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://lh3.googleusercontent.com/a/AGNmyxZRq_Cjg7ZBL-eYF5brt0_ldeyXGV1AxUkCo04h3A=s288">
@@ -200,7 +204,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          我的第一篇部落格文章
+          重新學習TS-四-TypeScript-接口
         </h1>
 
         <div class="post-meta">
@@ -210,14 +214,14 @@
               </span>
               <span class="post-meta-item-text">發表於</span>
 
-              <time title="創建時間：2023-04-10 13:45:37" itemprop="dateCreated datePublished" datetime="2023-04-10T13:45:37+08:00">2023-04-10</time>
+              <time title="創建時間：2023-05-29 22:25:27" itemprop="dateCreated datePublished" datetime="2023-05-29T22:25:27+08:00">2023-05-29</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2023-04-11 11:10:12" itemprop="dateModified" datetime="2023-04-11T11:10:12+08:00">2023-04-11</time>
+                <time title="修改時間：2023-05-31 15:55:16" itemprop="dateModified" datetime="2023-05-31T15:55:16+08:00">2023-05-31</time>
               </span>
 
           
@@ -232,13 +236,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>13</span>
+              <span>1.9k</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>1 分鐘</span>
+              <span>2 分鐘</span>
             </span>
 
         </div>
@@ -250,8 +254,67 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>照著教學創網站 GOGO</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>了解了各個類型<br>現在來研究 接口是蝦咪東西</p>
 <span id="more"></span>
+
+<hr>
+<h2 id="接口是什麼"><a href="#接口是什麼" class="headerlink" title="接口是什麼?"></a>接口是什麼?</h2><blockquote>
+<p>接口是一系列抽象方法的聲明，是一些方法特徵的集合，這些方法都應該是抽象的，需要由具體的<code>Class</code>去實現，然後第三方就可以通過這組<code>抽象方法</code>調用，讓具體的<code>Class</code>執行具體的方法</p>
+</blockquote>
+<p>看著很模糊， 簡單來說</p>
+<p>一個接口所描述的是<code>一個對象</code>相關的<code>屬性</code>和<code>方法</code>，但並<code>不提供</code>具體創建此對象實例的方法</p>
+<p><code>typescript</code>的核心功能之一就是對<code>類型做檢測</code>，雖然這種檢測方式是“<code>鴨式辨型法</code>”，而接口的作用就是為為這些類型命名和為你的代碼或第三方代碼定義一個<code>約定</code></p>
+<h2 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h2><p>接口定義如下：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">interface interface_name &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>例如有一個<code>函數</code>，這個函數接受一個 <code>User 對象</code>，然後返回這個 <code>User 對象</code>的<code> name 屬性</code>:</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">getUserName</span> = (<span class="params">user</span>) =&gt; user.<span class="property">name</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到，參數需要有一個<code>user的name屬性</code>，可以通過<code>接口</code>描述 user 參數的結構</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">interface <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="attr">name</span>: string</span><br><span class="line">    <span class="attr">age</span>: number</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">getUserName</span> = (<span class="params">user: User</span>) =&gt; user.<span class="property">name</span></span><br></pre></td></tr></table></figure>
+
+<p>這些屬性並不一定全部實現，上述傳入的<code>對象</code>必須擁有<code>name</code>和<code>age</code>屬性，否則<code>typescript</code>在編譯階段會報錯，如下圖：</p>
+<p><img src="https://static.vue-js.com/25d3a790-0b2b-11ec-a752-75723a64e8f5.png" alt="error"></p>
+<p>如果不想要<code>age</code>屬性的話，這時候可以採用可選屬性，如下表示：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">interface <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="attr">name</span>: string</span><br><span class="line">    age?: number</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>這時候<code>age屬性</code>則可以是<code>number類型</code>或者<code>undefined類型</code></p>
+<p>有些時候，我們想要一個屬性變成<code>只讀屬性</code>，在 typescript 只需要使用<code>readonly聲明</code>，如下：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">interface <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="attr">name</span>: string</span><br><span class="line">    age?: number</span><br><span class="line">    readonly <span class="attr">isMale</span>: boolean</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>當我們修改屬性的時候，就會出現警告，如下所示：</p>
+<p><img src="https://static.vue-js.com/2f6d3c30-0b2b-11ec-8e64-91fdec0f05a1.png"></p>
+<p>這是屬性中有一個函數，可以如下表示：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">interface <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="attr">name</span>: string</span><br><span class="line">    age?: number</span><br><span class="line">    readonly <span class="attr">isMale</span>: boolean</span><br><span class="line">    <span class="attr">say</span>: <span class="function">(<span class="params">words: string</span>) =&gt;</span> string</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果傳遞的<code>對像</code>不僅僅是<code>上述的屬性</code>，這時候可以使用：</p>
+<ul>
+<li>類型推斷</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">interface <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="attr">name</span>: string</span><br><span class="line">    <span class="attr">age</span>: number</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">getUserName</span> = (<span class="params">user: User</span>) =&gt; user.<span class="property">name</span></span><br><span class="line"><span class="title function_">getUserName</span>(&#123;<span class="attr">color</span>: <span class="string">&#x27;yellow&#x27;</span>&#125; <span class="keyword">as</span> <span class="title class_">User</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>給接口添加字串索引簽名</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">interface <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="attr">name</span>: string</span><br><span class="line">    <span class="attr">age</span>: number</span><br><span class="line">    [<span class="attr">propName</span>: string]: any;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接口還能實現繼承，如下圖：</p>
+<p><img src="https://static.vue-js.com/38a41760-0b2b-11ec-8e64-91fdec0f05a1.png"></p>
+<p>也可以繼承多個，父類通過逗號隔開，如下：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">interface <span class="title class_">Father</span> &#123;</span><br><span class="line">    <span class="attr">color</span>: <span class="title class_">String</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface <span class="title class_">Mother</span> &#123;</span><br><span class="line">    <span class="attr">height</span>: <span class="title class_">Number</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface <span class="title class_">Son</span> <span class="keyword">extends</span> <span class="title class_">Father</span>,<span class="title class_">Mother</span>&#123;</span><br><span class="line">    <span class="attr">name</span>: string</span><br><span class="line">    <span class="attr">age</span>: <span class="title class_">Number</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="應用場景"><a href="#應用場景" class="headerlink" title="應用場景"></a>應用場景</h2><p>例如在<code>javascript</code>中定義一個函數，用來獲取用戶的姓名和年齡：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getUserInfo = <span class="keyword">function</span>(<span class="params">user</span>) &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">return</span> <span class="attr">name</span>: $&#123;user.<span class="property">name</span>&#125;, <span class="attr">age</span>: $&#123;user.<span class="property">age</span>&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果多人開發的都需要用到這個<code>函數</code>的時候，如果<code>沒有註釋</code>，則可能出現各種運行時的錯誤，這時候就可以使用接口定義參數變量：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 先定義一個接口</span></span><br><span class="line">interface <span class="title class_">IUser</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: string;</span><br><span class="line">  <span class="attr">age</span>: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getUserInfo = (<span class="attr">user</span>: <span class="title class_">IUser</span>): <span class="function"><span class="params">string</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`name: <span class="subst">$&#123;user.name&#125;</span>, age: <span class="subst">$&#123;user.age&#125;</span>`</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 正確的調用</span></span><br><span class="line"><span class="title function_">getUserInfo</span>(&#123;<span class="attr">name</span>: <span class="string">&quot;koala&quot;</span>, <span class="attr">age</span>: <span class="number">18</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>包括後面講到類的時候也會應用到接口</p>
+</blockquote>
+<hr>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>-<a target="_blank" rel="noopener" href="https://www.tslang.cn/docs/handbook/interfaces.html">接口</a></p>
+
     </div>
 
     
@@ -276,7 +339,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>文章連結：</strong>
-    <a href="https://supermarpig.github.io/2023/04/10/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E9%83%A8%E8%90%BD%E6%A0%BC%E6%96%87%E7%AB%A0/" title="我的第一篇部落格文章">https://supermarpig.github.io/2023/04/10/我的第一篇部落格文章/</a>
+    <a href="https://supermarpig.github.io/2023/05/29/%E9%87%8D%E6%96%B0%E5%AD%B8%E7%BF%92TS-%E5%9B%9B-TypeScript-%E6%8E%A5%E5%8F%A3/" title="重新學習TS-四-TypeScript-接口">https://supermarpig.github.io/2023/05/29/重新學習TS-四-TypeScript-接口/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
@@ -292,10 +355,13 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2023/04/11/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%BB%9E%E9%BB%9E%EF%BC%8C%E5%AD%B8%E7%BF%92ES6-%E4%B8%80/" rel="next" title="每天一點點，學習ES6(一) Enhanced Object Literals">
-      每天一點點，學習ES6(一) Enhanced Object Literals <i class="fa fa-chevron-right"></i>
+    <a href="/2023/05/28/JS%E9%9D%A2%E8%A9%A6%E9%A1%8C%E7%B7%B4%E7%BF%92/" rel="prev" title="JS面試題練習- 判斷 Obj 是否存在某個屬性">
+      <i class="fa fa-chevron-left"></i> JS面試題練習- 判斷 Obj 是否存在某個屬性
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/05/30/%E9%87%8D%E6%96%B0%E5%AD%B8%E7%BF%92TS-%E4%BA%94-TypeScript-Class/" rel="next" title="重新學習TS-五-TypeScript-Class">
+      重新學習TS-五-TypeScript-Class <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -371,7 +437,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E6%98%AF%E4%BB%80%E9%BA%BC"><span class="nav-number">2.</span> <span class="nav-text">接口是什麼?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">使用方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%87%89%E7%94%A8%E5%A0%B4%E6%99%AF"><span class="nav-number">4.</span> <span class="nav-text">應用場景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
