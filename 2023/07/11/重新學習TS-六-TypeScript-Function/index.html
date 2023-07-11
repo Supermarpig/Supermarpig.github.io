@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/sun.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/sun.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8308348781288895"
+     crossorigin="anonymous"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"supermarpig.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="前言來研究研究TS function  &amp;&amp; 與JS的差異">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重新學習TS-六-TypeScript-Function">
+<meta property="og:url" content="https://supermarpig.github.io/2023/07/11/%E9%87%8D%E6%96%B0%E5%AD%B8%E7%BF%92TS-%E5%85%AD-TypeScript-Function/index.html">
+<meta property="og:site_name" content="Cody Di Da Di">
+<meta property="og:description" content="前言來研究研究TS function  &amp;&amp; 與JS的差異">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2023-07-11T06:45:33.000Z">
+<meta property="article:modified_time" content="2023-07-11T08:25:40.470Z">
+<meta property="article:author" content="Cody">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="TypeScript">
+<meta property="article:tag" content="物件導向">
+<meta property="article:tag" content="function">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://supermarpig.github.io/2023/07/11/%E9%87%8D%E6%96%B0%E5%AD%B8%E7%BF%92TS-%E5%85%AD-TypeScript-Function/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8308348781288895"
+     crossorigin="anonymous"></script>
+
+  <title>重新學習TS-六-TypeScript-Function | Cody Di Da Di - 搭拉拉拉搭搭搭</title>
+  
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8308348781288895"
+     crossorigin="anonymous"></script>
+   
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><link rel="alternate" href="/atom.xml" title="Cody Di Da Di" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Cody Di Da Di</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">搭拉拉拉搭搭搭</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Supermarpig" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Supermarpig" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ken51717@gmail.com" title="E-Mail → mailto:ken51717@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/Supermarpig" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://supermarpig.github.io/2023/07/11/%E9%87%8D%E6%96%B0%E5%AD%B8%E7%BF%92TS-%E5%85%AD-TypeScript-Function/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://lh3.googleusercontent.com/a/AGNmyxZRq_Cjg7ZBL-eYF5brt0_ldeyXGV1AxUkCo04h3A=s288">
+      <meta itemprop="name" content="Cody">
+      <meta itemprop="description" content="日常紀錄">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cody Di Da Di">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          重新學習TS-六-TypeScript-Function
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2023-07-11 14:45:33 / 修改時間：16:25:40" itemprop="dateCreated datePublished" datetime="2023-07-11T14:45:33+08:00">2023-07-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">學習筆記</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">web前端</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="閱讀次數" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">閱讀次數：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>2.3k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>2 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>來研究研究TS function  &amp;&amp; 與JS的差異</p>
+<span id="more"></span>
+<hr>
+<p>整理整理大致如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">功能</th>
+<th align="center">TypeScript</th>
+<th align="center">JavaScript</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">類型定義</td>
+<td align="center">可以提供參數和返回值的類型定義</td>
+<td align="center">沒有內建的類型定義，函數可以接受任何參數和返回任何值</td>
+</tr>
+<tr>
+<td align="center">靜態類型檢查</td>
+<td align="center">提供編譯時的類型檢查</td>
+<td align="center">沒有內建的靜態類型檢查，只能在運行時進行類型檢查</td>
+</tr>
+<tr>
+<td align="center">函式多載</td>
+<td align="center">可以使用函式多載來定義多個函數簽名</td>
+<td align="center">不支持函式多載，只能使用最後一個定義的函數簽名</td>
+</tr>
+<tr>
+<td align="center">可選參數和預設參數</td>
+<td align="center">可以定義參數為可選的或設置預設值</td>
+<td align="center">參數是必需的，但可以通過檢查參數的值進行類似的操作</td>
+</tr>
+<tr>
+<td align="center">函數型別推斷</td>
+<td align="center">提供更準確的函數型別推斷</td>
+<td align="center">型別推斷相對不準確，需要額外的註釋來明確型別</td>
+</tr>
+<tr>
+<td align="center">函數型別註釋</td>
+<td align="center">可以使用註釋明確指定函數的參數和返回值型別</td>
+<td align="center">可以使用JSDoc註釋來指定類型，但沒有內建的方式</td>
+</tr>
+<tr>
+<td align="center">this 的處理</td>
+<td align="center">支持更好的 this 綁定，可以在函數定義中指定 this 的類型</td>
+<td align="center">this 綁定規則相對較模糊，需要注意使用箭頭函數或額外綁定 this</td>
+</tr>
+<tr>
+<td align="center">函數型別作為參數和返回值的類型</td>
+<td align="center">函數型別可以作為參數和返回值的類型</td>
+<td align="center">函數型別也可以作為參數和返回值的類型，但沒有內建的型別檢查</td>
+</tr>
+</tbody></table>
+<h2 id="Function-是甚麼"><a href="#Function-是甚麼" class="headerlink" title="Function 是甚麼"></a>Function 是甚麼</h2><p><code>Function</code>是<code>JavaScript</code> 應用程序的基礎，幫助我們實現抽象層、模擬類、信息隱藏和模塊</p>
+<p>在<code>TypeScript</code> 裡，雖然已經支持類、命名空間和模塊，但<code>Function</code>仍然是主要定義行為的方式，</p>
+<p>TypeScript為JavaScript <code>Function</code>添加了額外的功能，豐富了更多的應用場景</p>
+<p><code>Function</code>類型在TypeScript 類型系統中扮演著非常重要的角色，它們是可組合系統的核心構建塊</p>
+<h2 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h2><p>跟<code>javascript</code> 定義函數十分相似，可以通過<code>function</code> 關鍵字、箭頭函數等形式去定義，例如下面一個簡單的加法函數：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">add</span> = (<span class="params">a: number, b: number</span>) =&gt; a + b</span><br></pre></td></tr></table></figure>
+
+<p>上述只定義了<code>function</code>的兩個參數類型，這個時候整個<code>function</code>雖然沒有被顯式定義，<br>但是實際上TypeScript 編譯器是能夠通過類型推斷到這個<code>function</code>的類型</p>
+<blockquote>
+<p>當鼠標放置在<code>add函數名</code>的時候，會出現完整的函數定義類型，通過<code>:</code> 的形式來定於參數類型，通過<code>=&gt;</code> 連接參數和返回值類型</p>
+</blockquote>
+<p>當我們沒有提供函數實現的情況下，有兩種聲明函數類型的方式，如下所示</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方式一</span></span><br><span class="line">type <span class="title class_">LongHand</span> = &#123;</span><br><span class="line">  (<span class="attr">a</span>: number): number;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方式二</span></span><br><span class="line">type <span class="title class_">ShortHand</span> = <span class="function">(<span class="params">a: number</span>) =&gt;</span> number;</span><br></pre></td></tr></table></figure>
+
+<p>當存在函式多載時，只能使用方式一的形式</p>
+<h2 id="可選參數"><a href="#可選參數" class="headerlink" title="可選參數"></a>可選參數</h2><p>當函數的參數可能是不存在的，只需要在參數後面加上<code>?</code> 代表參數可能<code>不存在</code>，如下：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">add</span> = (<span class="params">a: number, b?: number</span>) =&gt; a + (b ? b : <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>這時候<code>參數b</code>可以是<code>number</code>類型或者<code>undefined</code>類型，即可以傳一個number類型或者不傳都可以</p>
+</blockquote>
+<h2 id="剩餘類型"><a href="#剩餘類型" class="headerlink" title="剩餘類型"></a>剩餘類型</h2><p>剩餘參數與<code>JavaScript</code>的語法類似，需要用<code>...</code> 來表示<code>剩餘參數</code></p>
+<p>如果剩餘參數<code>rest</code> 是一個由<code>number</code>類型組成的數組，則如下表示：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">add</span> = (<span class="params">a: number, ...rest: number[]</span>) =&gt; rest.<span class="title function_">reduce</span>((<span class="function">(<span class="params">a, b</span>) =&gt;</span> a + b), a)</span><br></pre></td></tr></table></figure>
+
+<h2 id="函式多載（英語：function-overloading）"><a href="#函式多載（英語：function-overloading）" class="headerlink" title="函式多載（英語：function overloading）"></a>函式多載（英語：function overloading）</h2><p>允許創建數項名稱相同但輸入輸出類型或個數不同的子程序，它可以簡單地稱為一個單獨功能可以執行多項任務的能力</p>
+<p>關於<code>typescript函式多載</code>，必須要把精確的定義放在前面，最後函數實現時，需要使用 <code>|操作符</code> 或者 <code>?操作符</code>，把所有可能的輸入類型全部包含進去，用於具體實現</p>
+<p>這裡的<code>函式多載</code>也只是多個函數的聲明，具體的邏輯還需要自己去寫，typescript並不會真的將你的多個重名function的函數體進行合併</p>
+<p>例如我們有一個add函數，它可以接收string類型的參數進行拼接，也可以接收number 類型的參數進行相加，如下：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 上面是聲明</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span> (<span class="attr">arg1</span>: string, <span class="attr">arg2</span>: string): string</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span> (<span class="attr">arg1</span>: number, <span class="attr">arg2</span>: number): number</span><br><span class="line"><span class="comment">// 因為我們在下面有具體函數的實現，所以這裡並不需要添加 declare 關鍵字</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 下面是實現</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span> (<span class="attr">arg1</span>: string | number, <span class="attr">arg2</span>: string | number) &#123;</span><br><span class="line">  <span class="comment">// 在實現上我们要注意嚴格判断兩個参數的類型是否相等，而不能簡單的寫一個 arg1 + arg2</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> arg1 === <span class="string">&#x27;string&#x27;</span> &amp;&amp; <span class="keyword">typeof</span> arg2 === <span class="string">&#x27;string&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> arg1 + arg2</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> arg1 === <span class="string">&#x27;number&#x27;</span> &amp;&amp; <span class="keyword">typeof</span> arg2 === <span class="string">&#x27;number&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> arg1 + arg2</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="與JavaScript區別"><a href="#與JavaScript區別" class="headerlink" title="與JavaScript區別"></a>與JavaScript區別</h2><p>從上面可以看到：</p>
+<ul>
+<li>從定義的方式而言，<code>typescript</code> 聲明函數需要定義參數類型或者聲明返回值類型</li>
+<li><code>typescript</code> 在參數中，添加可選參數供使用者選擇</li>
+<li><code>typescript</code> 增添函數多載功能，使用者只需要通過查看函數聲明的方式，即可知道函數傳遞的參數個數以及類型</li>
+</ul>
+<hr>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.tslang.cn/docs/handbook/functions.html">函数</a></li>
+<li><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD">函式多載</a></li>
+<li><a target="_blank" rel="noopener" href="https://jkchao.github.io/typescript-book-chinese/typings/functions.html#%E9%87%8D%E8%BD%BD">深入理解 TypeScript</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>你的支持是我活力的來源  :)</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打賞
+  </button>
+  <div id="qr" style="display: none;">
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>作者： </strong>Cody
+  </li>
+  <li class="post-copyright-link">
+    <strong>文章連結：</strong>
+    <a href="https://supermarpig.github.io/2023/07/11/%E9%87%8D%E6%96%B0%E5%AD%B8%E7%BF%92TS-%E5%85%AD-TypeScript-Function/" title="重新學習TS-六-TypeScript-Function">https://supermarpig.github.io/2023/07/11/重新學習TS-六-TypeScript-Function/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+               <a href="/tags/JavaScript/" rel="tag"> <i class="fa fa-tag"></i> JavaScript</a>
+               <a href="/tags/TypeScript/" rel="tag"> <i class="fa fa-tag"></i> TypeScript</a>
+               <a href="/tags/%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91/" rel="tag"> <i class="fa fa-tag"></i> 物件導向</a>
+               <a href="/tags/function/" rel="tag"> <i class="fa fa-tag"></i> function</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/07/04/pack-lock-json%E6%96%87%E4%BB%B6%E7%9A%84registry/" rel="prev" title="pack-lock.json文件的registry">
+      <i class="fa fa-chevron-left"></i> pack-lock.json文件的registry
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<div>
+    <section id="comments" class="comments">
+      <style>
+        .utterances{max-width: 100%;}
+      </style>
+        <script src="https://utteranc.es/client.js"
+        repo="Supermarpig/utterancesRepo"
+        issue-term="title"
+        theme="github-light"
+        label="💬"
+        crossorigin="anonymous"
+        async>
+  </script>
+  </section>
+</div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Function-%E6%98%AF%E7%94%9A%E9%BA%BC"><span class="nav-number">2.</span> <span class="nav-text">Function 是甚麼</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">使用方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E9%81%B8%E5%8F%83%E6%95%B8"><span class="nav-number">4.</span> <span class="nav-text">可選參數</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%A9%E9%A4%98%E9%A1%9E%E5%9E%8B"><span class="nav-number">5.</span> <span class="nav-text">剩餘類型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E5%BC%8F%E5%A4%9A%E8%BC%89%EF%BC%88%E8%8B%B1%E8%AA%9E%EF%BC%9Afunction-overloading%EF%BC%89"><span class="nav-number">6.</span> <span class="nav-text">函式多載（英語：function overloading）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%88%87JavaScript%E5%8D%80%E5%88%A5"><span class="nav-number">7.</span> <span class="nav-text">與JavaScript區別</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">8.</span> <span class="nav-text">References</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Cody"
+      src="https://lh3.googleusercontent.com/a/AGNmyxZRq_Cjg7ZBL-eYF5brt0_ldeyXGV1AxUkCo04h3A=s288">
+  <p class="site-author-name" itemprop="name">Cody</p>
+  <div class="site-description" itemprop="description">日常紀錄</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">若要轉載文章，麻煩請保留原作者名稱與原始連結。</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="訪客總數">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="總瀏覽次數">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: '32px ',
+  left: 'unset',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+  
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+</body>
+</html>
